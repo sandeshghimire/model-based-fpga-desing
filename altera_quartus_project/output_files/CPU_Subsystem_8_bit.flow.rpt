@@ -1,5 +1,5 @@
 Flow report for CPU_Subsystem_8_bit
-Thu Feb 20 11:31:24 2014
+Thu Feb 20 11:41:26 2014
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -40,25 +40,25 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Flow Summary                                                                 ;
 +---------------------------------+--------------------------------------------+
-; Flow Status                     ; Successful - Thu Feb 20 11:31:24 2014      ;
+; Flow Status                     ; Successful - Thu Feb 20 11:41:25 2014      ;
 ; Quartus II 64-Bit Version       ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                   ; CPU_Subsystem_8_bit                        ;
 ; Top-level Entity Name           ; CPU_Subsystem_8_bit                        ;
 ; Family                          ; Cyclone V                                  ;
 ; Device                          ; 5CSXFC6D6F31C8ES                           ;
 ; Timing Models                   ; Preliminary                                ;
-; Logic utilization (in ALMs)     ; 1,298 / 41,910 ( 3 % )                     ;
+; Logic utilization (in ALMs)     ; N/A                                        ;
 ; Total registers                 ; 2161                                       ;
-; Total pins                      ; 21 / 499 ( 4 % )                           ;
+; Total pins                      ; 21                                         ;
 ; Total virtual pins              ; 0                                          ;
-; Total block memory bits         ; 0 / 5,662,720 ( 0 % )                      ;
-; Total DSP Blocks                ; 0 / 112 ( 0 % )                            ;
-; Total HSSI RX PCSs              ; 0 / 9 ( 0 % )                              ;
-; Total HSSI PMA RX Deserializers ; 0 / 9 ( 0 % )                              ;
-; Total HSSI TX PCSs              ; 0 / 9 ( 0 % )                              ;
-; Total HSSI TX Channels          ; 0 / 9 ( 0 % )                              ;
-; Total PLLs                      ; 0 / 15 ( 0 % )                             ;
-; Total DLLs                      ; 0 / 4 ( 0 % )                              ;
+; Total block memory bits         ; 0                                          ;
+; Total DSP Blocks                ; 0                                          ;
+; Total HSSI RX PCSs              ; 0                                          ;
+; Total HSSI PMA RX Deserializers ; 0                                          ;
+; Total HSSI TX PCSs              ; 0                                          ;
+; Total HSSI TX Channels          ; 0                                          ;
+; Total PLLs                      ; 0                                          ;
+; Total DLLs                      ; 0                                          ;
 +---------------------------------+--------------------------------------------+
 
 
@@ -67,7 +67,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/20/2014 11:28:46 ;
+; Start date & time ; 02/20/2014 11:41:14 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; CPU_Subsystem_8_bit ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                           ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+---------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 119331712032965.139292452604448 ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 119331712032965.139292527401076 ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                            ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)          ; <None>        ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                              ; --            ; --          ; --             ;
@@ -90,41 +90,29 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------+---------------+-------------+----------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                             ;
-+---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:09     ; 1.0                     ; 582 MB              ; 00:00:06                           ;
-; Fitter                    ; 00:01:31     ; 1.0                     ; 1525 MB             ; 00:01:28                           ;
-; Assembler                 ; 00:00:15     ; 1.0                     ; 654 MB              ; 00:00:12                           ;
-; TimeQuest Timing Analyzer ; 00:00:23     ; 1.0                     ; 836 MB              ; 00:00:17                           ;
-; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 510 MB              ; 00:00:01                           ;
-; Total                     ; 00:02:20     ; --                      ; --                  ; 00:02:04                           ;
-+---------------------------+--------------+-------------------------+---------------------+------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:00:10     ; 1.0                     ; 573 MB              ; 00:00:06                           ;
+; Total                ; 00:00:10     ; --                      ; --                  ; 00:00:06                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+----------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                        ;
-+---------------------------+------------------+-----------+------------+----------------+
-; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
-+---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; SJ-SGHIMIRE2     ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter                    ; SJ-SGHIMIRE2     ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler                 ; SJ-SGHIMIRE2     ; Windows 7 ; 6.1        ; x86_64         ;
-; TimeQuest Timing Analyzer ; SJ-SGHIMIRE2     ; Windows 7 ; 6.1        ; x86_64         ;
-; EDA Netlist Writer        ; SJ-SGHIMIRE2     ; Windows 7 ; 6.1        ; x86_64         ;
-+---------------------------+------------------+-----------+------------+----------------+
++-----------------------------------------------------------------------------------+
+; Flow OS Summary                                                                   ;
++----------------------+------------------+-----------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++----------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis ; SJ-SGHIMIRE2     ; Windows 7 ; 6.1        ; x86_64         ;
++----------------------+------------------+-----------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off matlab2vhdl -c CPU_Subsystem_8_bit
-quartus_fit --read_settings_files=off --write_settings_files=off matlab2vhdl -c CPU_Subsystem_8_bit
-quartus_asm --read_settings_files=off --write_settings_files=off matlab2vhdl -c CPU_Subsystem_8_bit
-quartus_sta matlab2vhdl -c CPU_Subsystem_8_bit
-quartus_eda --read_settings_files=off --write_settings_files=off matlab2vhdl -c CPU_Subsystem_8_bit
 
 
 

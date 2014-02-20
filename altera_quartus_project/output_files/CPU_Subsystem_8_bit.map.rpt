@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CPU_Subsystem_8_bit
-Thu Feb 20 11:28:57 2014
+Thu Feb 20 11:41:25 2014
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -44,7 +44,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Feb 20 11:28:57 2014      ;
+; Analysis & Synthesis Status     ; Successful - Thu Feb 20 11:41:25 2014      ;
 ; Quartus II 64-Bit Version       ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                   ; CPU_Subsystem_8_bit                        ;
 ; Top-level Entity Name           ; CPU_Subsystem_8_bit                        ;
@@ -2324,7 +2324,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu Feb 20 11:28:45 2014
+    Info: Processing started: Thu Feb 20 11:41:13 2014
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off matlab2vhdl -c CPU_Subsystem_8_bit
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file /alarmd/matlab2vhdl/matlab_model/hdlsrc/singleportram_inst0.vhd
@@ -2365,6 +2365,9 @@ Info (12021): Found 2 design units, including 1 entities, in source file /alarmd
 Info (12021): Found 2 design units, including 1 entities, in source file /alarmd/matlab2vhdl/matlab_model/hdlsrc/accumulator.vhd
     Info (12022): Found design unit 1: Accumulator-rtl
     Info (12023): Found entity 1: Accumulator
+Warning (12019): Can't analyze file -- file output_files/CPU_Subsystem_8_bit.bdf is missing
+Info (12021): Found 1 design units, including 1 entities, in source file output_files/cpu_subsystem_8_bit_scm.bdf
+    Info (12023): Found entity 1: CPU_Subsystem_8_bit_SCM
 Info (12127): Elaborating entity "CPU_Subsystem_8_bit" for the top level hierarchy
 Warning (10036): Verilog HDL or VHDL warning at CPU_Subsystem_8_bit.vhd(242): object "Accumulator_out1_signed" assigned a value but never read
 Info (12129): Elaborating entity "PC_Incrementer" using architecture "A:rtl" for hierarchy "PC_Incrementer:u_PC_Incrementer"
@@ -2395,10 +2398,10 @@ Info (21057): Implemented 3408 device resources after synthesis - the final reso
     Info (21058): Implemented 4 input pins
     Info (21059): Implemented 17 output pins
     Info (21061): Implemented 3387 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 582 megabytes
-    Info: Processing ended: Thu Feb 20 11:28:57 2014
-    Info: Elapsed time: 00:00:12
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 11 warnings
+    Info: Peak virtual memory: 573 megabytes
+    Info: Processing ended: Thu Feb 20 11:41:26 2014
+    Info: Elapsed time: 00:00:13
     Info: Total CPU time (on all processors): 00:00:07
 
 
