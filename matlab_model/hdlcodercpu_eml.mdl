@@ -1,0 +1,5284 @@
+Model {
+  Name			  "hdlcodercpu_eml"
+  Version		  7.7
+  MdlSubVersion		  0
+  GraphicalInterface {
+    NumRootInports	    0
+    NumRootOutports	    0
+    ParameterArgumentNames  ""
+    ComputedModelVersion    "1.552"
+    NumModelReferences	    0
+    NumTestPointedSignals   0
+  }
+  Description		  "An 8-bit RISC Processor using MATLAB(R) Function Blocks\nThis model shows how to use Simulink(R) HDL"
+  " Coder(TM) to check, \ngenerate and verify HDL for an 8-bit CPU implemented using the \nMATLAB Function Block."
+  SavedCharacterEncoding  "windows-1252"
+  slprops.hdlmdlprops {
+    $PropName		    "HDLParams"
+    $ObjectID		    1
+    Array {
+      Type		      "Cell"
+      Dimension		      2
+      Cell		      "HDLSubsystem"
+      Cell		      "hdlcodercpu_eml/CPU_Subsystem_8_bit"
+      PropName		      "mdlProps"
+    }
+  }
+  SaveDefaultBlockParams  on
+  ScopeRefreshTime	  0.035000
+  OverrideScopeRefreshTime on
+  DisableAllScopes	  off
+  DataTypeOverride	  "UseLocalSettings"
+  DataTypeOverrideAppliesTo "AllNumericTypes"
+  MinMaxOverflowLogging	  "UseLocalSettings"
+  MinMaxOverflowArchiveMode "Overwrite"
+  MaxMDLFileLineLength	  120
+  Created		  "Wed Dec 06 13:55:56 2006"
+  Creator		  "pbiswas"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "sandesh"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Thu Feb 20 10:51:28 2014"
+  RTWModifiedTimeStamp	  314794259
+  ModelVersionFormat	  "1.%<AutoIncrement:552>"
+  ConfigurationManager	  "None"
+  SampleTimeColors	  on
+  SampleTimeAnnotations	  off
+  LibraryLinkDisplay	  "none"
+  WideLines		  off
+  ShowLineDimensions	  on
+  ShowPortDataTypes	  on
+  ShowLoopsOnError	  on
+  IgnoreBidirectionalLines off
+  ShowStorageClass	  off
+  ShowTestPointIcons	  on
+  ShowSignalResolutionIcons on
+  ShowViewerIcons	  on
+  SortedOrder		  off
+  ExecutionContextIcon	  off
+  ShowLinearizationAnnotations on
+  BlockNameDataTip	  off
+  BlockParametersDataTip  off
+  BlockDescriptionStringDataTip	off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  BrowserLookUnderMasks	  off
+  SimulationMode	  "normal"
+  LinearizationMsg	  "none"
+  Profile		  off
+  ParamWorkspaceSource	  "MATLABWorkspace"
+  AccelSystemTargetFile	  "accel.tlc"
+  AccelTemplateMakefile	  "accel_default_tmf"
+  AccelMakeCommand	  "make_rtw"
+  TryForcingSFcnDF	  off
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  CovForceBlockReductionOff on
+  covSaveCumulativeToWorkspaceVar on
+  CovSaveSingleToWorkspaceVar on
+  CovCumulativeVarName	  "covCumulativeData"
+  CovCumulativeReport	  off
+  CovReportOnPause	  on
+  CovModelRefEnable	  "Off"
+  CovExternalEMLEnable	  off
+  ExtModeBatchMode	  off
+  ExtModeEnableFloating	  on
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "normal"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigDurationFloating "auto"
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  on
+  ExtModeSkipDownloadWhenConnect off
+  ExtModeLogAll		  on
+  ExtModeAutoUpdateStatusClock off
+  BufferReuse		  on
+  ShowModelReferenceBlockVersion off
+  ShowModelReferenceBlockIO off
+  Array {
+    Type		    "Handle"
+    Dimension		    1
+    Simulink.ConfigSet {
+      $ObjectID		      2
+      Version		      "1.11.0"
+      Array {
+	Type			"Handle"
+	Dimension		10
+	Simulink.SolverCC {
+	  $ObjectID		  3
+	  Version		  "1.11.0"
+	  StartTime		  "0.0"
+	  StopTime		  "10000000"
+	  AbsTol		  "auto"
+	  FixedStep		  "auto"
+	  InitialStep		  "auto"
+	  MaxNumMinSteps	  "-1"
+	  MaxOrder		  5
+	  ZcThreshold		  "auto"
+	  ConsecutiveZCsStepRelTol "10*128*eps"
+	  MaxConsecutiveZCs	  "1000"
+	  ExtrapolationOrder	  4
+	  NumberNewtonIterations  1
+	  MaxStep		  "auto"
+	  MinStep		  "auto"
+	  MaxConsecutiveMinStep	  "1"
+	  RelTol		  "1e-3"
+	  SolverMode		  "SingleTasking"
+	  ConcurrentTasks	  off
+	  Solver		  "FixedStepDiscrete"
+	  SolverName		  "FixedStepDiscrete"
+	  SolverJacobianMethodControl "auto"
+	  ShapePreserveControl	  "DisableAll"
+	  ZeroCrossControl	  "UseLocalSettings"
+	  ZeroCrossAlgorithm	  "Nonadaptive"
+	  AlgebraicLoopSolver	  "TrustRegion"
+	  SolverResetMethod	  "Fast"
+	  PositivePriorityOrder	  off
+	  AutoInsertRateTranBlk	  off
+	  SampleTimeConstraint	  "Unconstrained"
+	  InsertRTBMode		  "Auto"
+	}
+	Simulink.DataIOCC {
+	  $ObjectID		  4
+	  Version		  "1.11.0"
+	  Decimation		  "1"
+	  ExternalInput		  "[t, u]"
+	  FinalStateName	  "xFinal"
+	  InitialState		  "xInitial"
+	  LimitDataPoints	  on
+	  MaxDataPoints		  "1000"
+	  LoadExternalInput	  off
+	  LoadInitialState	  off
+	  SaveFinalState	  off
+	  SaveCompleteFinalSimState off
+	  SaveFormat		  "Array"
+	  SignalLoggingSaveFormat "ModelDataLogs"
+	  SaveOutput		  off
+	  SaveState		  off
+	  SignalLogging		  off
+	  DSMLogging		  on
+	  InspectSignalLogs	  off
+	  SaveTime		  off
+	  ReturnWorkspaceOutputs  off
+	  StateSaveName		  "xout"
+	  TimeSaveName		  "tout"
+	  OutputSaveName	  "yout"
+	  SignalLoggingName	  "logsout"
+	  DSMLoggingName	  "dsmout"
+	  OutputOption		  "RefineOutputTimes"
+	  OutputTimes		  "[]"
+	  ReturnWorkspaceOutputsName "out"
+	  Refine		  "1"
+	}
+	Simulink.OptimizationCC {
+	  $ObjectID		  5
+	  Version		  "1.11.0"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    4
+	    Cell		    "ZeroExternalMemoryAtStartup"
+	    Cell		    "ZeroInternalMemoryAtStartup"
+	    Cell		    "NoFixptDivByZeroProtection"
+	    Cell		    "OptimizeModelRefInitCode"
+	    PropName		    "DisabledProps"
+	  }
+	  BlockReduction	  off
+	  BooleanDataType	  on
+	  ConditionallyExecuteInputs off
+	  InlineParams		  on
+	  UseIntDivNetSlope	  off
+	  UseSpecifiedMinMax	  off
+	  InlineInvariantSignals  off
+	  OptimizeBlockIOStorage  on
+	  BufferReuse		  on
+	  EnhancedBackFolding	  off
+	  StrengthReduction	  off
+	  ExpressionFolding	  on
+	  BooleansAsBitfields	  off
+	  BitfieldContainerType	  "uint_T"
+	  EnableMemcpy		  on
+	  MemcpyThreshold	  64
+	  PassReuseOutputArgsAs	  "Structure reference"
+	  ExpressionDepthLimit	  2147483647
+	  FoldNonRolledExpr	  on
+	  LocalBlockOutputs	  on
+	  RollThreshold		  5
+	  SystemCodeInlineAuto	  off
+	  StateBitsets		  off
+	  DataBitsets		  off
+	  UseTempVars		  off
+	  ZeroExternalMemoryAtStartup on
+	  ZeroInternalMemoryAtStartup on
+	  InitFltsAndDblsToZero	  on
+	  NoFixptDivByZeroProtection off
+	  EfficientFloat2IntCast  off
+	  EfficientMapNaN2IntZero off
+	  OptimizeModelRefInitCode off
+	  LifeSpan		  "inf"
+	  MaxStackSize		  "Inherit from target"
+	  BufferReusableBoundary  on
+	  SimCompilerOptimization "Off"
+	  AccelVerboseBuild	  off
+	  AccelParallelForEachSubsystem	on
+	}
+	Simulink.DebuggingCC {
+	  $ObjectID		  6
+	  Version		  "1.11.0"
+	  RTPrefix		  "error"
+	  ConsistencyChecking	  "none"
+	  ArrayBoundsChecking	  "none"
+	  SignalInfNanChecking	  "none"
+	  SignalRangeChecking	  "none"
+	  ReadBeforeWriteMsg	  "UseLocalSettings"
+	  WriteAfterWriteMsg	  "UseLocalSettings"
+	  WriteAfterReadMsg	  "UseLocalSettings"
+	  AlgebraicLoopMsg	  "error"
+	  ArtificialAlgebraicLoopMsg "warning"
+	  SaveWithDisabledLinksMsg "warning"
+	  SaveWithParameterizedLinksMsg	"warning"
+	  CheckSSInitialOutputMsg on
+	  UnderspecifiedInitializationDetection	"Classic"
+	  MergeDetectMultiDrivingBlocksExec "none"
+	  CheckExecutionContextPreStartOutputMsg off
+	  CheckExecutionContextRuntimeOutputMsg	off
+	  SignalResolutionControl "UseLocalSettings"
+	  BlockPriorityViolationMsg "warning"
+	  MinStepSizeMsg	  "warning"
+	  TimeAdjustmentMsg	  "none"
+	  MaxConsecutiveZCsMsg	  "error"
+	  MaskedZcDiagnostic	  "warning"
+	  IgnoredZcDiagnostic	  "warning"
+	  SolverPrmCheckMsg	  "warning"
+	  InheritedTsInSrcMsg	  "warning"
+	  DiscreteInheritContinuousMsg "warning"
+	  MultiTaskDSMMsg	  "error"
+	  MultiTaskCondExecSysMsg "error"
+	  MultiTaskRateTransMsg	  "error"
+	  SingleTaskRateTransMsg  "error"
+	  TasksWithSamePriorityMsg "warning"
+	  SigSpecEnsureSampleTimeMsg "warning"
+	  CheckMatrixSingularityMsg "none"
+	  IntegerOverflowMsg	  "warning"
+	  Int32ToFloatConvMsg	  "warning"
+	  ParameterDowncastMsg	  "error"
+	  ParameterOverflowMsg	  "error"
+	  ParameterUnderflowMsg	  "none"
+	  ParameterPrecisionLossMsg "warning"
+	  ParameterTunabilityLossMsg "warning"
+	  FixptConstUnderflowMsg  "none"
+	  FixptConstOverflowMsg	  "none"
+	  FixptConstPrecisionLossMsg "none"
+	  UnderSpecifiedDataTypeMsg "none"
+	  UnnecessaryDatatypeConvMsg "none"
+	  VectorMatrixConversionMsg "none"
+	  InvalidFcnCallConnMsg	  "error"
+	  FcnCallInpInsideContextMsg "Use local settings"
+	  SignalLabelMismatchMsg  "none"
+	  UnconnectedInputMsg	  "warning"
+	  UnconnectedOutputMsg	  "warning"
+	  UnconnectedLineMsg	  "warning"
+	  SFcnCompatibilityMsg	  "none"
+	  UniqueDataStoreMsg	  "none"
+	  BusObjectLabelMismatch  "warning"
+	  RootOutportRequireBusObject "warning"
+	  AssertControl		  "UseLocalSettings"
+	  EnableOverflowDetection off
+	  ModelReferenceIOMsg	  "none"
+	  ModelReferenceMultiInstanceNormalModeStructChecksumCheck "error"
+	  ModelReferenceVersionMismatchMessage "none"
+	  ModelReferenceIOMismatchMessage "none"
+	  ModelReferenceCSMismatchMessage "none"
+	  UnknownTsInhSupMsg	  "warning"
+	  ModelReferenceDataLoggingMessage "warning"
+	  ModelReferenceSymbolNameMessage "warning"
+	  ModelReferenceExtraNoncontSigs "error"
+	  StateNameClashWarn	  "warning"
+	  SimStateInterfaceChecksumMismatchMsg "warning"
+	  SimStateOlderReleaseMsg "error"
+	  InitInArrayFormatMsg	  "warning"
+	  StrictBusMsg		  "Warning"
+	  BusNameAdapt		  "WarnAndRepair"
+	  NonBusSignalsTreatedAsBus "none"
+	  LoggingUnavailableSignals "error"
+	  BlockIODiagnostic	  "none"
+	  SFUnusedDataAndEventsDiag "warning"
+	  SFUnexpectedBacktrackingDiag "warning"
+	  SFInvalidInputDataAccessInChartInitDiag "warning"
+	  SFNoUnconditionalDefaultTransitionDiag "warning"
+	  SFTransitionOutsideNaturalParentDiag "warning"
+	}
+	Simulink.HardwareCC {
+	  $ObjectID		  7
+	  Version		  "1.11.0"
+	  ProdBitPerChar	  8
+	  ProdBitPerShort	  16
+	  ProdBitPerInt		  32
+	  ProdBitPerLong	  32
+	  ProdBitPerFloat	  32
+	  ProdBitPerDouble	  64
+	  ProdBitPerPointer	  32
+	  ProdLargestAtomicInteger "Char"
+	  ProdLargestAtomicFloat  "None"
+	  ProdIntDivRoundTo	  "Undefined"
+	  ProdEndianess		  "Unspecified"
+	  ProdWordSize		  32
+	  ProdShiftRightIntArith  on
+	  ProdHWDeviceType	  "ASIC/FPGA->ASIC/FPGA"
+	  TargetBitPerChar	  8
+	  TargetBitPerShort	  16
+	  TargetBitPerInt	  32
+	  TargetBitPerLong	  32
+	  TargetBitPerFloat	  32
+	  TargetBitPerDouble	  64
+	  TargetBitPerPointer	  32
+	  TargetLargestAtomicInteger "Char"
+	  TargetLargestAtomicFloat "None"
+	  TargetShiftRightIntArith on
+	  TargetIntDivRoundTo	  "Undefined"
+	  TargetEndianess	  "Unspecified"
+	  TargetWordSize	  32
+	  TargetTypeEmulationWarnSuppressLevel 0
+	  TargetPreprocMaxBitsSint 32
+	  TargetPreprocMaxBitsUint 32
+	  TargetHWDeviceType	  "Specified"
+	  TargetUnknown		  off
+	  ProdEqTarget		  on
+	}
+	Simulink.ModelReferenceCC {
+	  $ObjectID		  8
+	  Version		  "1.11.0"
+	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
+	  CheckModelReferenceTargetMessage "error"
+	  EnableParallelModelReferenceBuilds off
+	  ParallelModelReferenceErrorOnInvalidPool on
+	  ParallelModelReferenceMATLABWorkerInit "None"
+	  ModelReferenceNumInstancesAllowed "Multi"
+	  PropagateVarSize	  "Infer from blocks in model"
+	  ModelReferencePassRootInputsByReference on
+	  ModelReferenceMinAlgLoopOccurrences off
+	  PropagateSignalLabelsOutOfModel off
+	  SupportModelReferenceSimTargetCustomCode off
+	}
+	Simulink.SFSimCC {
+	  $ObjectID		  9
+	  Version		  "1.11.0"
+	  SFSimEnableDebug	  on
+	  SFSimOverflowDetection  on
+	  SFSimEcho		  on
+	  SimBlas		  on
+	  SimCtrlC		  on
+	  SimExtrinsic		  on
+	  SimIntegrity		  on
+	  SimUseLocalCustomCode	  off
+	  SimParseCustomCode	  on
+	  SimBuildMode		  "sf_incremental_build"
+	}
+	Simulink.RTWCC {
+	  $BackupClass		  "Simulink.RTWCC"
+	  $ObjectID		  10
+	  Version		  "1.11.0"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    1
+	    Cell		    "IncludeHyperlinkInReport"
+	    PropName		    "DisabledProps"
+	  }
+	  SystemTargetFile	  "grt.tlc"
+	  GenCodeOnly		  off
+	  MakeCommand		  "make_rtw"
+	  GenerateMakefile	  on
+	  TemplateMakefile	  "grt_default_tmf"
+	  GenerateReport	  off
+	  SaveLog		  off
+	  RTWVerbose		  on
+	  RetainRTWFile		  off
+	  ProfileTLC		  off
+	  TLCDebug		  off
+	  TLCCoverage		  off
+	  TLCAssert		  off
+	  ProcessScriptMode	  "Default"
+	  ConfigurationMode	  "Optimized"
+	  ConfigAtBuild		  off
+	  RTWUseLocalCustomCode	  off
+	  RTWUseSimCustomCode	  off
+	  IncludeHyperlinkInReport off
+	  LaunchReport		  off
+	  TargetLang		  "C"
+	  IncludeBusHierarchyInRTWFileBlockHierarchyMap	off
+	  IncludeERTFirstTime	  off
+	  GenerateTraceInfo	  off
+	  GenerateTraceReport	  off
+	  GenerateTraceReportSl	  off
+	  GenerateTraceReportSf	  off
+	  GenerateTraceReportEml  off
+	  GenerateCodeInfo	  off
+	  GenerateSLWebview	  off
+	  GenerateCodeMetricsReport off
+	  RTWCompilerOptimization "Off"
+	  CheckMdlBeforeBuild	  "Off"
+	  CustomRebuildMode	  "OnUpdate"
+	  Array {
+	    Type		    "Handle"
+	    Dimension		    2
+	    Simulink.CodeAppCC {
+	      $ObjectID		      11
+	      Version		      "1.11.0"
+	      Array {
+		Type			"Cell"
+		Dimension		16
+		Cell			"IgnoreCustomStorageClasses"
+		Cell			"InsertBlockDesc"
+		Cell			"SFDataObjDesc"
+		Cell			"SimulinkDataObjDesc"
+		Cell			"DefineNamingRule"
+		Cell			"SignalNamingRule"
+		Cell			"ParamNamingRule"
+		Cell			"InlinedPrmAccess"
+		Cell			"CustomSymbolStr"
+		Cell			"CustomSymbolStrGlobalVar"
+		Cell			"CustomSymbolStrType"
+		Cell			"CustomSymbolStrField"
+		Cell			"CustomSymbolStrFcn"
+		Cell			"CustomSymbolStrBlkIO"
+		Cell			"CustomSymbolStrTmpVar"
+		Cell			"CustomSymbolStrMacro"
+		PropName		"DisabledProps"
+	      }
+	      ForceParamTrailComments off
+	      GenerateComments	      on
+	      IgnoreCustomStorageClasses on
+	      IgnoreTestpoints	      off
+	      IncHierarchyInIds	      off
+	      MaxIdLength	      31
+	      PreserveName	      off
+	      PreserveNameWithParent  off
+	      ShowEliminatedStatement off
+	      IncAutoGenComments      off
+	      SimulinkDataObjDesc     off
+	      SFDataObjDesc	      off
+	      MATLABFcnDesc	      off
+	      IncDataTypeInIds	      off
+	      MangleLength	      1
+	      CustomSymbolStrGlobalVar "$R$N$M"
+	      CustomSymbolStrType     "$N$R$M"
+	      CustomSymbolStrField    "$N$M"
+	      CustomSymbolStrFcn      "$R$N$M$F"
+	      CustomSymbolStrFcnArg   "rt$I$N$M"
+	      CustomSymbolStrBlkIO    "rtb_$N$M"
+	      CustomSymbolStrTmpVar   "$N$M"
+	      CustomSymbolStrMacro    "$R$N$M"
+	      DefineNamingRule	      "None"
+	      ParamNamingRule	      "None"
+	      SignalNamingRule	      "None"
+	      InsertBlockDesc	      off
+	      InsertPolySpaceComments off
+	      SimulinkBlockComments   on
+	      MATLABSourceComments    off
+	      EnableCustomComments    off
+	      InlinedPrmAccess	      "Literals"
+	      ReqsInCode	      off
+	      UseSimReservedNames     off
+	    }
+	    Simulink.GRTTargetCC {
+	      $BackupClass	      "Simulink.TargetCC"
+	      $ObjectID		      12
+	      Version		      "1.11.0"
+	      Array {
+		Type			"Cell"
+		Dimension		13
+		Cell			"IncludeMdlTerminateFcn"
+		Cell			"CombineOutputUpdateFcns"
+		Cell			"SuppressErrorStatus"
+		Cell			"ERTCustomFileBanners"
+		Cell			"GenerateSampleERTMain"
+		Cell			"GenerateTestInterfaces"
+		Cell			"MultiInstanceERTCode"
+		Cell			"PurelyIntegerCode"
+		Cell			"PortableWordSizes"
+		Cell			"SupportComplex"
+		Cell			"SupportAbsoluteTime"
+		Cell			"SupportContinuousTime"
+		Cell			"SupportNonInlinedSFcns"
+		PropName		"DisabledProps"
+	      }
+	      TargetFcnLib	      "ansi_tfl_tmw.mat"
+	      TargetLibSuffix	      ""
+	      TargetPreCompLibLocation ""
+	      TargetFunctionLibrary   "ANSI_C"
+	      UtilityFuncGeneration   "Auto"
+	      ERTMultiwordTypeDef     "System defined"
+	      FunctionExecutionProfile off
+	      CodeExecutionProfiling  off
+	      ERTCodeCoverageTool     "None"
+	      ERTMultiwordLength      256
+	      MultiwordLength	      2048
+	      GenerateFullHeader      on
+	      GenerateSampleERTMain   off
+	      GenerateTestInterfaces  off
+	      IsPILTarget	      off
+	      ModelReferenceCompliant on
+	      ParMdlRefBuildCompliant on
+	      CompOptLevelCompliant   on
+	      IncludeMdlTerminateFcn  on
+	      GeneratePreprocessorConditionals "Disable all"
+	      CombineOutputUpdateFcns off
+	      CombineSignalStateStructs	off
+	      SuppressErrorStatus     off
+	      ERTFirstTimeCompliant   off
+	      IncludeFileDelimiter    "Auto"
+	      ERTCustomFileBanners    off
+	      SupportAbsoluteTime     on
+	      LogVarNameModifier      "rt_"
+	      MatFileLogging	      on
+	      MultiInstanceERTCode    off
+	      SupportNonFinite	      on
+	      SupportComplex	      on
+	      PurelyIntegerCode	      off
+	      SupportContinuousTime   on
+	      SupportNonInlinedSFcns  on
+	      SupportVariableSizeSignals off
+	      EnableShiftOperators    on
+	      ParenthesesLevel	      "Nominal"
+	      PortableWordSizes	      off
+	      ModelStepFunctionPrototypeControlCompliant off
+	      CPPClassGenCompliant    off
+	      AutosarCompliant	      off
+	      UseMalloc		      off
+	      ExtMode		      off
+	      ExtModeStaticAlloc      off
+	      ExtModeTesting	      off
+	      ExtModeStaticAllocSize  1000000
+	      ExtModeTransport	      0
+	      ExtModeMexFile	      "ext_comm"
+	      ExtModeIntrfLevel	      "Level1"
+	      RTWCAPISignals	      off
+	      RTWCAPIParams	      off
+	      RTWCAPIStates	      off
+	      RTWCAPIRootIO	      off
+	      GenerateASAP2	      off
+	    }
+	    PropName		    "Components"
+	  }
+	}
+	Sldv.ConfigComp {
+	  $ObjectID		  13
+	  Version		  "1.11.0"
+	  Description		  "Design Verifier Custom Configuration Component"
+	  Name			  "Design Verifier"
+	  DVMode		  "TestGeneration"
+	  DVMaxProcessTime	  600
+	  DVDisplayUnsatisfiableObjectives on
+	  DVAutomaticStubbing	  off
+	  DVDesignMinMaxConstraints on
+	  DVOutputDir		  "sldv_output/$ModelName$"
+	  DVMakeOutputFilesUnique on
+	  DVBlockReplacement	  off
+	  DVBlockReplacementRulesList "<FactoryDefaultRules>"
+	  DVBlockReplacementModelFileName "$ModelName$_replacement"
+	  DVParameters		  on
+	  DVParametersConfigFileName "sldv_params_template.m"
+	  DVModelCoverageObjectives "MCDC"
+	  DVTestConditions	  "UseLocalSettings"
+	  DVTestObjectives	  "UseLocalSettings"
+	  DVMaxTestCaseSteps	  500
+	  DVTestSuiteOptimization "CombinedObjectives"
+	  DVAssertions		  "UseLocalSettings"
+	  DVProofAssumptions	  "UseLocalSettings"
+	  DVExtendExistingTests	  off
+	  DVIgnoreExistTestSatisfied on
+	  DVIgnoreCovSatisfied	  off
+	  DVCovFilter		  off
+	  DVDetectIntegerOverflow on
+	  DVDetectDivisionByZero  on
+	  DVProvingStrategy	  "Prove"
+	  DVMaxViolationSteps	  20
+	  DVSaveDataFile	  on
+	  DVDataFileName	  "$ModelName$_sldvdata"
+	  DVSaveExpectedOutput	  off
+	  DVRandomizeNoEffectData off
+	  DVSaveHarnessModel	  on
+	  DVHarnessModelFileName  "$ModelName$_harness"
+	  DVModelReferenceHarness on
+	  DVSaveSystemTestHarness off
+	  DVSystemTestFileName	  "$ModelName$_harness"
+	  DVSaveReport		  on
+	  DVReportFileName	  "$ModelName$_report"
+	  DVReportIncludeGraphics off
+	  DVDisplayReport	  on
+	  DVDisplayResultsOnModel off
+	  DVActiveTab		  "0"
+	}
+	hdlcoderui.hdlcc {
+	  $ObjectID		  14
+	  Version		  "1.11.0"
+	  Description		  "HDL Coder custom configuration component"
+	  Name			  "HDL Coder"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    1
+	    Cell		    ""
+	    PropName		    "HDLConfigFile"
+	  }
+	  HDLCActiveTab		  "0"
+	}
+	PropName		"Components"
+      }
+      Name		      "Configuration"
+      CurrentDlgPage	      "HDL Coder"
+      ConfigPrmDlgPosition     [ 586, 194, 1335, 936 ] 
+    }
+    PropName		    "ConfigurationSets"
+  }
+  Simulink.ConfigSet {
+    $PropName		    "ActiveConfigurationSet"
+    $ObjectID		    2
+  }
+  BlockDefaults {
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Arial"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+    BlockRotation	    0
+    BlockMirror		    off
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Arial"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    UseDisplayTextAsClickCallback off
+  }
+  LineDefaults {
+    FontName		    "Arial"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  BlockParameterDefaults {
+    Block {
+      BlockType		      Constant
+      Value		      "1"
+      VectorParams1D	      on
+      SamplingMode	      "Sample based"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit from 'Constant value'"
+      LockScale		      off
+      SampleTime	      "inf"
+      FramePeriod	      "inf"
+      PreserveConstantTs      off
+    }
+    Block {
+      BlockType		      DataTypeConversion
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via back propagation"
+      LockScale		      off
+      ConvertRealWorld	      "Real World Value (RWV)"
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Demux
+      Outputs		      "4"
+      DisplayOption	      "none"
+      BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      Inport
+      Port		      "1"
+      OutputFunctionCall      off
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchInputForFeedbackSignals off
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Outport
+      Port		      "1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      SourceOfInitialOutputValue "Dialog"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      S-Function
+      FunctionName	      "system"
+      SFunctionModules	      "''"
+      PortCounts	      "[]"
+      SFunctionDeploymentMode off
+    }
+    Block {
+      BlockType		      Scope
+      ModelBased	      off
+      TickLabels	      "OneTimeTick"
+      ZoomMode		      "on"
+      Grid		      "on"
+      TimeRange		      "auto"
+      YMin		      "-5"
+      YMax		      "5"
+      SaveToWorkspace	      off
+      SaveName		      "ScopeData"
+      LimitDataPoints	      on
+      MaxDataPoints	      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Stop
+    }
+    Block {
+      BlockType		      SubSystem
+      ShowPortLabels	      "FromPortIcon"
+      Permissions	      "ReadWrite"
+      PermitHierarchicalResolution "All"
+      TreatAsAtomicUnit	      off
+      CheckFcnCallInpInsideContextMsg off
+      SystemSampleTime	      "-1"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      SimViewingDevice	      off
+      DataTypeOverride	      "UseLocalSettings"
+      DataTypeOverrideAppliesTo	"AllNumericTypes"
+      MinMaxOverflowLogging   "UseLocalSettings"
+      Variant		      off
+      GeneratePreprocessorConditionals off
+    }
+    Block {
+      BlockType		      Terminator
+    }
+    Block {
+      BlockType		      UnitDelay
+      X0		      "0"
+      InputProcessing	      "Inherited"
+      SampleTime	      "1"
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
+    }
+  }
+  System {
+    Name		    "hdlcodercpu_eml"
+    Location		    [382, 82, 1124, 466]
+    Open		    on
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    200
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+    TiledPageScale	    1
+    ShowPageBoundaries	    off
+    ZoomFactor		    "100"
+    ReportName		    "simulink-default.rpt"
+    SIDHighWatermark	    "30"
+    Block {
+      BlockType		      SubSystem
+      Name		      "CPU_Subsystem_8_bit"
+      SID		      "1"
+      Ports		      [1, 2]
+      Position		      [205, 49, 500, 151]
+      BackgroundColor	      "[0.501961, 1.000000, 1.000000]"
+      DropShadow	      on
+      FontSize		      14
+      FontWeight	      "bold"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"CPU_Subsystem_8_bit"
+	Location		[-100, 144, 1303, 933]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"94"
+	Block {
+	  BlockType		  Inport
+	  Name			  "master_reset"
+	  SID			  "2"
+	  Position		  [45, 528, 75, 542]
+	  NamePlacement		  "alternate"
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Accumulator"
+	  SID			  "3"
+	  Ports			  [3, 1]
+	  Position		  [505, 476, 725, 584]
+	  BackgroundColor	  "[0.729412, 0.886275, 0.996078]"
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  ErrorFcn		  "Stateflow.Translate.translate"
+	  PermitHierarchicalResolution "ExplicitOnly"
+	  TreatAsAtomicUnit	  on
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  MaskType		  "Stateflow"
+	  MaskDescription	  "Embedded MATLAB block"
+	  MaskSelfModifiable	  on
+	  MaskDisplay		  "bgColor = Simulink.Root.ColorString2Rgb(get_param(gcbh, 'BackgroundColor')); image(imread('private/"
+	  "eml_membrane_16.png','png','BackgroundColor',bgColor(1:3)),'center'); disp([10 10 'Accumulator']);"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  off
+	  MaskIconRotate	  "none"
+	  MaskPortRotate	  "default"
+	  MaskIconUnits		  "normalized"
+	  System {
+	    Name		    "Accumulator"
+	    Location		    [257, 457, 812, 717]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    SIDHighWatermark	    "15"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "func"
+	      SID		      "3::1"
+	      Position		      [20, 101, 40, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "AC_in1"
+	      SID		      "3::2"
+	      Position		      [20, 136, 40, 154]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "AC_in2"
+	      SID		      "3::3"
+	      Position		      [20, 171, 40, 189]
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      " Demux "
+	      SID		      "3::13"
+	      Ports		      [1, 1]
+	      Position		      [270, 180, 320, 220]
+	      Outputs		      "1"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      " SFunction "
+	      SID		      "3::12"
+	      Tag		      "Stateflow S-Function hdlcodercpu_eml 3"
+	      Ports		      [3, 2]
+	      Position		      [180, 100, 230, 180]
+	      FunctionName	      "sf_sfun"
+	      PortCounts	      "[3 2]"
+	      EnableBusSupport	      on
+	      Port {
+		PortNumber		2
+		Name			"AC_out"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      " Terminator "
+	      SID		      "3::15"
+	      Position		      [460, 191, 480, 209]
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "AC_out"
+	      SID		      "3::7"
+	      Position		      [460, 101, 480, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      " SFunction "
+	      SrcPort		      1
+	      DstBlock		      " Demux "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "func"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "AC_in1"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "AC_in2"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      3
+	    }
+	    Line {
+	      Name		      "AC_out"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      2
+	      DstBlock		      "AC_out"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " Demux "
+	      SrcPort		      1
+	      DstBlock		      " Terminator "
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Arithmetic Logical Unit (8-bit)"
+	  SID			  "4"
+	  Ports			  [4, 2]
+	  Position		  [820, 298, 1045, 477]
+	  BackgroundColor	  "[0.729412, 0.886275, 0.996078]"
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  ErrorFcn		  "Stateflow.Translate.translate"
+	  PermitHierarchicalResolution "ExplicitOnly"
+	  TreatAsAtomicUnit	  on
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  MaskType		  "Stateflow"
+	  MaskDescription	  "Embedded MATLAB block"
+	  MaskSelfModifiable	  on
+	  MaskDisplay		  "bgColor = Simulink.Root.ColorString2Rgb(get_param(gcbh, 'BackgroundColor')); image(imread('private/"
+	  "eml_membrane_16.png','png','BackgroundColor',bgColor(1:3)),'center'); disp([10 10 'ALU']);"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  off
+	  MaskIconRotate	  "none"
+	  MaskPortRotate	  "default"
+	  MaskIconUnits		  "normalized"
+	  System {
+	    Name		    "Arithmetic Logical Unit (8-bit)"
+	    Location		    [257, 457, 812, 717]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    SIDHighWatermark	    "17"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "in_flags"
+	      SID		      "4::1"
+	      Position		      [20, 101, 40, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "func"
+	      SID		      "4::2"
+	      Position		      [20, 136, 40, 154]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "alu_in"
+	      SID		      "4::3"
+	      Position		      [20, 171, 40, 189]
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "AC"
+	      SID		      "4::4"
+	      Position		      [20, 206, 40, 224]
+	      Port		      "4"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      " Demux "
+	      SID		      "4::15"
+	      Ports		      [1, 1]
+	      Position		      [270, 205, 320, 245]
+	      Outputs		      "1"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      " SFunction "
+	      SID		      "4::14"
+	      Tag		      "Stateflow S-Function hdlcodercpu_eml 4"
+	      Ports		      [4, 3]
+	      Position		      [180, 102, 230, 203]
+	      FunctionName	      "sf_sfun"
+	      PortCounts	      "[4 3]"
+	      EnableBusSupport	      on
+	      Port {
+		PortNumber		2
+		Name			"alu_out"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		3
+		Name			"out_flags"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      " Terminator "
+	      SID		      "4::17"
+	      Position		      [460, 216, 480, 234]
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "alu_out"
+	      SID		      "4::8"
+	      Position		      [460, 101, 480, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "out_flags"
+	      SID		      "4::9"
+	      Position		      [460, 136, 480, 154]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      " SFunction "
+	      SrcPort		      1
+	      DstBlock		      " Demux "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "in_flags"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "func"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "alu_in"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "AC"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      4
+	    }
+	    Line {
+	      Name		      "alu_out"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      2
+	      DstBlock		      "alu_out"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "out_flags"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      3
+	      DstBlock		      "out_flags"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " Demux "
+	      SrcPort		      1
+	      DstBlock		      " Terminator "
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Control Unit"
+	  SID			  "5"
+	  Ports			  [4, 13]
+	  Position		  [160, 116, 350, 784]
+	  BackgroundColor	  "[1.000000, 0.803922, 0.607843]"
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  ErrorFcn		  "Stateflow.Translate.translate"
+	  PermitHierarchicalResolution "ExplicitOnly"
+	  TreatAsAtomicUnit	  on
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  MaskType		  "Stateflow"
+	  MaskDescription	  "Embedded MATLAB block"
+	  MaskSelfModifiable	  on
+	  MaskDisplay		  "bgColor = Simulink.Root.ColorString2Rgb(get_param(gcbh, 'BackgroundColor')); image(imread('private/"
+	  "eml_membrane_16.png','png','BackgroundColor',bgColor(1:3)),'center'); disp([10 10 'Controller']);"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  off
+	  MaskIconRotate	  "none"
+	  MaskPortRotate	  "default"
+	  MaskIconUnits		  "normalized"
+	  Port {
+	    PortNumber		    11
+	    Name		    "jmp offset"
+	    PropagatedSignals	    "addr_inc"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "Control Unit"
+	    Location		    [257, 457, 812, 717]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    SIDHighWatermark	    "28"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "data_in"
+	      SID		      "5::1"
+	      Position		      [20, 101, 40, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "in_flags"
+	      SID		      "5::2"
+	      Position		      [20, 136, 40, 154]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "master_rst"
+	      SID		      "5::3"
+	      Position		      [20, 171, 40, 189]
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "IR_in"
+	      SID		      "5::4"
+	      Position		      [20, 206, 40, 224]
+	      Port		      "4"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      " Demux "
+	      SID		      "5::26"
+	      Ports		      [1, 1]
+	      Position		      [270, 530, 320, 570]
+	      Outputs		      "1"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      " SFunction "
+	      SID		      "5::25"
+	      Tag		      "Stateflow S-Function hdlcodercpu_eml 2"
+	      Ports		      [4, 14]
+	      Position		      [180, 120, 230, 420]
+	      FunctionName	      "sf_sfun"
+	      PortCounts	      "[4 14]"
+	      EnableBusSupport	      on
+	      Port {
+		PortNumber		2
+		Name			"shifter_sel"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		3
+		Name			"out_flags"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		4
+		Name			"ALU_func"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		5
+		Name			"print_data"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		6
+		Name			"DM_addr"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		7
+		Name			"DM_r_w"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		8
+		Name			"AC_func"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		9
+		Name			"AC_data"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		10
+		Name			"IR_func"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		11
+		Name			"PC_func"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		12
+		Name			"addr_inc"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		13
+		Name			"IM_read"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		14
+		Name			"hlt"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      " Terminator "
+	      SID		      "5::28"
+	      Position		      [460, 541, 480, 559]
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "shifter_sel"
+	      SID		      "5::8"
+	      Position		      [460, 101, 480, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "out_flags"
+	      SID		      "5::9"
+	      Position		      [460, 136, 480, 154]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "ALU_func"
+	      SID		      "5::10"
+	      Position		      [460, 171, 480, 189]
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "print_data"
+	      SID		      "5::11"
+	      Position		      [460, 206, 480, 224]
+	      Port		      "4"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "DM_addr"
+	      SID		      "5::12"
+	      Position		      [460, 246, 480, 264]
+	      Port		      "5"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "DM_r_w"
+	      SID		      "5::13"
+	      Position		      [460, 281, 480, 299]
+	      Port		      "6"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "AC_func"
+	      SID		      "5::14"
+	      Position		      [460, 316, 480, 334]
+	      Port		      "7"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "AC_data"
+	      SID		      "5::15"
+	      Position		      [460, 351, 480, 369]
+	      Port		      "8"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "IR_func"
+	      SID		      "5::16"
+	      Position		      [460, 386, 480, 404]
+	      Port		      "9"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "PC_func"
+	      SID		      "5::17"
+	      Position		      [460, 426, 480, 444]
+	      Port		      "10"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "addr_inc"
+	      SID		      "5::18"
+	      Position		      [460, 461, 480, 479]
+	      Port		      "11"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "IM_read"
+	      SID		      "5::19"
+	      Position		      [460, 496, 480, 514]
+	      Port		      "12"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "hlt"
+	      SID		      "5::20"
+	      Position		      [460, 531, 480, 549]
+	      Port		      "13"
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      " SFunction "
+	      SrcPort		      1
+	      DstBlock		      " Demux "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "data_in"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "in_flags"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "master_rst"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "IR_in"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      4
+	    }
+	    Line {
+	      Name		      "shifter_sel"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      2
+	      DstBlock		      "shifter_sel"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "out_flags"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      3
+	      DstBlock		      "out_flags"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "ALU_func"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      4
+	      DstBlock		      "ALU_func"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "print_data"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      5
+	      DstBlock		      "print_data"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "DM_addr"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      6
+	      DstBlock		      "DM_addr"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "DM_r_w"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      7
+	      DstBlock		      "DM_r_w"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "AC_func"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      8
+	      DstBlock		      "AC_func"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "AC_data"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      9
+	      DstBlock		      "AC_data"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "IR_func"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      10
+	      DstBlock		      "IR_func"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "PC_func"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      11
+	      DstBlock		      "PC_func"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "addr_inc"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      12
+	      DstBlock		      "addr_inc"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "IM_read"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      13
+	      DstBlock		      "IM_read"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "hlt"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      14
+	      DstBlock		      "hlt"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " Demux "
+	      SrcPort		      1
+	      DstBlock		      " Terminator "
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Data Memory"
+	  SID			  "6"
+	  Ports			  [3, 1]
+	  Position		  [510, 271, 670, 429]
+	  BackgroundColor	  "[0.701961, 1.000000, 0.701961]"
+	  LibraryVersion	  "1.194"
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  SourceBlock		  "hdldemolib/Single Port RAM"
+	  SourceType		  "Single-port RAM"
+	  ShowPortLabels	  "FromPortIcon"
+	  SystemSampleTime	  "-1"
+	  FunctionWithSeparateData off
+	  RTWMemSecFuncInitTerm	  "Inherit from model"
+	  RTWMemSecFuncExecute	  "Inherit from model"
+	  RTWMemSecDataConstants  "Inherit from model"
+	  RTWMemSecDataInternal	  "Inherit from model"
+	  RTWMemSecDataParameters "Inherit from model"
+	  GeneratePreprocessorConditionals off
+	  ram_size		  "8"
+	  dout_type		  "New data"
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion"
+	  SID			  "7"
+	  Position		  [390, 383, 465, 417]
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Instruction ROM"
+	  SID			  "8"
+	  Ports			  [2, 1]
+	  Position		  [890, 752, 1125, 923]
+	  BackgroundColor	  "[0.729412, 0.886275, 0.996078]"
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  ErrorFcn		  "Stateflow.Translate.translate"
+	  PermitHierarchicalResolution "ExplicitOnly"
+	  TreatAsAtomicUnit	  on
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  MaskType		  "Stateflow"
+	  MaskDescription	  "Embedded MATLAB block"
+	  MaskSelfModifiable	  on
+	  MaskDisplay		  "bgColor = Simulink.Root.ColorString2Rgb(get_param(gcbh, 'BackgroundColor')); image(imread('private/"
+	  "eml_membrane_16.png','png','BackgroundColor',bgColor(1:3)),'center'); disp([10 10 'Instr_Memory']);"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  off
+	  MaskIconRotate	  "none"
+	  MaskPortRotate	  "default"
+	  MaskIconUnits		  "normalized"
+	  System {
+	    Name		    "Instruction ROM"
+	    Location		    [257, 457, 812, 717]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    SIDHighWatermark	    "14"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "addr"
+	      SID		      "8::1"
+	      Position		      [20, 101, 40, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "read"
+	      SID		      "8::2"
+	      Position		      [20, 136, 40, 154]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      " Demux "
+	      SID		      "8::12"
+	      Ports		      [1, 1]
+	      Position		      [270, 160, 320, 200]
+	      Outputs		      "1"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      " SFunction "
+	      SID		      "8::11"
+	      Tag		      "Stateflow S-Function hdlcodercpu_eml 5"
+	      Ports		      [2, 2]
+	      Position		      [180, 100, 230, 160]
+	      FunctionName	      "sf_sfun"
+	      PortCounts	      "[2 2]"
+	      EnableBusSupport	      on
+	      Port {
+		PortNumber		2
+		Name			"instr_out"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      " Terminator "
+	      SID		      "8::14"
+	      Position		      [460, 171, 480, 189]
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "instr_out"
+	      SID		      "8::6"
+	      Position		      [460, 101, 480, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      " SFunction "
+	      SrcPort		      1
+	      DstBlock		      " Demux "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "addr"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "read"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "instr_out"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      2
+	      DstBlock		      "instr_out"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " Demux "
+	      SrcPort		      1
+	      DstBlock		      " Terminator "
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Instruction Register"
+	  SID			  "9"
+	  Ports			  [2, 1]
+	  Position		  [1160, 737, 1355, 873]
+	  BackgroundColor	  "[0.729412, 0.886275, 0.996078]"
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  ErrorFcn		  "Stateflow.Translate.translate"
+	  PermitHierarchicalResolution "ExplicitOnly"
+	  TreatAsAtomicUnit	  on
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  MaskType		  "Stateflow"
+	  MaskDescription	  "Embedded MATLAB block"
+	  MaskSelfModifiable	  on
+	  MaskDisplay		  "bgColor = Simulink.Root.ColorString2Rgb(get_param(gcbh, 'BackgroundColor')); image(imread('private/"
+	  "eml_membrane_16.png','png','BackgroundColor',bgColor(1:3)),'center'); disp([10 10 'Instruction_Reg']);"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  off
+	  MaskIconRotate	  "none"
+	  MaskPortRotate	  "default"
+	  MaskIconUnits		  "normalized"
+	  System {
+	    Name		    "Instruction Register"
+	    Location		    [257, 457, 812, 717]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    SIDHighWatermark	    "14"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "func"
+	      SID		      "9::1"
+	      Position		      [20, 101, 40, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "IR_in"
+	      SID		      "9::2"
+	      Position		      [20, 136, 40, 154]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      " Demux "
+	      SID		      "9::12"
+	      Ports		      [1, 1]
+	      Position		      [270, 160, 320, 200]
+	      Outputs		      "1"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      " SFunction "
+	      SID		      "9::11"
+	      Tag		      "Stateflow S-Function hdlcodercpu_eml 6"
+	      Ports		      [2, 2]
+	      Position		      [180, 100, 230, 160]
+	      FunctionName	      "sf_sfun"
+	      PortCounts	      "[2 2]"
+	      EnableBusSupport	      on
+	      Port {
+		PortNumber		2
+		Name			"IR_out"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      " Terminator "
+	      SID		      "9::14"
+	      Position		      [460, 171, 480, 189]
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "IR_out"
+	      SID		      "9::6"
+	      Position		      [460, 101, 480, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      " SFunction "
+	      SrcPort		      1
+	      DstBlock		      " Demux "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "func"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "IR_in"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "IR_out"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      2
+	      DstBlock		      "IR_out"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " Demux "
+	      SrcPort		      1
+	      DstBlock		      " Terminator "
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "PC Incrementer"
+	  SID			  "10"
+	  Ports			  [2, 1]
+	  Position		  [445, 741, 620, 819]
+	  BackgroundColor	  "[0.729412, 0.886275, 0.996078]"
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  ErrorFcn		  "Stateflow.Translate.translate"
+	  PermitHierarchicalResolution "ExplicitOnly"
+	  TreatAsAtomicUnit	  on
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  MaskType		  "Stateflow"
+	  MaskDescription	  "Embedded MATLAB block"
+	  MaskSelfModifiable	  on
+	  MaskDisplay		  "bgColor = Simulink.Root.ColorString2Rgb(get_param(gcbh, 'BackgroundColor')); image(imread('private/"
+	  "eml_membrane_16.png','png','BackgroundColor',bgColor(1:3)),'center'); disp([10 10 'PC_Inc']);"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  off
+	  MaskIconRotate	  "none"
+	  MaskPortRotate	  "default"
+	  MaskIconUnits		  "normalized"
+	  System {
+	    Name		    "PC Incrementer"
+	    Location		    [257, 457, 812, 717]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    SIDHighWatermark	    "14"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "jmp_offset"
+	      SID		      "10::1"
+	      Position		      [20, 101, 40, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "PC_current"
+	      SID		      "10::2"
+	      Position		      [20, 136, 40, 154]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      " Demux "
+	      SID		      "10::12"
+	      Ports		      [1, 1]
+	      Position		      [270, 160, 320, 200]
+	      Outputs		      "1"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      " SFunction "
+	      SID		      "10::11"
+	      Tag		      "Stateflow S-Function hdlcodercpu_eml 9"
+	      Ports		      [2, 2]
+	      Position		      [180, 100, 230, 160]
+	      FunctionName	      "sf_sfun"
+	      PortCounts	      "[2 2]"
+	      EnableBusSupport	      on
+	      Port {
+		PortNumber		2
+		Name			"PC_next"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      " Terminator "
+	      SID		      "10::14"
+	      Position		      [460, 171, 480, 189]
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "PC_next"
+	      SID		      "10::6"
+	      Position		      [460, 101, 480, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      " SFunction "
+	      SrcPort		      1
+	      DstBlock		      " Demux "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "jmp_offset"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "PC_current"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "PC_next"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      2
+	      DstBlock		      "PC_next"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " Demux "
+	      SrcPort		      1
+	      DstBlock		      " Terminator "
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Program Counter"
+	  SID			  "11"
+	  Ports			  [2, 1]
+	  Position		  [675, 719, 840, 801]
+	  BackgroundColor	  "[0.729412, 0.886275, 0.996078]"
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  ErrorFcn		  "Stateflow.Translate.translate"
+	  PermitHierarchicalResolution "ExplicitOnly"
+	  TreatAsAtomicUnit	  on
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  MaskType		  "Stateflow"
+	  MaskDescription	  "Embedded MATLAB block"
+	  MaskSelfModifiable	  on
+	  MaskDisplay		  "bgColor = Simulink.Root.ColorString2Rgb(get_param(gcbh, 'BackgroundColor')); image(imread('private/"
+	  "eml_membrane_16.png','png','BackgroundColor',bgColor(1:3)),'center'); disp([10 10 'PC']);"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  off
+	  MaskIconRotate	  "none"
+	  MaskPortRotate	  "default"
+	  MaskIconUnits		  "normalized"
+	  System {
+	    Name		    "Program Counter"
+	    Location		    [257, 457, 812, 717]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    SIDHighWatermark	    "14"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "func"
+	      SID		      "11::1"
+	      Position		      [20, 101, 40, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "addr_in"
+	      SID		      "11::2"
+	      Position		      [20, 136, 40, 154]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      " Demux "
+	      SID		      "11::12"
+	      Ports		      [1, 1]
+	      Position		      [270, 160, 320, 200]
+	      Outputs		      "1"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      " SFunction "
+	      SID		      "11::11"
+	      Tag		      "Stateflow S-Function hdlcodercpu_eml 7"
+	      Ports		      [2, 2]
+	      Position		      [180, 100, 230, 160]
+	      FunctionName	      "sf_sfun"
+	      PortCounts	      "[2 2]"
+	      EnableBusSupport	      on
+	      Port {
+		PortNumber		2
+		Name			"addr_out"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      " Terminator "
+	      SID		      "11::14"
+	      Position		      [460, 171, 480, 189]
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "addr_out"
+	      SID		      "11::6"
+	      Position		      [460, 101, 480, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      " SFunction "
+	      SrcPort		      1
+	      DstBlock		      " Demux "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "func"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "addr_in"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "addr_out"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      2
+	      DstBlock		      "addr_out"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " Demux "
+	      SrcPort		      1
+	      DstBlock		      " Terminator "
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope"
+	  SID			  "12"
+	  Ports			  [1]
+	  Position		  [880, 514, 910, 546]
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  Floating		  off
+	  Location		  [249, 253, 1289, 778]
+	  Open			  off
+	  NumInputPorts		  "1"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	  }
+	  SaveName		  "ScopeData1"
+	  DataFormat		  "StructureWithTime"
+	  SampleTime		  "0"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Shifter (8-bit)"
+	  SID			  "13"
+	  Ports			  [3, 2]
+	  Position		  [1135, 313, 1335, 457]
+	  BackgroundColor	  "[0.729412, 0.886275, 0.996078]"
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  ErrorFcn		  "Stateflow.Translate.translate"
+	  PermitHierarchicalResolution "ExplicitOnly"
+	  TreatAsAtomicUnit	  on
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  MaskType		  "Stateflow"
+	  MaskDescription	  "Embedded MATLAB block"
+	  MaskSelfModifiable	  on
+	  MaskDisplay		  "bgColor = Simulink.Root.ColorString2Rgb(get_param(gcbh, 'BackgroundColor')); image(imread('private/"
+	  "eml_membrane_16.png','png','BackgroundColor',bgColor(1:3)),'center'); disp([10 10 'Shifter']);"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  off
+	  MaskIconRotate	  "none"
+	  MaskPortRotate	  "default"
+	  MaskIconUnits		  "normalized"
+	  System {
+	    Name		    "Shifter (8-bit)"
+	    Location		    [257, 457, 812, 717]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    SIDHighWatermark	    "16"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "select"
+	      SID		      "13::1"
+	      Position		      [20, 101, 40, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "input"
+	      SID		      "13::2"
+	      Position		      [20, 136, 40, 154]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "in_flags"
+	      SID		      "13::3"
+	      Position		      [20, 171, 40, 189]
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      " Demux "
+	      SID		      "13::14"
+	      Ports		      [1, 1]
+	      Position		      [270, 180, 320, 220]
+	      Outputs		      "1"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      " SFunction "
+	      SID		      "13::13"
+	      Tag		      "Stateflow S-Function hdlcodercpu_eml 8"
+	      Ports		      [3, 3]
+	      Position		      [180, 100, 230, 180]
+	      FunctionName	      "sf_sfun"
+	      PortCounts	      "[3 3]"
+	      EnableBusSupport	      on
+	      Port {
+		PortNumber		2
+		Name			"out_flags"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		3
+		Name			"shift_out"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      " Terminator "
+	      SID		      "13::16"
+	      Position		      [460, 191, 480, 209]
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "out_flags"
+	      SID		      "13::7"
+	      Position		      [460, 101, 480, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "shift_out"
+	      SID		      "13::8"
+	      Position		      [460, 136, 480, 154]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      " SFunction "
+	      SrcPort		      1
+	      DstBlock		      " Demux "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "select"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "input"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "in_flags"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      3
+	    }
+	    Line {
+	      Name		      "out_flags"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      2
+	      DstBlock		      "out_flags"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "shift_out"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      3
+	      DstBlock		      "shift_out"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " Demux "
+	      SrcPort		      1
+	      DstBlock		      " Terminator "
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay 1"
+	  SID			  "14"
+	  Position		  [465, 932, 485, 968]
+	  BlockMirror		  on
+	  FontSize		  14
+	  FontWeight		  "bold"
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay 3"
+	  SID			  "15"
+	  Position		  [1075, 62, 1095, 98]
+	  BlockMirror		  on
+	  FontSize		  14
+	  FontWeight		  "bold"
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay 4"
+	  SID			  "16"
+	  Position		  [640, 827, 660, 863]
+	  FontSize		  14
+	  FontWeight		  "bold"
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay 5"
+	  SID			  "17"
+	  Position		  [630, 87, 650, 123]
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  Port {
+	    PortNumber		    1
+	    Name		    "feedback for indirect addressing"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay 6"
+	  SID			  "18"
+	  Position		  [1175, 179, 1205, 221]
+	  FontSize		  14
+	  FontWeight		  "bold"
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay 7"
+	  SID			  "19"
+	  Position		  [115, 518, 135, 552]
+	  FontSize		  14
+	  FontWeight		  "bold"
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay2"
+	  SID			  "20"
+	  Position		  [1080, 602, 1100, 638]
+	  FontSize		  14
+	  FontWeight		  "bold"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "output_enable"
+	  SID			  "21"
+	  Ports			  [2, 1]
+	  Position		  [825, 161, 980, 239]
+	  BackgroundColor	  "[0.729412, 0.886275, 0.996078]"
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  ErrorFcn		  "Stateflow.Translate.translate"
+	  PermitHierarchicalResolution "ExplicitOnly"
+	  TreatAsAtomicUnit	  on
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  MaskType		  "Stateflow"
+	  MaskDescription	  "Embedded MATLAB block"
+	  MaskSelfModifiable	  on
+	  MaskDisplay		  "bgColor = Simulink.Root.ColorString2Rgb(get_param(gcbh, 'BackgroundColor')); image(imread('private/"
+	  "eml_membrane_16.png','png','BackgroundColor',bgColor(1:3)),'center'); disp([10 10 'output_enable']);"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  off
+	  MaskIconRotate	  "none"
+	  MaskPortRotate	  "default"
+	  MaskIconUnits		  "normalized"
+	  System {
+	    Name		    "output_enable"
+	    Location		    [257, 457, 812, 717]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    SIDHighWatermark	    "14"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "u"
+	      SID		      "21::1"
+	      Position		      [20, 101, 40, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "enable"
+	      SID		      "21::2"
+	      Position		      [20, 136, 40, 154]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      " Demux "
+	      SID		      "21::12"
+	      Ports		      [1, 1]
+	      Position		      [270, 160, 320, 200]
+	      Outputs		      "1"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      " SFunction "
+	      SID		      "21::11"
+	      Tag		      "Stateflow S-Function hdlcodercpu_eml 1"
+	      Ports		      [2, 2]
+	      Position		      [180, 100, 230, 160]
+	      FunctionName	      "sf_sfun"
+	      PortCounts	      "[2 2]"
+	      EnableBusSupport	      on
+	      Port {
+		PortNumber		2
+		Name			"y"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      " Terminator "
+	      SID		      "21::14"
+	      Position		      [460, 171, 480, 189]
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "y"
+	      SID		      "21::6"
+	      Position		      [460, 101, 480, 119]
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      " SFunction "
+	      SrcPort		      1
+	      DstBlock		      " Demux "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "u"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "enable"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "y"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      2
+	      DstBlock		      "y"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " Demux "
+	      SrcPort		      1
+	      DstBlock		      " Terminator "
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "ext_out"
+	  SID			  "22"
+	  Position		  [1255, 193, 1285, 207]
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "hlt"
+	  SID			  "23"
+	  Position		  [310, 828, 340, 842]
+	  BlockMirror		  on
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Arithmetic Logical Unit (8-bit)"
+	  SrcPort		  1
+	  Points		  [20, 0; 0, 40]
+	  DstBlock		  "Shifter (8-bit)"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Arithmetic Logical Unit (8-bit)"
+	  SrcPort		  2
+	  DstBlock		  "Shifter (8-bit)"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Accumulator"
+	  SrcPort		  1
+	  Points		  [60, 0]
+	  Branch {
+	    Points		    [0, -75]
+	    Branch {
+	      DstBlock		      "Arithmetic Logical Unit (8-bit)"
+	      DstPort		      4
+	    }
+	    Branch {
+	      Points		      [-300, 0; 0, -155]
+	      DstBlock		      "Data Memory"
+	      DstPort		      1
+	    }
+	  }
+	  Branch {
+	    DstBlock		    "Scope"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Data Memory"
+	  SrcPort		  1
+	  Points		  [55, 0]
+	  Branch {
+	    Points		    [0, 60]
+	    DstBlock		    "Arithmetic Logical Unit (8-bit)"
+	    DstPort		    3
+	  }
+	  Branch {
+	    Points		    [0, -170]
+	    Branch {
+	      DstBlock		      "output_enable"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, -75]
+	      DstBlock		      "Unit Delay 5"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Line {
+	  SrcBlock		  "Program Counter"
+	  SrcPort		  1
+	  Points		  [15, 0; 0, 35]
+	  Branch {
+	    DstBlock		    "Instruction ROM"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 50]
+	    DstBlock		    "Unit Delay 4"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "PC Incrementer"
+	  SrcPort		  1
+	  DstBlock		  "Program Counter"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Instruction ROM"
+	  SrcPort		  1
+	  DstBlock		  "Instruction Register"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Control Unit"
+	  SrcPort		  3
+	  Points		  [415, 0; 0, 115]
+	  DstBlock		  "Arithmetic Logical Unit (8-bit)"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Control Unit"
+	  SrcPort		  1
+	  Points		  [740, 0; 0, 185]
+	  DstBlock		  "Shifter (8-bit)"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Control Unit"
+	  SrcPort		  2
+	  Points		  [445, 0; 0, 120]
+	  DstBlock		  "Arithmetic Logical Unit (8-bit)"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Control Unit"
+	  SrcPort		  6
+	  DstBlock		  "Data Type Conversion"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Control Unit"
+	  SrcPort		  7
+	  Points		  [65, 0; 0, 45]
+	  DstBlock		  "Accumulator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Control Unit"
+	  SrcPort		  9
+	  Points		  [105, 0; 0, 130; 680, 0; 0, 90]
+	  DstBlock		  "Instruction Register"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Control Unit"
+	  SrcPort		  10
+	  Points		  [80, 0; 0, 100; 200, 0; 0, 40]
+	  DstBlock		  "Program Counter"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "jmp offset"
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  Labels		  [2, 0]
+	  SrcBlock		  "Control Unit"
+	  SrcPort		  11
+	  Points		  [60, 0; 0, 110]
+	  DstBlock		  "PC Incrementer"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Control Unit"
+	  SrcPort		  12
+	  Points		  [40, 0; 0, 180]
+	  DstBlock		  "Instruction ROM"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Instruction Register"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, 145]
+	  DstBlock		  "Unit Delay 1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Shifter (8-bit)"
+	  SrcPort		  2
+	  Points		  [45, 0; 0, 200]
+	  DstBlock		  "Unit Delay2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Unit Delay2"
+	  SrcPort		  1
+	  Points		  [-620, 0; 0, -55]
+	  DstBlock		  "Accumulator"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Unit Delay 4"
+	  SrcPort		  1
+	  Points		  [-235, 0]
+	  DstBlock		  "PC Incrementer"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Control Unit"
+	  SrcPort		  8
+	  Points		  [15, 0; 0, 30]
+	  DstBlock		  "Accumulator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "master_reset"
+	  SrcPort		  1
+	  DstBlock		  "Unit Delay 7"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Control Unit"
+	  SrcPort		  4
+	  Points		  [80, 0; 0, -80]
+	  DstBlock		  "output_enable"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Control Unit"
+	  SrcPort		  13
+	  Points		  [15, 0; 0, 85]
+	  DstBlock		  "hlt"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "feedback for indirect addressing"
+	  FontSize		  14
+	  FontWeight		  "bold"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Unit Delay 5"
+	  SrcPort		  1
+	  Points		  [-530, 0; 0, 100]
+	  DstBlock		  "Control Unit"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "output_enable"
+	  SrcPort		  1
+	  DstBlock		  "Unit Delay 6"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion"
+	  SrcPort		  1
+	  DstBlock		  "Data Memory"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Control Unit"
+	  SrcPort		  5
+	  DstBlock		  "Data Memory"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Unit Delay 6"
+	  SrcPort		  1
+	  DstBlock		  "ext_out"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Unit Delay 7"
+	  SrcPort		  1
+	  DstBlock		  "Control Unit"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Unit Delay 3"
+	  SrcPort		  1
+	  Points		  [-985, 0; 0, 290]
+	  DstBlock		  "Control Unit"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Unit Delay 1"
+	  SrcPort		  1
+	  Points		  [-375, 0; 0, -250]
+	  DstBlock		  "Control Unit"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "Shifter (8-bit)"
+	  SrcPort		  1
+	  Points		  [45, 0; 0, -265; -275, 0]
+	  DstBlock		  "Unit Delay 3"
+	  DstPort		  1
+	}
+	Annotation {
+	  Name			  "loading into AC"
+	  Position		  [472, 540]
+	  FontSize		  14
+	  FontWeight		  "bold"
+	}
+	Annotation {
+	  Name			  "writing computation back into AC"
+	  Position		  [845, 611]
+	  FontSize		  14
+	  FontWeight		  "bold"
+	}
+	Annotation {
+	  Name			  "Instruction to be executed"
+	  Position		  [663, 934]
+	  FontSize		  14
+	  FontWeight		  "bold"
+	}
+      }
+    }
+    Block {
+      BlockType		      DataTypeConversion
+      Name		      "Data Type Conversion"
+      SID		      "24"
+      Position		      [540, 108, 615, 142]
+      OutDataTypeStr	      "boolean"
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Master\nReset"
+      SID		      "25"
+      Position		      [110, 85, 140, 115]
+      Value		      "0"
+      OutDataTypeStr	      "boolean"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "More Info"
+      SID		      "26"
+      Ports		      []
+      Position		      [35, 251, 165, 328]
+      DropShadow	      on
+      ShowName		      off
+      FontSize		      12
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      MaskDisplay	      "disp('Double click\\nhere for\\ninformation on\\nthis demo')"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskPortRotate	      "default"
+      MaskIconUnits	      "autoscale"
+      System {
+	Name			"More Info"
+	Location		[377, 224, 1072, 888]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "More Info1"
+	  SID			  "27"
+	  Ports			  []
+	  Position		  [215, 786, 442, 867]
+	  DropShadow		  on
+	  ShowName		  off
+	  FontSize		  12
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  MaskDisplay		  "disp('Details of the Instruction memory\\nthat contains a bubble sort algorithm')"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskPortRotate	  "default"
+	  MaskIconUnits		  "autoscale"
+	  System {
+	    Name		    "More Info1"
+	    Location		    [397, 100, 1246, 993]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Annotation {
+	      Name		      "Bubble Sort                                                           \n=========                 "
+	      "                                            \n                                                                 "
+	      "     \n% Array Size                                                          \n  LI 10     %  n = 10           "
+	      "                                      \n  STA 0     %  n in loc 0                                             \n"
+	      "                                                                      \n% Array Pointer                        "
+	      "                               \n  LI 12      %  loc 12 = starting location of a[]                     \n  STA "
+	      "1     %  loc 1 stores i which points to a[]                     \n                                             "
+	      "                         \n% Array Entries begin in loc 12                                       \n  LI 18     "
+	      "                                                          \n  STA 12   % entry 1                               "
+	      "                   \n  LI 6                                                                \n  STA 13   % entry"
+	      " 2                                                  \n  LI 19                                                  "
+	      "             \n  STA 14   % entry 3                                                  \n  LI -5                 "
+	      "                                              \n  STA 15   % entry 4                                           "
+	      "       \n  LI 15                                                               \n  STA 16   % entry 5          "
+	      "                                        \n  LI -2                                                              "
+	      " \n  STA 17   % entry 6                                                  \n  LI 2                              "
+	      "                                  \n  STA 18   % entry 7                                                  \n  L"
+	      "I 11                                                               \n  STA 19   % entry 8                      "
+	      "                            \n  LI 20                                                               \n  STA 20 "
+	      "  % entry 9                                                  \n  LI 10                                         "
+	      "                      \n  STA 21   % entry 10                                                 \nL1:            "
+	      "                                                       \n  LI 1                                                "
+	      "                \n  STA 2     %  loc 2 keeps track of count                             \n  LI 1               "
+	      "                                                 \n  STA 3     %  loc 3 contains a predicate to flag the end of"
+	      " sorting  \nL2:                                                                   \n% accessing a[i-1]         "
+	      "                                           \n  LI 1                                                            "
+	      "    \n  STA 4                                                               \n  LDA 2                          "
+	      "                                     \n  CLC                                                                 \n"
+	      "  SUB 4    % i-1                                                      \n  CLC                                  "
+	      "                               \n  ADD 1                                                               \n  STA "
+	      "5   % storing i-1 in loc 5                                      \n  LDAI 5   % a[i-1]                          "
+	      "                         \n  STA 6    % temporarily storing a[i-1] in loc 6                      \n% accessing "
+	      "a[i]                                                      \n  LDA 2                                            "
+	      "                   \n  CLC                                                                 \n  ADD 1           "
+	      "                                                    \n  STA 7   % storing i in loc 7                           "
+	      "             \n  LDAI 7   % a[i]                                                     \n  CLC                   "
+	      "                                              \n  SUB 6  % a[i] - a[i-1]                                       "
+	      "       \n  BRA_N L5                                                            \n  % a[i] >= a[i-1]            "
+	      "                                        \n  JMP L6                                                             "
+	      " "
+	      Position		      [20, 455]
+	      HorizontalAlignment     "left"
+	    }
+	    Annotation {
+	      Name		      "Bubble Sort     (continued)                                                      \n=========      "
+	      "                                                       \n L5:                                                  "
+	      "                \n   % a[i-1] > a[i]                                                    \n %  reset the flag in"
+	      "dicating further sorting passes are reqd         \n   LI 0                                                     "
+	      "          \n   STA 3                                                              \n % Swapping a[i] and a[i-1]"
+	      "                                           \n   LDAI 7   % a[i]                                                "
+	      "    \n   STAI 5   % a[i-1] = a[i]                                           \n   LDA 6   % temp                "
+	      "                                     \n   STAI 7   % a[i] = temp                                             \n"
+	      " L6:                                                                  \n   LI 1                                "
+	      "                               \n   CLC                                                                \n   ADD"
+	      " 2                                                              \n   STA 2     %  count = count + 1            "
+	      "                         \n   LDA 0                                                              \n   CLC      "
+	      "                                                          \n   SUB 2    %  AC = n - count                      "
+	      "                   \n   BRA_Z L3    %  Break out of loop if count == n                     \n   JMP L2         "
+	      "                                                    \n L3:                                                     "
+	      "             \n   LI 1                                                               \n   STA 4                "
+	      "                                              \n   LDA 3                                                       "
+	      "       \n   CLC                                                                \n   SUB 4                      "
+	      "                                        \n   BRA_Z L4    %  if flag == 1 indicating sorting over, break out    "
+	      " \n   JMP L1                                                             \n L4:                                "
+	      "                                  \n   LI 0                                                               \n   "
+	      "STA 2     %  loc 2 keeps track of count                            \n % Printing the array                     "
+	      "                            \n L7:                                                                  \n   LDAI 1"
+	      "   % load a[i]                                               \n   STA 255                                      "
+	      "                      \n   PRINT     %  printing a[i]                                         \n   LI 1        "
+	      "                                                       \n   CLC                                                "
+	      "                \n   ADD 1                                                              \n   STA 1     %  i = i"
+	      " + 1                                             \n   LI 1                                                     "
+	      "          \n   CLC                                                                \n   ADD 2                   "
+	      "                                           \n   STA 2     %  count = count + 1                                 "
+	      "    \n   LDA 0                                                              \n   CLC                           "
+	      "                                     \n   SUB 2    %  AC = n - count                                         \n"
+	      "   BRA_Z L8    %  Break out of loop if count == n                     \n   JMP L7    %  Looping around         "
+	      "                               \n L8:                                                                  \n   HLT"
+	      "                                                                \n                                             "
+	      "                         \n                                                           "
+	      Position		      [345, 430]
+	      HorizontalAlignment     "left"
+	    }
+	    Annotation {
+	      Name		      "The following program is hardcoded in\nhdlcodercpu_eml/CPU Subsystem (8-bit)/Instruction ROM"
+	      Position		      [232, 28]
+	    }
+	  }
+	}
+	Annotation {
+	  Name			  "MATLAB Function Block CPU Demo"
+	  Position		  [143, 22]
+	  FontSize		  14
+	  FontWeight		  "bold"
+	}
+	Annotation {
+	  Name			  "This CPU Implements the following Instruction Set\n========================================\n\nLDA <loc>:"
+	  " AC = content(<loc>)\nLDAI <loc>: AC = content(content(<loc>))\nAND <loc>: AC = AC & content(<loc>)\nANDI <loc>: AC"
+	  " = AC & content(content(<loc>))\nADD <loc>: AC = AC + content(<loc>) + C(flag) \nADDI <loc>: AC = AC + content(cont"
+	  "ent(<loc>)) + C(flag)\nSUB <loc>: AC = AC - content(<loc>) - C(flag) \nSUBI <loc>: AC = AC - content(content(<loc>)"
+	  ") - C(flag)\nJMP <loc>: Jump to <PC + <loc>>\nLI <const>: AC = <const>\nSTA <loc>: content(<loc>) = AC\nSTAI <loc>:"
+	  " content(content(<loc>)) = AC\nBRA_C <loc>: Jump to <PC + <loc>> if (C(flag) == 1)\nBRA_N <loc>: Jump to <PC + <loc"
+	  ">> if (N(flag) == 1)\nBRA_V <loc>: Jump to <PC + <loc>> if (V(flag) == 1)\nBRA_Z <loc>: Jump to <PC + <loc>> if (Z("
+	  "flag) == 1)\nHLT: Halt (simulation)\nCLA: AC = 0\nCMA: Complement AC\nCMC: Complement C(flag)\nASL: AC = AC << 1\nA"
+	  "SR: AC = AC >> 1\nPRINT: Display value from the memory-mapped location 255\nCLC: C(flag) = 0"
+	  Position		  [44, 161]
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  FontSize		  12
+	}
+	Annotation {
+	  Name			  "\nThe 12-bit instruction encoding\n========================\n\nLDA:     000 0 <8-bit loc>\nLDAI:    000 1"
+	  " <8-bit loc>\nAND:     001 0 <8-bit loc>\nANDI:    001 1 <8-bit loc>\nADD:     010 0 <8-bit loc>\nADDI:    010 1 <8"
+	  "-bit loc>\nSUB:     011 0 <8-bit loc>\nSUBI:    011 1 <8-bit loc>\nJMP:     1000 <8-bit loc>\nLI:         1001 <8-b"
+	  "it const>\nSTA:     101 0 <8-bit loc>\nSTAI:    101 1 <8-bit loc>\nBRA_C: 1100 <8-bit loc>\nBRA_N: 1101 <8-bit loc>"
+	  "\nBRA_C: 1110 <8-bit loc>\nBRA_C: 1111 <8-bit loc>\nHLT:     111 0 0100 0 000 \nCLA:      111 0 0100 1 000\nCMA:   "
+	  "  111 0 0101 0 000\nCMC:     111 0 0101 1 000\nASL:      111 0 0110 0 000\nASR:      111 0 0110 1 000\nPRINT:  111 "
+	  "0 0111 0 000\nCLC:      111 0 0111 1 000"
+	  Position		  [404, 141]
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  FontSize		  12
+	}
+	Annotation {
+	  Name			  "CPU description:\n==============\n\nThis CPU has a Harvard RISC architecture with separate instruction an"
+	  "d data memory. \nThe instruction memory is 12-bit wide while the data memory is 8-bit wide.\nThe memory modules are"
+	  " available on-chip. The instruction encoding is as follows."
+	  Position		  [44, 46]
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  FontSize		  12
+	}
+	Annotation {
+	  Name			  "What this demo does:\n=================\nThe instruction memory is hard coded with a bubble sort algorith"
+	  "m that operates on an array \nof numbers stored at location 12 in the Data Memory. The array being sorted is \n[18,"
+	  " 6, -5, 15, -2 2 11 20 10] . The sorting is terminated with a HLT instruction.\n\nThe number of simulation steps is"
+	  " set to 'inf' as the HLT instruction encountered halts the \nsimulation. At the end of simulation, you should see t"
+	  "he sorted output in the scope display\nas follows: [ -5 -2 2 6 10 11 18 20]\n\nBecause the simulation has terminate"
+	  "d appropriately at the end of the program execution,\nwe also get the number of time steps needed to execute the pr"
+	  "ogram."
+	  Position		  [44, 591]
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  FontSize		  12
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Run Demo"
+      SID		      "28"
+      Ports		      []
+      Position		      [257, 251, 444, 328]
+      BackgroundColor	      "lightBlue"
+      OpenFcn		      "hdldialog(bdroot)"
+      FontSize		      14
+      FontWeight	      "bold"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      MaskDisplay	      "disp('Launch HDL Dialog')"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskPortRotate	      "default"
+      MaskIconUnits	      "autoscale"
+      System {
+	Name			"Run Demo"
+	Location		[433, 403, 931, 703]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+      }
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope"
+      SID		      "29"
+      Ports		      [1]
+      Position		      [615, 59, 645, 91]
+      Floating		      off
+      Location		      [729, 283, 1435, 681]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      TimeRange		      "100             "
+      YMin		      "0"
+      YMax		      "7"
+      DataFormat	      "StructureWithTime"
+      MaxDataPoints	      "8500"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Stop
+      Name		      "Stop Simulation"
+      SID		      "30"
+      Position		      [665, 107, 700, 143]
+      BackgroundColor	      "red"
+    }
+    Line {
+      SrcBlock		      "CPU_Subsystem_8_bit"
+      SrcPort		      1
+      DstBlock		      "Scope"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Master\nReset"
+      SrcPort		      1
+      DstBlock		      "CPU_Subsystem_8_bit"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "CPU_Subsystem_8_bit"
+      SrcPort		      2
+      DstBlock		      "Data Type Conversion"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Data Type Conversion"
+      SrcPort		      1
+      DstBlock		      "Stop Simulation"
+      DstPort		      1
+    }
+    Annotation {
+      Name		      "Copyright 2006-2010 The MathWorks, Inc."
+      Position		      [355, 363]
+    }
+  }
+}
+# Finite State Machines
+#
+#    Stateflow Version 7.5 (R2010a) dated Mar  4 2011, 22:36:02
+#
+#
+
+
+Stateflow {
+  machine {
+    id			    1
+    name		    "hdlcodercpu_eml"
+    created		    "06-Dec-2006 13:55:56"
+    isLibrary		    0
+    firstTarget		    94
+    sfVersion		    75014001
+  }
+  chart {
+    id			    2
+    name		    "CPU_Subsystem_8_bit/output_enable"
+    windowPosition	    [390.75 188.25 200.25 189.75]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1920 1200 1.333333333333333]
+    treeNode		    [0 3 0 0]
+    firstTransition	    5
+    firstJunction	    4
+    viewObj		    2
+    machine		    1
+    ssIdHighWaterMark	    6
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    6
+    chartFileNumber	    1
+    disableImplicitCasting  1
+    eml {
+      name		      "output_enable"
+    }
+    supportVariableSizing   0
+  }
+  state {
+    id			    3
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    2
+    treeNode		    [2 0 0 0]
+    superState		    SUBCHART
+    subviewer		    2
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function y = output_enable(u, enable)\n% to the pin-out\n\n% HDL specific fimath\nhdl_fm = fimath"
+      "(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecision', 'ProductWordLength',"
+      " 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true);\n\ny = fi(0, 1, 8, 0, hdl_"
+      "fm);\n\nif(enable)\n    y = fi(u, 1, 8, 0, hdl_fm);\nend"
+      editorLayout	      "100 M4x1[109 45 1397 1155]"
+      fimathString	      "fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'KeepLSB', "
+      "'ProductWordLength', 32,...\n'SumMode', 'KeepLSB', 'SumWordLength', 32,...\n'CastBeforeSum', true)"
+      fimathForFiConstructors FimathMatlabFactoryDefault
+      emlDefaultFimath	      FimathUserSpecified
+    }
+  }
+  junction {
+    id			    4
+    position		    [23.5747 49.5747 7]
+    chart		    2
+    linkNode		    [2 0 0]
+    subviewer		    2
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    5
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      4
+      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    2
+    linkNode		    [2 0 0]
+    dataLimits		    [23.575 23.575 14.625 34.575]
+    subviewer		    2
+    drawStyle		    SMART
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  data {
+    id			    6
+    ssIdNumber		    4
+    name		    "u"
+    linkNode		    [2 0 7]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"8"
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	  fractionLength	  "0"
+	  slope			  "2^0"
+	  bias			  "0"
+	}
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "fixdt(1,8,0)"
+  }
+  data {
+    id			    7
+    ssIdNumber		    5
+    name		    "y"
+    linkNode		    [2 6 8]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    8
+    ssIdNumber		    6
+    name		    "enable"
+    linkNode		    [2 7 0]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  instance {
+    id			    9
+    name		    "CPU_Subsystem_8_bit/output_enable"
+    machine		    1
+    chart		    2
+  }
+  chart {
+    id			    10
+    name		    "CPU_Subsystem_8_bit/Control Unit"
+    windowPosition	    [369.879 321.305 200.25 189.75]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1680 1050 1.333333333333333]
+    treeNode		    [0 11 0 0]
+    firstTransition	    13
+    firstJunction	    12
+    viewObj		    10
+    machine		    1
+    ssIdHighWaterMark	    20
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    14
+    updateMethod	    DISCRETE
+    sampleTime		    "1"
+    chartFileNumber	    2
+    disableImplicitCasting  1
+    eml {
+      name		      "Controller"
+    }
+    supportVariableSizing   0
+  }
+  state {
+    id			    11
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    10
+    treeNode		    [10 0 0 0]
+    superState		    SUBCHART
+    subviewer		    10
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function [shifter_sel, out_flags, ALU_func, ...\n    print_data, DM_addr, DM_r_w, AC_func, AC_dat"
+      "a, IR_func, ...\n    PC_func, addr_inc, IM_read, hlt] = Controller(data_in, in_flags, master_rst, IR_in)\n% CPU "
+      "Controller\n%\n% The CPU Instruction Set:\n% ------------------------\n% \n% LDA <loc>: AC = content(<loc>)\n% L"
+      "DAI <loc>: AC = content(content(<loc>))\n% AND <loc>: AC = AC & content(<loc>)\n% ANDI <loc>: AC = AC & content("
+      "content(<loc>))\n% ADD <loc>: AC = AC + content(<loc>) + C(flag) \n% ADDI <loc>: AC = AC + content(content(<loc>"
+      ")) + C(flag)\n% SUB <loc>: AC = AC - content(<loc>) - C(flag) \n% SUBI <loc>: AC = AC - content(content(<loc>)) "
+      "- C(flag)\n% JMP <loc>: Jump to <PC + <loc>>\n% LI <const>: AC = <const>\n% STA <loc>: content(<loc>) = AC\n% ST"
+      "AI <loc>: content(content(<loc>)) = AC\n% BRA_C <loc>: Jump to <PC + <loc>> if (C(flag) == 1)\n% BRA_N <loc>: Ju"
+      "mp to <PC + <loc>> if (N(flag) == 1)\n% BRA_V <loc>: Jump to <PC + <loc>> if (V(flag) == 1)\n% BRA_Z <loc>: Jump"
+      " to <PC + <loc>> if (Z(flag) == 1)\n% NOP: Do nothing\n% CLA: AC = 0\n% CMA: Complement AC\n% CMC: Complement C("
+      "flag)\n% ASL: AC = AC << 1\n% ASR: AC = AC >> 1\n% PRINT: Display value from the memory-mapped location 255\n% C"
+      "LC: C(flag) = 0\n%\n% 12-bit Instruction Encoding:\n% ---------------------------\n%\n% 	LDA:   000 0 <8-bit loc"
+      ">\n% 	LDAI:  000 1 <8-bit loc>\n% 	AND:   001 0 <8-bit loc>\n% 	ANDI:  001 1 <8-bit loc>\n% 	ADD:   010 0 <8-bit"
+      " loc>\n% 	ADDI:  010 1 <8-bit loc>\n% 	SUB:   011 0 <8-bit loc>\n% 	SUBI:  011 1 <8-bit loc>\n% 	JMP:   1000 <8-"
+      "bit loc>\n% 	LI:    1001 <8-bit const>\n% 	STA:   101 0 <8-bit loc>\n% 	STAI:  101 1 <8-bit loc>\n% 	BRA_C: 1100"
+      " <8-bit loc>\n% 	BRA_N: 1101 <8-bit loc>\n% 	BRA_C: 1110 <8-bit loc>\n% 	BRA_C: 1111 <8-bit loc>\n% 	HLT:   111 "
+      "0 0100 0 000 \n% 	CLA:   111 0 0100 1 000\n% 	CMA:   111 0 0101 0 000\n% 	CMC:   111 0 0101 1 000\n% 	ASL:   111"
+      " 0 0110 0 000\n% 	ASR:   111 0 0110 1 000\n% 	PRINT: 111 0 0111 0 000\n% 	CLC:   111 0 0111 1 000  \n\n% HDL spe"
+      "cific fimath\nhdl_fm = fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPre"
+      "cision', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true"
+      ");\n\n\npersistent CPU_state;\nif(isempty(CPU_state))\n    CPU_state = uint8(0);\nend\n\npersistent previous_CPU"
+      "_state;\nif(isempty(previous_CPU_state))\n    previous_CPU_state = uint8(0);\nend\n\nif(master_rst)\n    CPU_sta"
+      "te = uint8(0);\nend\n\nshifter_sel = fi(0, 0, 2, 0, hdl_fm);\nALU_func = fi(0, 0, 3, 0, hdl_fm);\nout_flags = in"
+      "_flags;\nAC_func = fi(4, 0, 3, 0, hdl_fm);  % NOP\nAC_data = fi(0, 1, 8, 0, hdl_fm);\nIR_func = fi(3, 0, 2, 0, h"
+      "dl_fm);  % NOP\nPC_func = fi(3, 0, 2, 0, hdl_fm);  % NOP\nIM_read = fi(0, 0, 1, 0, hdl_fm);\nDM_addr = uint8(0);"
+      "\nDM_r_w = fi(0, 0, 1, 0, hdl_fm);\naddr_inc = fi(0, 1, 8, 0, hdl_fm);\nprint_data = false;\nhlt = uint8(0);\n\n"
+      "% Instruction: <12..1>\n% major_opcode: <12..10>\n% indirect_addressing: <9>\n% minor_opcode: <9..4>\n% address "
+      "bits: <8..1>\n\npersistent major_opcode; \npersistent minor_opcode; \npersistent address_data;\npersistent indir"
+      "ect_address;\n\nif(isempty(major_opcode))\n    major_opcode = fi(0, 0, 8, 0, hdl_fm);\n    minor_opcode = fi(0, "
+      "0, 8, 0, hdl_fm);\n    address_data = fi(0, 0, 8, 0, hdl_fm);\n    indirect_address = uint8(0);\nend\n\nswitch(C"
+      "PU_state)\n    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n    %  RESETTING OUTPUTS\n    %%%%%%%%%%%%%%%%%%%%%%%%%%%"
+      "%%%%%%%%%%%\n    case 0,\n        PC_func = fi(0, 0, 2, 0, hdl_fm);   \n        AC_func = fi(0, 0, 3, 0, hdl_fm)"
+      ";   \n        IR_func = fi(0, 0, 2, 0, hdl_fm);   \n        previous_CPU_state = CPU_state;\n        CPU_state ="
+      " uint8(1);\n        \n    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n    %  FETCH\n    %%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+      "%%%%%%%%%%\n    case 1,  \n        % Read from IM\n        IM_read = fi(1, 0, 1, 0, hdl_fm);  \n        % Increm"
+      "ent PC\n        PC_func = fi(2, 0, 2, 0, hdl_fm);  \n        % store into IR\n        IR_func = fi(1, 0, 2, 0, h"
+      "dl_fm);  \n        \n        CPU_state = uint8(2);\n        \n    case 2, \n        % Read from IR\n        IR_f"
+      "unc = fi(2, 0, 2, 0, hdl_fm);  \n        % Accommodating for the 'unit delay' from IR_out to IR_in\n        \n  "
+      "      CPU_state = uint8(3);  \n        \n    case 3,\n        % IR_in <12..10>\n        major_opcode = fi(bitsrl"
+      "(IR_in, 9), 0, 8, 0, hdl_fm);\n        mask = fi(63, 0, 12, 0, hdl_fm);\n        % IR_in <9..4>\n        minor_o"
+      "pcode = fi(bitand(bitsrl(IR_in, 3), mask), 0, 8, 0, hdl_fm);\n        mask = fi(255, 0, 12, 0, hdl_fm);\n       "
+      " % IR_in <8..1>\n        address_data = fi(bitand(IR_in, mask), 0, 8, 0, hdl_fm);\n        \n        % Go to the"
+      " decode stage\n        CPU_state = uint8(4);  \n        \n    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n    %  DEC"
+      "ODE AND EXECUTE\n    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n    case 4,  \n        previous_CPU_state = CPU_sta"
+      "te;\n        switch(uint8(major_opcode))\n            case 0,  \n                % LDA\n                % minor_"
+      "opcode contains the address (assuming direct addressing)\n                DM_addr = uint8(address_data); \n     "
+      "           % Read the data memory\n                DM_r_w = fi(0, 0, 1, 0, hdl_fm); \n                % Simply p"
+      "ass the value read from memory\n                CPU_state = uint8(13);\n                \n            case 1,  \n"
+      "                % AND           \n                DM_addr = uint8(address_data);\n                % Reading the "
+      "data memory for address or data\n                DM_r_w = fi(0, 0, 1, 0, hdl_fm);\n                \n           "
+      "     CPU_state = uint8(15);\n                \n            case 2,  \n                % ADD\n                DM_"
+      "addr = uint8(address_data);\n                % Reading the data memory for address or data\n                DM_r"
+      "_w = fi(0, 0, 1, 0, hdl_fm);\n                \n                CPU_state = uint8(17);\n                \n      "
+      "      case 3,  \n                % SUB\n                DM_addr = uint8(address_data);\n                % Readin"
+      "g the data memory for address or data\n                DM_r_w = fi(0, 0, 1, 0, hdl_fm);\n                \n     "
+      "           CPU_state = uint8(19);\n\n            case 4,  \n                minor_opcode_bit6 = bitget(minor_opc"
+      "ode, 6);\n                switch(uint8(minor_opcode_bit6))\n                    case 0, \n                      "
+      "  % JMP\n                        temp_address_data = fi(address_data, 1, 7, 0, hdl_fm);\n                       "
+      " addr_inc = fi(temp_address_data-1, 1, 8, 0, hdl_fm);\n                        PC_func = fi(1, 0, 2, 0, hdl_fm);"
+      " \n                        \n                    case 1,\n                        % LI\n                        "
+      "AC_data = fi(address_data, 1, 8, 0, hdl_fm);\n                        AC_func = fi(1, 0, 3, 0, hdl_fm);\n       "
+      "         end\n                % Go back to the fetch stage again\n                CPU_state = uint8(1);  \n     "
+      "           \n            case 5,  \n                % STA\n                % minor_opcode contains the address ("
+      "assuming direct addressing)\n                DM_addr = uint8(address_data); \n                indirect_bit = bit"
+      "get(minor_opcode, 6);\n                if(logical(indirect_bit))\n                    % indirect addressing\n   "
+      "                 % Read the address from the data memory\n                    DM_r_w = fi(0, 0, 1, 0, hdl_fm); \n"
+      "                    CPU_state = uint8(21);\n                else\n                    % Write into the data memo"
+      "ry\n                    DM_r_w = fi(1, 0, 1, 0, hdl_fm);\n                    % Go back to the fetch stage again"
+      "\n                    CPU_state = uint8(25);  % going to 'otherwise'\n                end\n                \n   "
+      "         case 6,\n                minor_opcode_bit6 = bitget(minor_opcode, 6);\n                switch(uint8(min"
+      "or_opcode_bit6))\n                    % special branches:\n                    case 0, \n                       "
+      " % BRA_C\n                        c = bitget(in_flags, 4);\n                        if(logical(c))\n            "
+      "                temp_address_data = fi(address_data, 1, 7, 0, hdl_fm);\n                            addr_inc = f"
+      "i(temp_address_data-1, 1, 8, 0, hdl_fm);\n                            PC_func = fi(1, 0, 2, 0, hdl_fm);\n       "
+      "                 end\n                        \n                    case 1,\n                        % BRA_N\n  "
+      "                      n = bitget(in_flags, 3);\n                        if(logical(n))\n                        "
+      "    temp_address_data = fi(address_data, 1, 7, 0, hdl_fm);\n                            addr_inc = fi(temp_addre"
+      "ss_data-1, 1, 8, 0, hdl_fm);\n                            PC_func = fi(1, 0, 2, 0, hdl_fm);\n                   "
+      "     end\n                end\n                % Go back to the fetch stage again\n                CPU_state = u"
+      "int8(15);\n                \n            case 7,  \n                 % by default, go back to the fetch stage ag"
+      "ain\n                CPU_state = uint8(1);\n                minor_opcode_bit4 = bitget(minor_opcode, 4);\n      "
+      "          if(logical(minor_opcode_bit4) == 0)\n                    % Further cases of special branches:\n       "
+      "             minor_opcode_bit6 = bitget(minor_opcode, 6);\n                    switch(uint8(minor_opcode_bit6))\n"
+      "                        case 0, \n                            % BRA_V\n                            v = bitget(in"
+      "_flags, 2);\n                            if(logical(v))\n                                temp_address_data = fi("
+      "address_data, 1, 7, 0, hdl_fm);\n                                addr_inc = fi(temp_address_data-1, 1, 8, 0, hdl"
+      "_fm);\n                                PC_func = fi(1, 0, 2, 0, hdl_fm);\n                            end\n     "
+      "                    \n                        case 1, \n                            % BRA_Z\n                   "
+      "         z = bitget(in_flags, 1);\n                            if(logical(z))\n                                t"
+      "emp_address_data = fi(address_data, 1, 7, 0, hdl_fm);\n                                addr_inc = fi(temp_addres"
+      "s_data-1, 1, 8, 0, hdl_fm);\n                                PC_func = fi(1, 0, 2, 0, hdl_fm);\n                "
+      "            end\n                    end\n                end\n                % Instructions having no operands"
+      "\n                switch(uint8(minor_opcode))\n                    case 8,\n                        % HLT\n     "
+      "                   % Stop the simulation\n                        hlt = uint8(1);\n                        CPU_s"
+      "tate = uint8(22);\n                    case 9, \n                        % CLA\n                        AC_func "
+      "= fi(0, 0, 3, 0, hdl_fm);\n                        \n                    case 10, \n                        % CM"
+      "A\n                        ALU_func = fi(4, 0, 3, 0, hdl_fm); \n                        shifter_sel = fi(3, 0, 2"
+      ", 0, hdl_fm);\n                        CPU_state = uint8(6);\n                        \n                    case"
+      " 11, \n                        % CMC\n                        ALU_func = fi(5, 0, 3, 0, hdl_fm); \n             "
+      "           shifter_sel = fi(3, 0, 2, 0, hdl_fm);\n                        \n                    case 12, \n     "
+      "                   % ASL\n                        shifter_sel = fi(1, 0, 2, 0, hdl_fm);\n                       "
+      " CPU_state = uint8(6);\n                        \n                    case 13, \n                        % ASR\n"
+      "                        shifter_sel = fi(2, 0, 2, 0, hdl_fm);\n                        CPU_state = uint8(6);\n  "
+      "                      \n                    case 14, \n                        % PRINT   \n                     "
+      "   DM_addr = uint8(255);\n                        % Read the data memory\n                        DM_r_w = fi(0,"
+      " 0, 1, 0, hdl_fm);\n                        \n                        CPU_state = uint8(12);\n\n                "
+      "    case 15, \n                        % CLC\n                        ALU_func = fi(7, 0, 3, 0, hdl_fm); \n     "
+      "                   shifter_sel = fi(3, 0, 2, 0, hdl_fm);\n                        \n                    otherwis"
+      "e,\n                        % by default, go back to the fetch stage again\n                        CPU_state = "
+      "uint8(1);\n  \n                % Minor Opcode cases end here        \n                end\n        % Major Opcod"
+      "e cases end here\n        end\n    \n    % introducing delay\n    case 6,\n        % accounting for the delay fr"
+      "om shift_out to AC_in2\n        AC_func = fi(2, 0, 3, 0, hdl_fm);\n        previous_CPU_state = CPU_state;\n    "
+      "    % Go back to the fetch stage again\n        CPU_state = uint8(1);  \n        \n    % Operations with indirec"
+      "t addressing\n    case 7,\n        % LDA Indirect\n        % data_in is the address read from the data memory\n "
+      "       DM_addr = indirect_address; \n        % Read the data memory\n        DM_r_w = fi(0, 0, 1, 0, hdl_fm); \n"
+      "        \n        previous_CPU_state = CPU_state;\n        CPU_state = uint8(13);\n        \n    case 8,\n      "
+      "  % AND Indirect\n        % data_in is the address read from the data memory\n        DM_addr = indirect_address"
+      ";\n        % Read the data memory\n        DM_r_w = fi(0, 0, 1, 0, hdl_fm);\n\n        previous_CPU_state = CPU_"
+      "state;\n        CPU_state = uint8(15);\n    \n    case 9,\n        % ADD Indirect\n        % data_in is the addr"
+      "ess read from the data memory\n        DM_addr = indirect_address;\n        % Read the data memory\n        DM_r"
+      "_w = fi(0, 0, 1, 0, hdl_fm);\n        \n        previous_CPU_state = CPU_state;\n        CPU_state = uint8(17);\n"
+      "        \n    case 10,\n        % SUB Indirect\n        % data_in is the address read from the data memory\n    "
+      "    DM_addr = indirect_address;\n        % Read the data memory\n        DM_r_w = fi(0, 0, 1, 0, hdl_fm);\n     "
+      "   \n        previous_CPU_state = CPU_state;\n        CPU_state = uint8(19);\n        \n    case 11,\n        % "
+      "STA Indirect\n        % data_in is the address read from the data memory\n        DM_addr = uint8(data_in);\n   "
+      "     % Write the data memory\n        DM_r_w = fi(1, 0, 1, 0, hdl_fm);\n        previous_CPU_state = CPU_state;\n"
+      "        CPU_state = uint8(1);\n        \n    case 12,\n        % PRINT\n        print_data = true;\n        prev"
+      "ious_CPU_state = CPU_state;\n        CPU_state = uint8(1);\n        \n    case 13,\n        % LDA (contd.)\n    "
+      "    % Simply pass the value read from memory\n        ALU_func = fi(6, 0, 3, 0, hdl_fm);\n        shifter_sel = "
+      "fi(3, 0, 2, 0, hdl_fm);\n\n        if(previous_CPU_state == uint8(4))\n            previous_CPU_state = CPU_stat"
+      "e;\n            CPU_state = uint8(14);\n        else\n            previous_CPU_state = CPU_state;\n            C"
+      "PU_state = uint8(6);\n        end\n        \n    case 14,\n        indirect_bit = bitget(minor_opcode, 6);\n    "
+      "    % accounting for the delay from shift_out to AC_in2\n        AC_func = fi(2, 0, 3, 0, hdl_fm);\n        \n  "
+      "      previous_CPU_state = CPU_state;\n        if(logical(indirect_bit))\n            % indirect addressing\n   "
+      "         indirect_address = uint8(data_in);\n            CPU_state = uint8(7);\n        else\n            CPU_st"
+      "ate = uint8(25);\n        end\n\n    case 15,\n\n        % AND (contd.)\n        ALU_func = fi(1, 0, 3, 0, hdl_f"
+      "m);\n        shifter_sel = fi(3, 0, 2, 0, hdl_fm);\n\n        if(previous_CPU_state == uint8(4))\n            pr"
+      "evious_CPU_state = CPU_state;\n            CPU_state = uint8(16);\n        else\n            previous_CPU_state "
+      "= CPU_state;\n            CPU_state = uint8(6);\n        end\n\n    case 16,\n        indirect_bit = bitget(mino"
+      "r_opcode, 6);\n        % accounting for the delay from shift_out to AC_in2\n        AC_func = fi(2, 0, 3, 0, hdl"
+      "_fm);\n        \n        previous_CPU_state = CPU_state;\n        if(logical(indirect_bit))\n            % indir"
+      "ect addressing\n            indirect_address = uint8(data_in);\n            CPU_state = uint8(8);\n        else\n"
+      "            CPU_state = uint8(25);\n        end\n        \n    case 17,\n        % ADD (contd.)\n        ALU_fun"
+      "c = fi(2, 0, 3, 0, hdl_fm);\n        shifter_sel = fi(3, 0, 2, 0, hdl_fm);\n\n        if(previous_CPU_state == u"
+      "int8(4))\n            previous_CPU_state = CPU_state;\n            CPU_state = uint8(18);\n        else\n       "
+      "     previous_CPU_state = CPU_state;\n            CPU_state = uint8(6);\n        end\n\n    case 18,\n        in"
+      "direct_bit = bitget(minor_opcode, 6);\n        % accounting for the delay from shift_out to AC_in2\n        AC_f"
+      "unc = fi(2, 0, 3, 0, hdl_fm);\n        \n        previous_CPU_state = CPU_state;\n        if(logical(indirect_bi"
+      "t))\n            % indirect addressing\n            indirect_address = uint8(data_in);\n            CPU_state = "
+      "uint8(9);\n        else\n            CPU_state = uint8(25);\n        end\n        \n    case 19,\n        % SUB "
+      "(contd.)\n        ALU_func = fi(3, 0, 3, 0, hdl_fm);\n        shifter_sel = fi(3, 0, 2, 0, hdl_fm);\n\n        i"
+      "f(previous_CPU_state == uint8(4))\n            previous_CPU_state = CPU_state;\n            CPU_state = uint8(20"
+      ");\n        else\n            previous_CPU_state = CPU_state;\n            CPU_state = uint8(6);\n        end\n\n"
+      "    case 20,\n        indirect_bit = bitget(minor_opcode, 6);\n        % accounting for the delay from shift_out"
+      " to AC_in2\n        AC_func = fi(2, 0, 3, 0, hdl_fm);\n        \n        previous_CPU_state = CPU_state;\n      "
+      "  if(logical(indirect_bit))\n            % indirect addressing\n            indirect_address = uint8(data_in);\n"
+      "            CPU_state = uint8(10);\n        else\n\n            CPU_state = uint8(25);\n        end\n        \n "
+      "   case 21,\n        % STA indirect\n        CPU_state = uint8(11);\n        \n    case 22,\n        % lock stat"
+      "e\n        hlt = uint8(1);\n        CPU_state = uint8(22);\n\n    otherwise,\n        previous_CPU_state = CPU_s"
+      "tate;\n        % by default, go back to the fetch stage again\n        CPU_state = uint8(1);\n                \n"
+      "% switch(CPU_state) end here\nend"
+      editorLayout	      "100 M4x1[506 54 1292 812]"
+      fimathString	      "fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecis"
+      "ion', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true)"
+      treatAsFi		      FI_AND_INT
+      fimathForFiConstructors FimathMatlabFactoryDefault
+      emlDefaultFimath	      FimathUserSpecified
+    }
+  }
+  junction {
+    id			    12
+    position		    [23.5747 49.5747 7]
+    chart		    10
+    linkNode		    [10 0 0]
+    subviewer		    10
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    13
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      12
+      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    10
+    linkNode		    [10 0 0]
+    dataLimits		    [23.575 23.575 14.625 34.575]
+    subviewer		    10
+    drawStyle		    SMART
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  data {
+    id			    14
+    ssIdNumber		    4
+    name		    "data_in"
+    linkNode		    [10 0 15]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"8"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "fixdt(1,8,0)"
+  }
+  data {
+    id			    15
+    ssIdNumber		    5
+    name		    "in_flags"
+    linkNode		    [10 14 16]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	wordLength		"4"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "fixdt(0,4,0)"
+  }
+  data {
+    id			    16
+    ssIdNumber		    6
+    name		    "master_rst"
+    linkNode		    [10 15 17]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    17
+    ssIdNumber		    7
+    name		    "shifter_sel"
+    linkNode		    [10 16 18]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    18
+    ssIdNumber		    8
+    name		    "out_flags"
+    linkNode		    [10 17 19]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    19
+    ssIdNumber		    9
+    name		    "ALU_func"
+    linkNode		    [10 18 20]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    20
+    ssIdNumber		    10
+    name		    "print_data"
+    linkNode		    [10 19 21]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    21
+    ssIdNumber		    11
+    name		    "IR_in"
+    linkNode		    [10 20 22]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	wordLength		"12"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "fixdt(0,12,0)"
+  }
+  data {
+    id			    22
+    ssIdNumber		    12
+    name		    "DM_addr"
+    linkNode		    [10 21 23]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    23
+    ssIdNumber		    13
+    name		    "DM_r_w"
+    linkNode		    [10 22 24]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    24
+    ssIdNumber		    14
+    name		    "AC_func"
+    linkNode		    [10 23 25]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    25
+    ssIdNumber		    15
+    name		    "AC_data"
+    linkNode		    [10 24 26]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    26
+    ssIdNumber		    16
+    name		    "IR_func"
+    linkNode		    [10 25 27]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    27
+    ssIdNumber		    17
+    name		    "PC_func"
+    linkNode		    [10 26 28]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    28
+    ssIdNumber		    18
+    name		    "addr_inc"
+    linkNode		    [10 27 29]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    29
+    ssIdNumber		    19
+    name		    "IM_read"
+    linkNode		    [10 28 30]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    30
+    ssIdNumber		    20
+    name		    "hlt"
+    linkNode		    [10 29 0]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_BOOLEAN_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  instance {
+    id			    31
+    name		    "CPU_Subsystem_8_bit/Control Unit"
+    machine		    1
+    chart		    10
+  }
+  chart {
+    id			    32
+    name		    "CPU_Subsystem_8_bit/Accumulator"
+    windowPosition	    [384.879 306.305 200.25 189.75]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1680 1050 1.333333333333333]
+    treeNode		    [0 33 0 0]
+    firstTransition	    35
+    firstJunction	    34
+    viewObj		    32
+    machine		    1
+    ssIdHighWaterMark	    7
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    36
+    updateMethod	    DISCRETE
+    sampleTime		    "1"
+    chartFileNumber	    3
+    disableImplicitCasting  1
+    eml {
+      name		      "Accumulator"
+    }
+    supportVariableSizing   0
+  }
+  state {
+    id			    33
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    32
+    treeNode		    [32 0 0 0]
+    superState		    SUBCHART
+    subviewer		    32
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "\n%% Accumulator with the following func:\n% func == 0 => reset\n% func == 1 => store into AC fro"
+      "m port 1\n% func == 2 => store into AC from port 2\n% func == 3 => read from AC;\n% otherwise, preserve old valu"
+      "e and return 0\nfunction AC_out = Accumulator(func, AC_in1, AC_in2)\n\n% HDL specific fimath\nhdl_fm = fimath(.."
+      ".\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecision', 'ProductWordLength', 32"
+      ",...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true);\n\n\npersistent AC_value;\nif"
+      "(isempty(AC_value))\n    AC_value = fi(0, 1, 8, 0, hdl_fm);\nend\n\nAC_out = fi(AC_value, 1, 8, 0, hdl_fm);\n   "
+      "     \nswitch(uint8(func)) \n    case 0,\n        % reset\n        AC_value = fi(0, 1, 8, 0, hdl_fm); \n    case"
+      " 1, \n        % store into AC\n        AC_value = AC_in1;\n    case 2,\n        % store into AC\n        AC_valu"
+      "e = AC_in2;    \n    case 3,\n        % read the AC value\n        AC_out = AC_value;\nend\n\n"
+      editorLayout	      "100 M4x1[493 9 1427 1191]"
+      fimathString	      "fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecis"
+      "ion', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true)"
+      treatAsFi		      FI_AND_INT
+      fimathForFiConstructors FimathMatlabFactoryDefault
+      emlDefaultFimath	      FimathUserSpecified
+    }
+  }
+  junction {
+    id			    34
+    position		    [23.5747 49.5747 7]
+    chart		    32
+    linkNode		    [32 0 0]
+    subviewer		    32
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    35
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      34
+      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    32
+    linkNode		    [32 0 0]
+    dataLimits		    [23.575 23.575 14.625 34.575]
+    subviewer		    32
+    drawStyle		    SMART
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  data {
+    id			    36
+    ssIdNumber		    4
+    name		    "func"
+    linkNode		    [32 0 37]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    37
+    ssIdNumber		    5
+    name		    "AC_out"
+    linkNode		    [32 36 38]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"8"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "fixdt(1,8,0)"
+  }
+  data {
+    id			    38
+    ssIdNumber		    6
+    name		    "AC_in1"
+    linkNode		    [32 37 39]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"8"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "fixdt(1,8,0)"
+  }
+  data {
+    id			    39
+    ssIdNumber		    7
+    name		    "AC_in2"
+    linkNode		    [32 38 0]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"8"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "fixdt(1,8,0)"
+  }
+  instance {
+    id			    40
+    name		    "CPU_Subsystem_8_bit/Accumulator"
+    machine		    1
+    chart		    32
+  }
+  chart {
+    id			    41
+    name		    "CPU_Subsystem_8_bit/Arithmetic Logical Unit (8-bit)"
+    windowPosition	    [384.879 306.305 200.25 189.75]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1680 1050 1.333333333333333]
+    treeNode		    [0 42 0 0]
+    firstTransition	    44
+    firstJunction	    43
+    viewObj		    41
+    machine		    1
+    ssIdHighWaterMark	    9
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    45
+    updateMethod	    DISCRETE
+    sampleTime		    "1"
+    chartFileNumber	    4
+    disableImplicitCasting  1
+    eml {
+      name		      "ALU"
+    }
+    supportVariableSizing   0
+  }
+  state {
+    id			    42
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    41
+    treeNode		    [41 0 0 0]
+    superState		    SUBCHART
+    subviewer		    41
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function [alu_out, out_flags] = ALU(in_flags, func, alu_in, AC)\n% This 8-bit ALU supports the fo"
+      "llowing operations:\n% AND (Logical AND), ADD, SUB, CMA (Complement AC), CMC (Complement Carry) and CLC (Clear C"
+      "arry)\n% and appropriately sets a 4-bit flag register, which has the following format:\n% [C N V Z]\n\n% HDL spe"
+      "cific fimath\nhdl_fm = fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPre"
+      "cision', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true"
+      ");\n\n% Get the carry in\ncarry = bitget(in_flags, 4); \n\n% Get the overflow in\noverflow = bitget(in_flags, 2)"
+      ";\n\n% Simply pass the AC, when there is no designated func\nalu_out = fi(AC, 1, 8, 0, hdl_fm);\n\n% 3-bit encod"
+      "ing of ALU ops, which can potentially support upto 8 operations\n% Most of the encodings are unused to comply to"
+      " Parwan supported ops\nswitch(uint8(func))\n    case 0, % NOP\n        % simply pass the AC\n    case 1, % AND\n"
+      "        % Bitwise AND\n        alu_out = bitand(alu_in, AC);\n    case 2, % ADD\n        % Add with carry and ov"
+      "erflow appropriately set\n        [alu_out, carry, overflow] = sum_w_carry(AC, alu_in, carry);\n    case 3, % SU"
+      "B\n        % Subtract with borrow (set to carry) and overflow appropriately set\n        [alu_out, carry, overfl"
+      "ow] = sub_w_borrow(AC, alu_in, carry);\n    case 4, % CMA\n        % Complement AC\n        alu_out = fi(bitcmp("
+      "AC), 1, 8, 0, hdl_fm);\n    case 5, % CMC\n        % Complement Carry\n        carry = bitcmp(carry);\n    case "
+      "6, % Get alu_in out\n        % Pass the input\n        alu_out = fi(alu_in, 1, 8, 0, hdl_fm);\n    case 7, % CLC"
+      "\n        % Clear Carry\n        carry = fi(0, 0, 1, 0, hdl_fm); \nend\n\n% Negativity  (N)\nsign_bit = getmsb(a"
+      "lu_out); \n\n% Is Zero? (Z)\nis_zero = uint8(~all(alu_out));\nzero_ufix1 = fi(is_zero, 0, 1, 0, hdl_fm);\n\n% Se"
+      "t the output flag register [C N V Z]\nout_flags = bitconcat(bitconcat(bitconcat(carry, sign_bit), overflow), zer"
+      "o_ufix1);\n\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n\n%% Full Subtracter with flag "
+      "register appropriately set \n% diff = u1 - u2 - b_in = u1 + bitcmp(u2) + bitcmp(b_in)\n% appropriately set the b"
+      "orrow and the overflow\nfunction [diff, carry, overflow] = sub_w_borrow(u1, u2, b_in)\n\n[diff, carry, overflow]"
+      " = sum_w_carry(u1, bitcmp(u2), bitcmp(b_in));\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n"
+      "\n\n%% Full Adder with flag register appropriately set\n% sum = u1 + u2 + c_in\n% appropriately set the carry an"
+      "d the overflow\nfunction [sum, carry, overflow] = sum_w_carry(u1, u2, c_in)\n\nhdl_fm = fimath(...\n'RoundMode',"
+      " 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecision', 'ProductWordLength', 32,...\n'SumMode'"
+      ", 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true);\n\n% zero-extend u1 by 1 bit for carry detec"
+      "tion\ntemp_u1 = fi(bitconcat(fi(0, 0, 1, 0, hdl_fm), u1), 1, 9, 0, hdl_fm);\n\n% zero-extend u2 by 1 bit for car"
+      "ry detection\ntemp_u2 = fi(bitconcat(fi(0, 0, 1, 0, hdl_fm), u2), 1, 9, 0, hdl_fm);\n\n% Sum is stored in 9 bits"
+      " with the msb indicating carry\ntemp_sum = fi(temp_u1 + temp_u2 + c_in, 1, 9, 0, hdl_fm);\n\n% Carry  (C)\ncarry"
+      " = getmsb(temp_sum);\n\n% Stored back in the designated register\nsum = fi(temp_sum, 1, 8, 0, hdl_fm);\n\n% Sign"
+      " bit\nsign_bit = getmsb(sum); \n\n% if the inputs have the same sign and the output generated has a different si"
+      "gn, \n% overflow is generated!\noverflow_int = uint8((getmsb(u1) == getmsb(u2)) ...\n                     && (si"
+      "gn_bit ~= bitget(u1,8)));\n                 \n% Overflow (V)\noverflow = fi(overflow_int, 0, 1, 0, hdl_fm);\n\n%"
+      "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n\n\n\n\n"
+      editorLayout	      "100 M4x1[493 9 1427 1191]"
+      fimathString	      "fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecis"
+      "ion', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true)"
+      treatAsFi		      FI_AND_INT
+      fimathForFiConstructors FimathMatlabFactoryDefault
+      emlDefaultFimath	      FimathUserSpecified
+    }
+  }
+  junction {
+    id			    43
+    position		    [23.5747 49.5747 7]
+    chart		    41
+    linkNode		    [41 0 0]
+    subviewer		    41
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    44
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      43
+      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    41
+    linkNode		    [41 0 0]
+    dataLimits		    [23.575 23.575 14.625 34.575]
+    subviewer		    41
+    drawStyle		    SMART
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  data {
+    id			    45
+    ssIdNumber		    4
+    name		    "in_flags"
+    linkNode		    [41 0 46]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	wordLength		"4"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "fixdt(0,4,0)"
+  }
+  data {
+    id			    46
+    ssIdNumber		    5
+    name		    "func"
+    linkNode		    [41 45 47]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	wordLength		"3"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "fixdt(0,3,0)"
+  }
+  data {
+    id			    47
+    ssIdNumber		    6
+    name		    "alu_in"
+    linkNode		    [41 46 48]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"8"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "fixdt(1,8,0)"
+  }
+  data {
+    id			    48
+    ssIdNumber		    7
+    name		    "AC"
+    linkNode		    [41 47 49]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"8"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "fixdt(1,8,0)"
+  }
+  data {
+    id			    49
+    ssIdNumber		    8
+    name		    "alu_out"
+    linkNode		    [41 48 50]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"8"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "fixdt(1,8,0)"
+  }
+  data {
+    id			    50
+    ssIdNumber		    9
+    name		    "out_flags"
+    linkNode		    [41 49 0]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  instance {
+    id			    51
+    name		    "CPU_Subsystem_8_bit/Arithmetic Logical Unit (8-bit)"
+    machine		    1
+    chart		    41
+  }
+  chart {
+    id			    52
+    name		    "CPU_Subsystem_8_bit/Instruction ROM"
+    windowPosition	    [384.879 306.305 200.25 189.75]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1680 1050 1.333333333333333]
+    treeNode		    [0 53 0 0]
+    firstTransition	    55
+    firstJunction	    54
+    viewObj		    52
+    machine		    1
+    ssIdHighWaterMark	    6
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    56
+    updateMethod	    DISCRETE
+    sampleTime		    "1"
+    chartFileNumber	    5
+    disableImplicitCasting  1
+    eml {
+      name		      "Instr_Memory"
+    }
+    supportVariableSizing   0
+  }
+  state {
+    id			    53
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    52
+    treeNode		    [52 0 0 0]
+    superState		    SUBCHART
+    subviewer		    52
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function instr_out = Instr_Memory(addr, read)\n%% Instruction Memory\n\n% read == 1 => read from "
+      "IM\n\n% HDL specific fimath\nhdl_fm = fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'Product"
+      "Mode', 'FullPrecision', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastB"
+      "eforeSum', true);\n\n\npersistent data;\nif(isempty(data))\n    data = fi(zeros(1, 256), 0, 12, 0, hdl_fm);\nend"
+      "\n\n% ASSEMBLED CODE from sort1.in\ndata(1) = fi(2314, 0, 12, 0, hdl_fm);    % LI 10\ndata(2) = fi(2560, 0, 12, "
+      "0, hdl_fm);    % STA 0\ndata(3) = fi(2316, 0, 12, 0, hdl_fm);    % LI 12\ndata(4) = fi(2561, 0, 12, 0, hdl_fm); "
+      "   % STA 1\ndata(5) = fi(2322, 0, 12, 0, hdl_fm);    % LI 18\ndata(6) = fi(2572, 0, 12, 0, hdl_fm);    % STA 12\n"
+      "data(7) = fi(2310, 0, 12, 0, hdl_fm);    % LI 6\ndata(8) = fi(2573, 0, 12, 0, hdl_fm);    % STA 13\ndata(9) = fi"
+      "(2323, 0, 12, 0, hdl_fm);    % LI 19\ndata(10) = fi(2574, 0, 12, 0, hdl_fm);    % STA 14\ndata(11) = fi(2555, 0,"
+      " 12, 0, hdl_fm);    % LI 251\ndata(12) = fi(2575, 0, 12, 0, hdl_fm);    % STA 15\ndata(13) = fi(2319, 0, 12, 0, "
+      "hdl_fm);    % LI 15\ndata(14) = fi(2576, 0, 12, 0, hdl_fm);    % STA 16\ndata(15) = fi(2558, 0, 12, 0, hdl_fm); "
+      "   % LI 254\ndata(16) = fi(2577, 0, 12, 0, hdl_fm);    % STA 17\ndata(17) = fi(2306, 0, 12, 0, hdl_fm);    % LI "
+      "2\ndata(18) = fi(2578, 0, 12, 0, hdl_fm);    % STA 18\ndata(19) = fi(2315, 0, 12, 0, hdl_fm);    % LI 11\ndata(2"
+      "0) = fi(2579, 0, 12, 0, hdl_fm);    % STA 19\ndata(21) = fi(2324, 0, 12, 0, hdl_fm);    % LI 20\ndata(22) = fi(2"
+      "580, 0, 12, 0, hdl_fm);    % STA 20\ndata(23) = fi(2314, 0, 12, 0, hdl_fm);    % LI 10\ndata(24) = fi(2581, 0, 1"
+      "2, 0, hdl_fm);    % STA 21\ndata(25) = fi(2305, 0, 12, 0, hdl_fm);    % LI 1\ndata(26) = fi(2562, 0, 12, 0, hdl_"
+      "fm);    % STA 2\ndata(27) = fi(2305, 0, 12, 0, hdl_fm);    % LI 1\ndata(28) = fi(2563, 0, 12, 0, hdl_fm);    % S"
+      "TA 3\ndata(29) = fi(2305, 0, 12, 0, hdl_fm);    % LI 1\ndata(30) = fi(2564, 0, 12, 0, hdl_fm);    % STA 4\ndata("
+      "31) = fi(2, 0, 12, 0, hdl_fm);    % LDA 2\ndata(32) = fi(3704, 0, 12, 0, hdl_fm);    % CLC\ndata(33) = fi(1540, "
+      "0, 12, 0, hdl_fm);    % SUB 4\ndata(34) = fi(3704, 0, 12, 0, hdl_fm);    % CLC\ndata(35) = fi(1025, 0, 12, 0, hd"
+      "l_fm);    % ADD 1\ndata(36) = fi(2565, 0, 12, 0, hdl_fm);    % STA 5\ndata(37) = fi(261, 0, 12, 0, hdl_fm);    %"
+      " LDAI 5\ndata(38) = fi(2566, 0, 12, 0, hdl_fm);    % STA 6\ndata(39) = fi(2, 0, 12, 0, hdl_fm);    % LDA 2\ndata"
+      "(40) = fi(3704, 0, 12, 0, hdl_fm);    % CLC\ndata(41) = fi(1025, 0, 12, 0, hdl_fm);    % ADD 1\ndata(42) = fi(25"
+      "67, 0, 12, 0, hdl_fm);    % STA 7\ndata(43) = fi(263, 0, 12, 0, hdl_fm);    % LDAI 7\ndata(44) = fi(3704, 0, 12,"
+      " 0, hdl_fm);    % CLC\ndata(45) = fi(1542, 0, 12, 0, hdl_fm);    % SUB 6\ndata(46) = fi(3330, 0, 12, 0, hdl_fm);"
+      "    % BRA_N 2\ndata(47) = fi(2055, 0, 12, 0, hdl_fm);    % JMP 7\ndata(48) = fi(2304, 0, 12, 0, hdl_fm);    % LI"
+      " 0\ndata(49) = fi(2563, 0, 12, 0, hdl_fm);    % STA 3\ndata(50) = fi(263, 0, 12, 0, hdl_fm);    % LDAI 7\ndata(5"
+      "1) = fi(2821, 0, 12, 0, hdl_fm);    % STAI 5\ndata(52) = fi(6, 0, 12, 0, hdl_fm);    % LDA 6\ndata(53) = fi(2823"
+      ", 0, 12, 0, hdl_fm);    % STAI 7\ndata(54) = fi(2305, 0, 12, 0, hdl_fm);    % LI 1\ndata(55) = fi(3704, 0, 12, 0"
+      ", hdl_fm);    % CLC\ndata(56) = fi(1026, 0, 12, 0, hdl_fm);    % ADD 2\ndata(57) = fi(2562, 0, 12, 0, hdl_fm);  "
+      "  % STA 2\ndata(58) = fi(0, 0, 12, 0, hdl_fm);    % LDA 0\ndata(59) = fi(3704, 0, 12, 0, hdl_fm);    % CLC\ndata"
+      "(60) = fi(1538, 0, 12, 0, hdl_fm);    % SUB 2\ndata(61) = fi(3842, 0, 12, 0, hdl_fm);    % BRA_Z 2\ndata(62) = f"
+      "i(2271, 0, 12, 0, hdl_fm);    % JMP -33\ndata(63) = fi(2305, 0, 12, 0, hdl_fm);    % LI 1\ndata(64) = fi(2564, 0"
+      ", 12, 0, hdl_fm);    % STA 4\ndata(65) = fi(3, 0, 12, 0, hdl_fm);    % LDA 3\ndata(66) = fi(3704, 0, 12, 0, hdl_"
+      "fm);    % CLC\ndata(67) = fi(1540, 0, 12, 0, hdl_fm);    % SUB 4\ndata(68) = fi(3842, 0, 12, 0, hdl_fm);    % BR"
+      "A_Z 2\ndata(69) = fi(2260, 0, 12, 0, hdl_fm);    % JMP -44\ndata(70) = fi(2304, 0, 12, 0, hdl_fm);    % LI 0\nda"
+      "ta(71) = fi(2562, 0, 12, 0, hdl_fm);    % STA 2\ndata(72) = fi(257, 0, 12, 0, hdl_fm);    % LDAI 1\ndata(73) = f"
+      "i(2815, 0, 12, 0, hdl_fm);    % STA 255\ndata(74) = fi(3696, 0, 12, 0, hdl_fm);    % PRINT\ndata(75) = fi(2305, "
+      "0, 12, 0, hdl_fm);    % LI 1\ndata(76) = fi(3704, 0, 12, 0, hdl_fm);    % CLC\ndata(77) = fi(1025, 0, 12, 0, hdl"
+      "_fm);    % ADD 1\ndata(78) = fi(2561, 0, 12, 0, hdl_fm);    % STA 1\ndata(79) = fi(2305, 0, 12, 0, hdl_fm);    %"
+      " LI 1\ndata(80) = fi(3704, 0, 12, 0, hdl_fm);    % CLC\ndata(81) = fi(1026, 0, 12, 0, hdl_fm);    % ADD 2\ndata("
+      "82) = fi(2562, 0, 12, 0, hdl_fm);    % STA 2\ndata(83) = fi(0, 0, 12, 0, hdl_fm);    % LDA 0\ndata(84) = fi(3704"
+      ", 0, 12, 0, hdl_fm);    % CLC\ndata(85) = fi(1538, 0, 12, 0, hdl_fm);    % SUB 2\ndata(86) = fi(3842, 0, 12, 0, "
+      "hdl_fm);    % BRA_Z 2\ndata(87) = fi(2289, 0, 12, 0, hdl_fm);    % JMP -15\ndata(88) = fi(3648, 0, 12, 0, hdl_fm"
+      ");    % HLT\n\n\n% Loading from memory\nif(read == 1)\n    instr_out = data(addr+1);\nelse\n    instr_out = fi(0"
+      ", 0, 12, 0, hdl_fm);\nend\n\n"
+      editorLayout	      "100 M4x1[506 37 1427 1191]"
+      fimathString	      "fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecis"
+      "ion', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true)"
+      treatAsFi		      FI_AND_INT
+      fimathForFiConstructors FimathMatlabFactoryDefault
+      emlDefaultFimath	      FimathUserSpecified
+    }
+  }
+  junction {
+    id			    54
+    position		    [23.5747 49.5747 7]
+    chart		    52
+    linkNode		    [52 0 0]
+    subviewer		    52
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    55
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      54
+      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    52
+    linkNode		    [52 0 0]
+    dataLimits		    [23.575 23.575 14.625 34.575]
+    subviewer		    52
+    drawStyle		    SMART
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  data {
+    id			    56
+    ssIdNumber		    4
+    name		    "addr"
+    linkNode		    [52 0 57]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	primitive		SF_UINT8_TYPE
+	wordLength		"8"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "uint8"
+  }
+  data {
+    id			    57
+    ssIdNumber		    5
+    name		    "read"
+    linkNode		    [52 56 58]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	wordLength		"1"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "fixdt(0,1,0)"
+  }
+  data {
+    id			    58
+    ssIdNumber		    6
+    name		    "instr_out"
+    linkNode		    [52 57 0]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  instance {
+    id			    59
+    name		    "CPU_Subsystem_8_bit/Instruction ROM"
+    machine		    1
+    chart		    52
+  }
+  chart {
+    id			    60
+    name		    "CPU_Subsystem_8_bit/Instruction Register"
+    windowPosition	    [384.879 306.305 200.25 189.75]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1680 1050 1.333333333333333]
+    treeNode		    [0 61 0 0]
+    firstTransition	    63
+    firstJunction	    62
+    viewObj		    60
+    machine		    1
+    ssIdHighWaterMark	    6
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    64
+    updateMethod	    DISCRETE
+    sampleTime		    "1"
+    chartFileNumber	    6
+    disableImplicitCasting  1
+    eml {
+      name		      "Instruction_Reg"
+    }
+    supportVariableSizing   0
+  }
+  state {
+    id			    61
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    60
+    treeNode		    [60 0 0 0]
+    superState		    SUBCHART
+    subviewer		    60
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function IR_out = Instruction_Reg(func, IR_in)\n% A 12-bit Instruction Register with the followin"
+      "g func:\n% func == 0 => reset\n% func == 1 => store into IR\n% func == 2 => read from IR;\n% otherwise, preserve"
+      " old value and return 0\n\n% HDL specific fimath\nhdl_fm = fimath(...\n'RoundMode', 'floor',...\n'OverflowMode',"
+      " 'wrap',...\n'ProductMode', 'FullPrecision', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLe"
+      "ngth', 32,...\n'CastBeforeSum', true);\n\n\npersistent IR_value;\nif(isempty(IR_value))\n    IR_value = fi(0, 0,"
+      " 12, 0, hdl_fm);\nend\n\nIR_out = fi(0, 0, 12, 0, hdl_fm);\n        \nswitch(uint8(func)) \n    case 0,\n       "
+      " % reset\n        IR_value = fi(0, 0, 12, 0, hdl_fm); \n    case 1,\n        % store into IR\n        IR_value ="
+      " IR_in;\n    case 2,\n        % read IR\n        IR_out = IR_value;\nend\n"
+      editorLayout	      "100 M4x1[506 37 1427 1191]"
+      fimathString	      "fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecis"
+      "ion', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true)"
+      treatAsFi		      FI_AND_INT
+      fimathForFiConstructors FimathMatlabFactoryDefault
+      emlDefaultFimath	      FimathUserSpecified
+    }
+  }
+  junction {
+    id			    62
+    position		    [23.5747 49.5747 7]
+    chart		    60
+    linkNode		    [60 0 0]
+    subviewer		    60
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    63
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      62
+      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    60
+    linkNode		    [60 0 0]
+    dataLimits		    [23.575 23.575 14.625 34.575]
+    subviewer		    60
+    drawStyle		    SMART
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  data {
+    id			    64
+    ssIdNumber		    4
+    name		    "func"
+    linkNode		    [60 0 65]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	wordLength		"2"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "fixdt(0,2,0)"
+  }
+  data {
+    id			    65
+    ssIdNumber		    5
+    name		    "IR_out"
+    linkNode		    [60 64 66]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    66
+    ssIdNumber		    6
+    name		    "IR_in"
+    linkNode		    [60 65 0]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	wordLength		"12"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "fixdt(0,12,0)"
+  }
+  instance {
+    id			    67
+    name		    "CPU_Subsystem_8_bit/Instruction Register"
+    machine		    1
+    chart		    60
+  }
+  chart {
+    id			    68
+    name		    "CPU_Subsystem_8_bit/Program Counter"
+    windowPosition	    [384.879 306.305 200.25 189.75]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1680 1050 1.333333333333333]
+    treeNode		    [0 69 0 0]
+    firstTransition	    71
+    firstJunction	    70
+    viewObj		    68
+    machine		    1
+    ssIdHighWaterMark	    6
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    72
+    updateMethod	    DISCRETE
+    sampleTime		    "1"
+    chartFileNumber	    7
+    disableImplicitCasting  1
+    eml {
+      name		      "PC"
+    }
+    supportVariableSizing   0
+  }
+  state {
+    id			    69
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    68
+    treeNode		    [68 0 0 0]
+    superState		    SUBCHART
+    subviewer		    68
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function addr_out = PC(func, addr_in)\n% Program Counter\n% func = 0 => reset PC\n% func = 1 => l"
+      "oad PC\n% func = 2 => increment PC\n\n% HDL specific fimath\nhdl_fm = fimath(...\n'RoundMode', 'floor',...\n'Ove"
+      "rflowMode', 'wrap',...\n'ProductMode', 'FullPrecision', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision',"
+      " 'SumWordLength', 32,...\n'CastBeforeSum', true);\n\npersistent PC_value;\nif(isempty(PC_value))\n    PC_value ="
+      " fi(0, 0, 8, 0, hdl_fm);\nend\n\naddr_out = fi(PC_value, 0, 8, 0, hdl_fm);\n\nswitch(uint8(func)) \n    case 0,\n"
+      "        % reset\n        PC_value = fi(0, 0, 8, 0, hdl_fm); \n    case 1,\n        % store into PC\n        PC_v"
+      "alue = addr_in;\n    case 2,\n        % increment PC\n        PC_value = fi(PC_value + 1, 0, 8, 0, hdl_fm);\nend"
+      "\n"
+      editorLayout	      "100 M4x1[355 40 1427 1191]"
+      fimathString	      "fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecis"
+      "ion', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true)"
+      treatAsFi		      FI_AND_INT
+      fimathForFiConstructors FimathMatlabFactoryDefault
+      emlDefaultFimath	      FimathUserSpecified
+    }
+  }
+  junction {
+    id			    70
+    position		    [23.5747 49.5747 7]
+    chart		    68
+    linkNode		    [68 0 0]
+    subviewer		    68
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    71
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      70
+      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    68
+    linkNode		    [68 0 0]
+    dataLimits		    [23.575 23.575 14.625 34.575]
+    subviewer		    68
+    drawStyle		    SMART
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  data {
+    id			    72
+    ssIdNumber		    4
+    name		    "func"
+    linkNode		    [68 0 73]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	wordLength		"2"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "fixdt(0,2,0)"
+  }
+  data {
+    id			    73
+    ssIdNumber		    5
+    name		    "addr_out"
+    linkNode		    [68 72 74]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    74
+    ssIdNumber		    6
+    name		    "addr_in"
+    linkNode		    [68 73 0]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	wordLength		"8"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "fixdt(0,8,0)"
+  }
+  instance {
+    id			    75
+    name		    "CPU_Subsystem_8_bit/Program Counter"
+    machine		    1
+    chart		    68
+  }
+  chart {
+    id			    76
+    name		    "CPU_Subsystem_8_bit/Shifter (8-bit)"
+    windowPosition	    [384.879 306.305 200.25 189.75]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1680 1050 1.333333333333333]
+    treeNode		    [0 77 0 0]
+    firstTransition	    79
+    firstJunction	    78
+    viewObj		    76
+    machine		    1
+    ssIdHighWaterMark	    8
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    80
+    updateMethod	    DISCRETE
+    sampleTime		    "1"
+    chartFileNumber	    8
+    disableImplicitCasting  1
+    eml {
+      name		      "Shifter"
+    }
+    supportVariableSizing   0
+  }
+  state {
+    id			    77
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    76
+    treeNode		    [76 0 0 0]
+    superState		    SUBCHART
+    subviewer		    76
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function [out_flags, shift_out] = Shifter(select, input, in_flags)\n% An 8-bit shifter:\n% select"
+      " = 1 => shift left by 1 bit\n% select = 2 => shift right by 1 bit\n% otherwise, pass the input\n\n% HDL specific"
+      " fimath\nhdl_fm = fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecisio"
+      "n', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true);\n\n"
+      "% Overflow (V)\noverflow = bitget(in_flags, 2);\n\n% Carry (C)\nc_out = bitget(in_flags, 4);\n\nswitch(uint8(sel"
+      "ect))\n    case 1,\n        % shift left\n        % affects C and V as well\n        shift_out = bitsll(input, 1"
+      ");\n        % Carry (C)\n        c_out = bitget(input, 8);\n        % Overflow (V)\n        overflow = bitxor(bi"
+      "tget(input, 8), bitget(input, 7));\n    case 2,\n        % shift right\n        shift_out = bitsra(input, 1);\n "
+      "   otherwise,\n        % pass the input\n        shift_out = fi(input, 1, 8, 0, hdl_fm);\nend\n\n% Negativity  ("
+      "N)\nsign_bit = getmsb(shift_out); \n\n% Is Zero? (Z)\nis_zero = uint8(~all(shift_out));\nzero_ufix1 = fi(is_zero"
+      ", 0, 1, 0, hdl_fm);\n\n% Set [C, N, V, Z] in the flag register\nout_flags = bitconcat(bitconcat(bitconcat(c_out,"
+      " sign_bit), overflow), zero_ufix1);\n\n"
+      editorLayout	      "100 M4x1[493 9 1427 1191]"
+      fimathString	      "fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecis"
+      "ion', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true)"
+      treatAsFi		      FI_AND_INT
+      fimathForFiConstructors FimathMatlabFactoryDefault
+      emlDefaultFimath	      FimathUserSpecified
+    }
+  }
+  junction {
+    id			    78
+    position		    [23.5747 49.5747 7]
+    chart		    76
+    linkNode		    [76 0 0]
+    subviewer		    76
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    79
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      78
+      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    76
+    linkNode		    [76 0 0]
+    dataLimits		    [23.575 23.575 14.625 34.575]
+    subviewer		    76
+    drawStyle		    SMART
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  data {
+    id			    80
+    ssIdNumber		    4
+    name		    "out_flags"
+    linkNode		    [76 0 81]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    81
+    ssIdNumber		    5
+    name		    "select"
+    linkNode		    [76 80 82]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	wordLength		"2"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "fixdt(0,2,0)"
+  }
+  data {
+    id			    82
+    ssIdNumber		    6
+    name		    "shift_out"
+    linkNode		    [76 81 83]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"8"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "fixdt(1,8,0)"
+  }
+  data {
+    id			    83
+    ssIdNumber		    7
+    name		    "input"
+    linkNode		    [76 82 84]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"8"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "fixdt(1,8,0)"
+  }
+  data {
+    id			    84
+    ssIdNumber		    8
+    name		    "in_flags"
+    linkNode		    [76 83 0]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  instance {
+    id			    85
+    name		    "CPU_Subsystem_8_bit/Shifter (8-bit)"
+    machine		    1
+    chart		    76
+  }
+  chart {
+    id			    86
+    name		    "CPU_Subsystem_8_bit/PC Incrementer"
+    windowPosition	    [399.879 291.305 200.25 189.75]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1680 1050 1.333333333333333]
+    treeNode		    [0 87 0 0]
+    firstTransition	    89
+    firstJunction	    88
+    viewObj		    86
+    machine		    1
+    ssIdHighWaterMark	    6
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    90
+    updateMethod	    DISCRETE
+    sampleTime		    "1"
+    chartFileNumber	    9
+    disableImplicitCasting  1
+    eml {
+      name		      "PC_Inc"
+    }
+    supportVariableSizing   0
+  }
+  state {
+    id			    87
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    86
+    treeNode		    [86 0 0 0]
+    superState		    SUBCHART
+    subviewer		    86
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function PC_next  = PC_Inc(jmp_offset, PC_current)\n% PC incrementer increments the PC with jmp_o"
+      "ffset\n\n% HDL specific fimath\nhdl_fm = fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'Prod"
+      "uctMode', 'FullPrecision', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'Ca"
+      "stBeforeSum', true);\n\nPC_next = fi(jmp_offset + PC_current, 0, 8, 0, hdl_fm);\n"
+      editorLayout	      "100 M4x1[493 9 1427 1191]"
+      fimathString	      "fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecis"
+      "ion', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true)"
+      treatAsFi		      FI_AND_INT
+      fimathForFiConstructors FimathMatlabFactoryDefault
+      emlDefaultFimath	      FimathUserSpecified
+    }
+  }
+  junction {
+    id			    88
+    position		    [23.5747 49.5747 7]
+    chart		    86
+    linkNode		    [86 0 0]
+    subviewer		    86
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    89
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      88
+      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    86
+    linkNode		    [86 0 0]
+    dataLimits		    [23.575 23.575 14.625 34.575]
+    subviewer		    86
+    drawStyle		    SMART
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  data {
+    id			    90
+    ssIdNumber		    4
+    name		    "jmp_offset"
+    linkNode		    [86 0 91]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"8"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "fixdt(1,8,0)"
+  }
+  data {
+    id			    91
+    ssIdNumber		    5
+    name		    "PC_current"
+    linkNode		    [86 90 92]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_CUSTOM_INTEGER_TYPE
+	primitive		SF_DOUBLE_TYPE
+	wordLength		"8"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "fixdt(0,8,0)"
+  }
+  data {
+    id			    92
+    ssIdNumber		    6
+    name		    "PC_next"
+    linkNode		    [86 91 0]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  instance {
+    id			    93
+    name		    "CPU_Subsystem_8_bit/PC Incrementer"
+    machine		    1
+    chart		    86
+  }
+  target {
+    id			    94
+    name		    "sfun"
+    description		    "Default Simulink S-Function Target."
+    codeFlags		    ""
+    machine		    1
+    linkNode		    [1 0 95]
+  }
+  target {
+    id			    95
+    name		    "slhdlc"
+    codeFlags		    " comments=1 autocomments=0 emitdescriptions=1 preservenames=0 preservenameswithparent=0 language=0"
+    " clockname=clk clockenablename=clkenable resetname=reset codegendir=hdlsrc optimizeforhdl=1 gentestbench=0"
+    machine		    1
+    linkNode		    [1 94 96]
+  }
+  target {
+    id			    96
+    name		    "rtw"
+    codeFlags		    " comments=1 statebitsets=1 databitsets=1 emitlogicalops=1 elseifdetection=1 constantfolding=1 redu"
+    "ndantloadelimination=0 preservenames=0 preservenameswithparent=0 exportcharts=0"
+    machine		    1
+    linkNode		    [1 95 0]
+  }
+}
