@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.554"
+    ComputedModelVersion    "1.556"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -53,9 +53,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "sandesh"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Feb 20 13:51:49 2014"
+  LastModifiedDate	  "Thu Feb 20 14:48:59 2014"
   RTWModifiedTimeStamp	  314803667
-  ModelVersionFormat	  "1.%<AutoIncrement:554>"
+  ModelVersionFormat	  "1.%<AutoIncrement:556>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -79,7 +79,7 @@ Model {
   StatusBar		  on
   BrowserShowLibraryLinks off
   BrowserLookUnderMasks	  off
-  SimulationMode	  "normal"
+  SimulationMode	  "rapid-accelerator"
   LinearizationMsg	  "none"
   Profile		  off
   ParamWorkspaceSource	  "MATLABWorkspace"
@@ -823,7 +823,7 @@ Model {
   }
   System {
     Name		    "hdlcodercpu_eml"
-    Location		    [125, 294, 1011, 755]
+    Location		    [144, 185, 1186, 723]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -857,7 +857,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"CPU_Subsystem_8_bit"
-	Location		[2, 82, 1405, 857]
+	Location		[2, 74, 1421, 849]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -876,8 +876,6 @@ Model {
 	  SID			  "2"
 	  Position		  [25, 528, 55, 542]
 	  NamePlacement		  "alternate"
-	  FontSize		  14
-	  FontWeight		  "bold"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -887,8 +885,6 @@ Model {
 	  Ports			  [3, 1]
 	  Position		  [505, 476, 725, 584]
 	  BackgroundColor	  "[0.729412, 0.886275, 0.996078]"
-	  FontSize		  14
-	  FontWeight		  "bold"
 	  ErrorFcn		  "Stateflow.Translate.translate"
 	  PermitHierarchicalResolution "ExplicitOnly"
 	  TreatAsAtomicUnit	  on
@@ -1033,8 +1029,6 @@ Model {
 	  Ports			  [4, 2]
 	  Position		  [820, 298, 1045, 477]
 	  BackgroundColor	  "[0.729412, 0.886275, 0.996078]"
-	  FontSize		  14
-	  FontWeight		  "bold"
 	  ErrorFcn		  "Stateflow.Translate.translate"
 	  PermitHierarchicalResolution "ExplicitOnly"
 	  TreatAsAtomicUnit	  on
@@ -1215,8 +1209,6 @@ Model {
 	  Ports			  [4, 13]
 	  Position		  [160, 116, 350, 784]
 	  BackgroundColor	  "[1.000000, 0.803922, 0.607843]"
-	  FontSize		  14
-	  FontWeight		  "bold"
 	  ErrorFcn		  "Stateflow.Translate.translate"
 	  PermitHierarchicalResolution "ExplicitOnly"
 	  TreatAsAtomicUnit	  on
@@ -1644,11 +1636,9 @@ Model {
 	  Name			  "Data Memory"
 	  SID			  "6"
 	  Ports			  [3, 1]
-	  Position		  [510, 271, 670, 429]
+	  Position		  [505, 271, 665, 429]
 	  BackgroundColor	  "[0.701961, 1.000000, 0.701961]"
 	  LibraryVersion	  "1.194"
-	  FontSize		  14
-	  FontWeight		  "bold"
 	  SourceBlock		  "hdldemolib/Single Port RAM"
 	  SourceType		  "Single-port RAM"
 	  ShowPortLabels	  "FromPortIcon"
@@ -1668,8 +1658,6 @@ Model {
 	  Name			  "Data Type Conversion"
 	  SID			  "7"
 	  Position		  [390, 383, 465, 417]
-	  FontSize		  14
-	  FontWeight		  "bold"
 	  RndMeth		  "Floor"
 	  SaturateOnIntegerOverflow off
 	}
@@ -1680,8 +1668,6 @@ Model {
 	  Ports			  [2, 1]
 	  Position		  [890, 752, 1125, 923]
 	  BackgroundColor	  "[0.729412, 0.886275, 0.996078]"
-	  FontSize		  14
-	  FontWeight		  "bold"
 	  ErrorFcn		  "Stateflow.Translate.translate"
 	  PermitHierarchicalResolution "ExplicitOnly"
 	  TreatAsAtomicUnit	  on
@@ -1812,8 +1798,6 @@ Model {
 	  Ports			  [2, 1]
 	  Position		  [1160, 737, 1355, 873]
 	  BackgroundColor	  "[0.729412, 0.886275, 0.996078]"
-	  FontSize		  14
-	  FontWeight		  "bold"
 	  ErrorFcn		  "Stateflow.Translate.translate"
 	  PermitHierarchicalResolution "ExplicitOnly"
 	  TreatAsAtomicUnit	  on
@@ -1944,8 +1928,6 @@ Model {
 	  Ports			  [2, 1]
 	  Position		  [445, 741, 620, 819]
 	  BackgroundColor	  "[0.729412, 0.886275, 0.996078]"
-	  FontSize		  14
-	  FontWeight		  "bold"
 	  ErrorFcn		  "Stateflow.Translate.translate"
 	  PermitHierarchicalResolution "ExplicitOnly"
 	  TreatAsAtomicUnit	  on
@@ -2076,8 +2058,6 @@ Model {
 	  Ports			  [2, 1]
 	  Position		  [675, 719, 840, 801]
 	  BackgroundColor	  "[0.729412, 0.886275, 0.996078]"
-	  FontSize		  14
-	  FontWeight		  "bold"
 	  ErrorFcn		  "Stateflow.Translate.translate"
 	  PermitHierarchicalResolution "ExplicitOnly"
 	  TreatAsAtomicUnit	  on
@@ -2207,8 +2187,6 @@ Model {
 	  SID			  "12"
 	  Ports			  [1]
 	  Position		  [880, 514, 910, 546]
-	  FontSize		  14
-	  FontWeight		  "bold"
 	  Floating		  off
 	  Location		  [249, 253, 1289, 778]
 	  Open			  off
@@ -2228,8 +2206,6 @@ Model {
 	  Ports			  [3, 2]
 	  Position		  [1135, 313, 1335, 457]
 	  BackgroundColor	  "[0.729412, 0.886275, 0.996078]"
-	  FontSize		  14
-	  FontWeight		  "bold"
 	  ErrorFcn		  "Stateflow.Translate.translate"
 	  PermitHierarchicalResolution "ExplicitOnly"
 	  TreatAsAtomicUnit	  on
@@ -2395,8 +2371,6 @@ Model {
 	  SID			  "14"
 	  Position		  [465, 932, 485, 968]
 	  BlockMirror		  on
-	  FontSize		  14
-	  FontWeight		  "bold"
 	}
 	Block {
 	  BlockType		  UnitDelay
@@ -2404,24 +2378,18 @@ Model {
 	  SID			  "15"
 	  Position		  [1075, 62, 1095, 98]
 	  BlockMirror		  on
-	  FontSize		  14
-	  FontWeight		  "bold"
 	}
 	Block {
 	  BlockType		  UnitDelay
 	  Name			  "Unit Delay 4"
 	  SID			  "16"
 	  Position		  [640, 827, 660, 863]
-	  FontSize		  14
-	  FontWeight		  "bold"
 	}
 	Block {
 	  BlockType		  UnitDelay
 	  Name			  "Unit Delay 5"
 	  SID			  "17"
 	  Position		  [630, 87, 650, 123]
-	  FontSize		  14
-	  FontWeight		  "bold"
 	  Port {
 	    PortNumber		    1
 	    Name		    "feedback for indirect addressing"
@@ -2434,24 +2402,18 @@ Model {
 	  Name			  "Unit Delay 6"
 	  SID			  "18"
 	  Position		  [1175, 179, 1205, 221]
-	  FontSize		  14
-	  FontWeight		  "bold"
 	}
 	Block {
 	  BlockType		  UnitDelay
 	  Name			  "Unit Delay 7"
 	  SID			  "19"
 	  Position		  [100, 518, 120, 552]
-	  FontSize		  14
-	  FontWeight		  "bold"
 	}
 	Block {
 	  BlockType		  UnitDelay
 	  Name			  "Unit Delay2"
 	  SID			  "20"
 	  Position		  [1080, 602, 1100, 638]
-	  FontSize		  14
-	  FontWeight		  "bold"
 	}
 	Block {
 	  BlockType		  SubSystem
@@ -2460,8 +2422,6 @@ Model {
 	  Ports			  [2, 1]
 	  Position		  [825, 161, 980, 239]
 	  BackgroundColor	  "[0.729412, 0.886275, 0.996078]"
-	  FontSize		  14
-	  FontWeight		  "bold"
 	  ErrorFcn		  "Stateflow.Translate.translate"
 	  PermitHierarchicalResolution "ExplicitOnly"
 	  TreatAsAtomicUnit	  on
@@ -2590,8 +2550,6 @@ Model {
 	  Name			  "ext_out"
 	  SID			  "22"
 	  Position		  [1255, 193, 1285, 207]
-	  FontSize		  14
-	  FontWeight		  "bold"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -2600,8 +2558,6 @@ Model {
 	  SID			  "23"
 	  Position		  [310, 828, 340, 842]
 	  BlockMirror		  on
-	  FontSize		  14
-	  FontWeight		  "bold"
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
@@ -2629,7 +2585,7 @@ Model {
 	      DstPort		      4
 	    }
 	    Branch {
-	      Points		      [-300, 0; 0, -155]
+	      Points		      [-300, 0]
 	      DstBlock		      "Data Memory"
 	      DstPort		      1
 	    }
@@ -2642,7 +2598,7 @@ Model {
 	Line {
 	  SrcBlock		  "Data Memory"
 	  SrcPort		  1
-	  Points		  [55, 0]
+	  Points		  [60, 0]
 	  Branch {
 	    Points		    [0, 60]
 	    DstBlock		    "Arithmetic Logical Unit (8-bit)"
@@ -2737,8 +2693,7 @@ Model {
 	}
 	Line {
 	  Name			  "jmp offset"
-	  FontSize		  14
-	  FontWeight		  "bold"
+	  FontSize		  10
 	  Labels		  [2, 0]
 	  SrcBlock		  "Control Unit"
 	  SrcPort		  11
@@ -2810,12 +2765,11 @@ Model {
 	}
 	Line {
 	  Name			  "feedback for indirect addressing"
-	  FontSize		  14
-	  FontWeight		  "bold"
+	  FontSize		  10
 	  Labels		  [1, 1]
 	  SrcBlock		  "Unit Delay 5"
 	  SrcPort		  1
-	  Points		  [-530, 0; 0, 100]
+	  Points		  [-510, 0]
 	  DstBlock		  "Control Unit"
 	  DstPort		  1
 	}
@@ -2873,20 +2827,14 @@ Model {
 	Annotation {
 	  Name			  "loading into AC"
 	  Position		  [472, 540]
-	  FontSize		  14
-	  FontWeight		  "bold"
 	}
 	Annotation {
 	  Name			  "writing computation back into AC"
 	  Position		  [845, 611]
-	  FontSize		  14
-	  FontWeight		  "bold"
 	}
 	Annotation {
 	  Name			  "Instruction to be executed"
 	  Position		  [663, 934]
-	  FontSize		  14
-	  FontWeight		  "bold"
 	}
       }
     }
@@ -3292,7 +3240,7 @@ Stateflow {
       "(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecision', 'ProductWordLength',"
       " 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true);\n\ny = fi(0, 1, 8, 0, hdl_"
       "fm);\n\nif(enable)\n    y = fi(u, 1, 8, 0, hdl_fm);\nend"
-      editorLayout	      "100 M4x1[109 61 1397 912]"
+      editorLayout	      "100 M4x1[45 45 810 543]"
       fimathString	      "fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'KeepLSB', "
       "'ProductWordLength', 32,...\n'SumMode', 'KeepLSB', 'SumWordLength', 32,...\n'CastBeforeSum', true)"
       fimathForFiConstructors FimathMatlabFactoryDefault
