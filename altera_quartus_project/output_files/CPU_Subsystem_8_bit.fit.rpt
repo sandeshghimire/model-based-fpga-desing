@@ -1,5 +1,5 @@
 Fitter report for CPU_Subsystem_8_bit
-Thu Feb 20 11:30:31 2014
+Thu Feb 20 11:43:02 2014
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -63,7 +63,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Fitter Summary                                                               ;
 +---------------------------------+--------------------------------------------+
-; Fitter Status                   ; Successful - Thu Feb 20 11:30:31 2014      ;
+; Fitter Status                   ; Successful - Thu Feb 20 11:43:02 2014      ;
 ; Quartus II 64-Bit Version       ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                   ; CPU_Subsystem_8_bit                        ;
 ; Top-level Entity Name           ; CPU_Subsystem_8_bit                        ;
@@ -3494,7 +3494,7 @@ Info (332130): Timing requirements not specified -- quality metrics such as perf
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:10
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:11
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:01
 Info (170191): Fitter placement operations beginning
@@ -3506,20 +3506,20 @@ Info (170195): Router estimated average interconnect usage is 1% of the availabl
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:24
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 2.93 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 2.87 seconds.
 Info (334003): Started post-fitting delay annotation
 Warning (334000): Timing characteristics of device 5CSXFC6D6F31C8ES are preliminary
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Warning (334000): Timing characteristics of device 5CSXFC6D6F31C8ES are preliminary
 Info (334004): Delay annotation completed successfully
-Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:18
+Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:19
 Info (144001): Generated suppressed messages file M:/alarmd/matlab2vhdl/altera_quartus_project/output_files/CPU_Subsystem_8_bit.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 1525 megabytes
-    Info: Processing ended: Thu Feb 20 11:30:35 2014
-    Info: Elapsed time: 00:01:35
-    Info: Total CPU time (on all processors): 00:01:29
+    Info: Peak virtual memory: 1519 megabytes
+    Info: Processing ended: Thu Feb 20 11:43:06 2014
+    Info: Elapsed time: 00:01:37
+    Info: Total CPU time (on all processors): 00:01:31
 
 
 +----------------------------+

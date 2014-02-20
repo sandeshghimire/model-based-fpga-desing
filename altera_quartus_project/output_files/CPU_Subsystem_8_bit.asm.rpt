@@ -1,5 +1,5 @@
 Assembler report for CPU_Subsystem_8_bit
-Thu Feb 20 11:30:55 2014
+Thu Feb 20 11:43:25 2014
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -37,7 +37,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Thu Feb 20 11:30:55 2014 ;
+; Assembler Status      ; Successful - Thu Feb 20 11:43:25 2014 ;
 ; Revision Name         ; CPU_Subsystem_8_bit                   ;
 ; Top-level Entity Name ; CPU_Subsystem_8_bit                   ;
 ; Family                ; Cyclone V                             ;
@@ -103,12 +103,12 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu Feb 20 11:30:40 2014
+    Info: Processing started: Thu Feb 20 11:43:10 2014
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off matlab2vhdl -c CPU_Subsystem_8_bit
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 662 megabytes
-    Info: Processing ended: Thu Feb 20 11:30:55 2014
+    Info: Peak virtual memory: 665 megabytes
+    Info: Processing ended: Thu Feb 20 11:43:25 2014
     Info: Elapsed time: 00:00:15
     Info: Total CPU time (on all processors): 00:00:12
 
