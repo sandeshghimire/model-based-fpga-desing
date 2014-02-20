@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.553"
+    ComputedModelVersion    "1.554"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -53,9 +53,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "sandesh"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Feb 20 13:28:02 2014"
+  LastModifiedDate	  "Thu Feb 20 13:51:49 2014"
   RTWModifiedTimeStamp	  314803667
-  ModelVersionFormat	  "1.%<AutoIncrement:553>"
+  ModelVersionFormat	  "1.%<AutoIncrement:554>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -823,7 +823,7 @@ Model {
   }
   System {
     Name		    "hdlcodercpu_eml"
-    Location		    [238, 153, 1124, 614]
+    Location		    [125, 294, 1011, 755]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -837,7 +837,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "30"
+    SIDHighWatermark	    "32"
     Block {
       BlockType		      SubSystem
       Name		      "CPU_Subsystem_8_bit"
@@ -857,7 +857,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"CPU_Subsystem_8_bit"
-	Location		[2, 74, 1421, 849]
+	Location		[2, 82, 1405, 857]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -3173,19 +3173,20 @@ Model {
       BlockType		      Scope
       Name		      "Scope"
       SID		      "29"
-      Ports		      [1]
-      Position		      [710, 89, 740, 121]
+      Ports		      [2]
+      Position		      [710, 96, 740, 129]
       Floating		      off
-      Location		      [729, 283, 1435, 681]
+      Location		      [1, 48, 1441, 869]
       Open		      off
-      NumInputPorts	      "1"
+      NumInputPorts	      "2"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
+	axes2			"%<SignalLabel>"
       }
-      TimeRange		      "100             "
-      YMin		      "0"
-      YMax		      "7"
+      TimeRange		      "100"
+      YMin		      "0~-5"
+      YMax		      "7~5"
       DataFormat	      "StructureWithTime"
       MaxDataPoints	      "8500"
       SampleTime	      "0"
@@ -3212,8 +3213,16 @@ Model {
     Line {
       SrcBlock		      "CPU_Subsystem_8_bit"
       SrcPort		      2
-      DstBlock		      "Data Type Conversion"
-      DstPort		      1
+      Points		      [15, 0]
+      Branch {
+	DstBlock		"Data Type Conversion"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -35]
+	DstBlock		"Scope"
+	DstPort			2
+      }
     }
     Line {
       SrcBlock		      "Data Type Conversion"
@@ -3283,7 +3292,7 @@ Stateflow {
       "(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecision', 'ProductWordLength',"
       " 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true);\n\ny = fi(0, 1, 8, 0, hdl_"
       "fm);\n\nif(enable)\n    y = fi(u, 1, 8, 0, hdl_fm);\nend"
-      editorLayout	      "100 M4x1[109 45 1397 1155]"
+      editorLayout	      "100 M4x1[109 61 1397 912]"
       fimathString	      "fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'KeepLSB', "
       "'ProductWordLength', 32,...\n'SumMode', 'KeepLSB', 'SumWordLength', 32,...\n'CastBeforeSum', true)"
       fimathForFiConstructors FimathMatlabFactoryDefault
