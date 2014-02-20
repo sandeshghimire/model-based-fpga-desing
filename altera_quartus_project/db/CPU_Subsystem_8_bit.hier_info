@@ -1,4 +1,28 @@
-|CPU_Subsystem_8_bit
+|CPU_Subsystem_8_bit_SCM
+ce_out <= CPU_Subsystem_8_bit:inst.ce_out
+clock => CPU_Subsystem_8_bit:inst.clk
+reset => CPU_Subsystem_8_bit:inst.reset
+clock_enable => CPU_Subsystem_8_bit:inst.clk_enable
+master_reset => CPU_Subsystem_8_bit:inst.master_reset
+ext_out[0] <= CPU_Subsystem_8_bit:inst.ext_out[0]
+ext_out[1] <= CPU_Subsystem_8_bit:inst.ext_out[1]
+ext_out[2] <= CPU_Subsystem_8_bit:inst.ext_out[2]
+ext_out[3] <= CPU_Subsystem_8_bit:inst.ext_out[3]
+ext_out[4] <= CPU_Subsystem_8_bit:inst.ext_out[4]
+ext_out[5] <= CPU_Subsystem_8_bit:inst.ext_out[5]
+ext_out[6] <= CPU_Subsystem_8_bit:inst.ext_out[6]
+ext_out[7] <= CPU_Subsystem_8_bit:inst.ext_out[7]
+hlt[0] <= CPU_Subsystem_8_bit:inst.hlt[0]
+hlt[1] <= CPU_Subsystem_8_bit:inst.hlt[1]
+hlt[2] <= CPU_Subsystem_8_bit:inst.hlt[2]
+hlt[3] <= CPU_Subsystem_8_bit:inst.hlt[3]
+hlt[4] <= CPU_Subsystem_8_bit:inst.hlt[4]
+hlt[5] <= CPU_Subsystem_8_bit:inst.hlt[5]
+hlt[6] <= CPU_Subsystem_8_bit:inst.hlt[6]
+hlt[7] <= CPU_Subsystem_8_bit:inst.hlt[7]
+
+
+|CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst
 clk => Unit_Delay_6_out1[0].CLK
 clk => Unit_Delay_6_out1[1].CLK
 clk => Unit_Delay_6_out1[2].CLK
@@ -165,26 +189,26 @@ clk_enable => Unit_Delay_6_out1[2].ENA
 clk_enable => Unit_Delay_6_out1[1].ENA
 clk_enable => Unit_Delay_6_out1[0].ENA
 master_reset => Unit_Delay_7_out1.DATAIN
-ce_out << clk_enable.DB_MAX_OUTPUT_PORT_TYPE
-ext_out[0] << Unit_Delay_6_out1[0].DB_MAX_OUTPUT_PORT_TYPE
-ext_out[1] << Unit_Delay_6_out1[1].DB_MAX_OUTPUT_PORT_TYPE
-ext_out[2] << Unit_Delay_6_out1[2].DB_MAX_OUTPUT_PORT_TYPE
-ext_out[3] << Unit_Delay_6_out1[3].DB_MAX_OUTPUT_PORT_TYPE
-ext_out[4] << Unit_Delay_6_out1[4].DB_MAX_OUTPUT_PORT_TYPE
-ext_out[5] << Unit_Delay_6_out1[5].DB_MAX_OUTPUT_PORT_TYPE
-ext_out[6] << Unit_Delay_6_out1[6].DB_MAX_OUTPUT_PORT_TYPE
-ext_out[7] << Unit_Delay_6_out1[7].DB_MAX_OUTPUT_PORT_TYPE
-hlt[0] << control_unit:u_Control_Unit.hlt[0]
-hlt[1] << control_unit:u_Control_Unit.hlt[1]
-hlt[2] << control_unit:u_Control_Unit.hlt[2]
-hlt[3] << control_unit:u_Control_Unit.hlt[3]
-hlt[4] << control_unit:u_Control_Unit.hlt[4]
-hlt[5] << control_unit:u_Control_Unit.hlt[5]
-hlt[6] << control_unit:u_Control_Unit.hlt[6]
-hlt[7] << control_unit:u_Control_Unit.hlt[7]
+ce_out <= clk_enable.DB_MAX_OUTPUT_PORT_TYPE
+ext_out[0] <= Unit_Delay_6_out1[0].DB_MAX_OUTPUT_PORT_TYPE
+ext_out[1] <= Unit_Delay_6_out1[1].DB_MAX_OUTPUT_PORT_TYPE
+ext_out[2] <= Unit_Delay_6_out1[2].DB_MAX_OUTPUT_PORT_TYPE
+ext_out[3] <= Unit_Delay_6_out1[3].DB_MAX_OUTPUT_PORT_TYPE
+ext_out[4] <= Unit_Delay_6_out1[4].DB_MAX_OUTPUT_PORT_TYPE
+ext_out[5] <= Unit_Delay_6_out1[5].DB_MAX_OUTPUT_PORT_TYPE
+ext_out[6] <= Unit_Delay_6_out1[6].DB_MAX_OUTPUT_PORT_TYPE
+ext_out[7] <= Unit_Delay_6_out1[7].DB_MAX_OUTPUT_PORT_TYPE
+hlt[0] <= control_unit:u_Control_Unit.hlt[0]
+hlt[1] <= control_unit:u_Control_Unit.hlt[1]
+hlt[2] <= control_unit:u_Control_Unit.hlt[2]
+hlt[3] <= control_unit:u_Control_Unit.hlt[3]
+hlt[4] <= control_unit:u_Control_Unit.hlt[4]
+hlt[5] <= control_unit:u_Control_Unit.hlt[5]
+hlt[6] <= control_unit:u_Control_Unit.hlt[6]
+hlt[7] <= control_unit:u_Control_Unit.hlt[7]
 
 
-|CPU_Subsystem_8_bit|PC_Incrementer:u_PC_Incrementer
+|CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|PC_Incrementer:u_PC_Incrementer
 jmp_offset[0] => Add0.IN10
 jmp_offset[1] => Add0.IN9
 jmp_offset[2] => Add0.IN8
@@ -212,7 +236,7 @@ PC_next[6] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 PC_next[7] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|CPU_Subsystem_8_bit|Program_Counter:u_Program_Counter
+|CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Program_Counter:u_Program_Counter
 clk => PC_value[0].CLK
 clk => PC_value[1].CLK
 clk => PC_value[2].CLK
@@ -271,7 +295,7 @@ addr_out[6] <= PC_value[6].DB_MAX_OUTPUT_PORT_TYPE
 addr_out[7] <= PC_value[7].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|CPU_Subsystem_8_bit|Instruction_ROM:u_Instruction_ROM
+|CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Instruction_ROM:u_Instruction_ROM
 clk => data[255][0].CLK
 clk => data[255][1].CLK
 clk => data[255][2].CLK
@@ -4339,7 +4363,7 @@ instr_out[10] <= instr_out_tmp.DB_MAX_OUTPUT_PORT_TYPE
 instr_out[11] <= instr_out_tmp.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|CPU_Subsystem_8_bit|Instruction_Register:u_Instruction_Register
+|CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Instruction_Register:u_Instruction_Register
 clk => IR_value[0].CLK
 clk => IR_value[1].CLK
 clk => IR_value[2].CLK
@@ -4450,7 +4474,7 @@ IR_out[10] <= Mux13.DB_MAX_OUTPUT_PORT_TYPE
 IR_out[11] <= Mux12.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|CPU_Subsystem_8_bit|Arithmetic_Logical_Unit_8_bit:u_Arithmetic_Logical_Unit_8_bit
+|CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Arithmetic_Logical_Unit_8_bit:u_Arithmetic_Logical_Unit_8_bit
 in_flags[0] => ~NO_FANOUT~
 in_flags[1] => Mux9.IN2
 in_flags[1] => Mux9.IN3
@@ -4604,7 +4628,7 @@ out_flags[2] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
 out_flags[3] <= Mux8.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|CPU_Subsystem_8_bit|Shifter_8_bit:u_Shifter_8_bit
+|CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Shifter_8_bit:u_Shifter_8_bit
 select_rsvd[0] => Mux0.IN1
 select_rsvd[0] => Mux1.IN1
 select_rsvd[0] => Mux2.IN1
@@ -4681,7 +4705,7 @@ shift_out[6] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
 shift_out[7] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|CPU_Subsystem_8_bit|Control_Unit:u_Control_Unit
+|CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Control_Unit:u_Control_Unit
 clk => indirect_address[0].CLK
 clk => indirect_address[1].CLK
 clk => indirect_address[2].CLK
@@ -4958,7 +4982,7 @@ hlt[6] <= <GND>
 hlt[7] <= <GND>
 
 
-|CPU_Subsystem_8_bit|Accumulator:u_Accumulator
+|CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Accumulator:u_Accumulator
 clk => AC_value[0].CLK
 clk => AC_value[1].CLK
 clk => AC_value[2].CLK
@@ -5033,7 +5057,7 @@ AC_out[6] <= AC_value[6].DB_MAX_OUTPUT_PORT_TYPE
 AC_out[7] <= AC_value[7].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|CPU_Subsystem_8_bit|SinglePortRAM_Inst0:u_SinglePortRAM_Inst0
+|CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|SinglePortRAM_Inst0:u_SinglePortRAM_Inst0
 clk => ram_256x8b_0:u_RAM_256x8b_0.clk
 enb => ram_256x8b_0:u_RAM_256x8b_0.enb
 din[0] => ram_256x8b_0:u_RAM_256x8b_0.din[0]
@@ -5063,7 +5087,7 @@ dout[6] <= ram_256x8b_0:u_RAM_256x8b_0.dout[6]
 dout[7] <= ram_256x8b_0:u_RAM_256x8b_0.dout[7]
 
 
-|CPU_Subsystem_8_bit|SinglePortRAM_Inst0:u_SinglePortRAM_Inst0|RAM_256x8b_0:u_RAM_256x8b_0
+|CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|SinglePortRAM_Inst0:u_SinglePortRAM_Inst0|RAM_256x8b_0:u_RAM_256x8b_0
 clk => ram~16.CLK
 clk => ram~0.CLK
 clk => ram~1.CLK
@@ -5166,7 +5190,7 @@ dout[6] <= data_int[6].DB_MAX_OUTPUT_PORT_TYPE
 dout[7] <= data_int[7].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|CPU_Subsystem_8_bit|output_enable:u_output_enable
+|CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|output_enable:u_output_enable
 u[0] => y_tmp.DATAB
 u[1] => y_tmp.DATAB
 u[2] => y_tmp.DATAB
