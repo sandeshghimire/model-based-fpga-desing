@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.552"
+    ComputedModelVersion    "1.553"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -18,9 +18,23 @@ Model {
     $ObjectID		    1
     Array {
       Type		      "Cell"
-      Dimension		      2
+      Dimension		      16
+      Cell		      "GenerateCoSimBlock"
+      Cell		      "on"
+      Cell		      "GenerateCoSimModel"
+      Cell		      "ModelSim"
       Cell		      "HDLSubsystem"
       Cell		      "hdlcodercpu_eml/CPU_Subsystem_8_bit"
+      Cell		      "InitializeTestBenchInputs"
+      Cell		      "on"
+      Cell		      "MultifileTestBench"
+      Cell		      "on"
+      Cell		      "OptimizationReport"
+      Cell		      "on"
+      Cell		      "ResourceReport"
+      Cell		      "on"
+      Cell		      "Traceability"
+      Cell		      "on"
       PropName		      "mdlProps"
     }
   }
@@ -39,9 +53,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "sandesh"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Feb 20 10:51:28 2014"
-  RTWModifiedTimeStamp	  314794259
-  ModelVersionFormat	  "1.%<AutoIncrement:552>"
+  LastModifiedDate	  "Thu Feb 20 13:28:02 2014"
+  RTWModifiedTimeStamp	  314803667
+  ModelVersionFormat	  "1.%<AutoIncrement:553>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -152,7 +166,7 @@ Model {
 	  PositivePriorityOrder	  off
 	  AutoInsertRateTranBlk	  off
 	  SampleTimeConstraint	  "Unconstrained"
-	  InsertRTBMode		  "Auto"
+	  InsertRTBMode		  "Whenever possible"
 	}
 	Simulink.DataIOCC {
 	  $ObjectID		  4
@@ -404,7 +418,7 @@ Model {
 	  MakeCommand		  "make_rtw"
 	  GenerateMakefile	  on
 	  TemplateMakefile	  "grt_default_tmf"
-	  GenerateReport	  off
+	  GenerateReport	  on
 	  SaveLog		  off
 	  RTWVerbose		  on
 	  RetainRTWFile		  off
@@ -418,7 +432,7 @@ Model {
 	  RTWUseLocalCustomCode	  off
 	  RTWUseSimCustomCode	  off
 	  IncludeHyperlinkInReport off
-	  LaunchReport		  off
+	  LaunchReport		  on
 	  TargetLang		  "C"
 	  IncludeBusHierarchyInRTWFileBlockHierarchyMap	off
 	  IncludeERTFirstTime	  off
@@ -460,7 +474,7 @@ Model {
 		Cell			"CustomSymbolStrMacro"
 		PropName		"DisabledProps"
 	      }
-	      ForceParamTrailComments off
+	      ForceParamTrailComments on
 	      GenerateComments	      on
 	      IgnoreCustomStorageClasses on
 	      IgnoreTestpoints	      off
@@ -468,7 +482,7 @@ Model {
 	      MaxIdLength	      31
 	      PreserveName	      off
 	      PreserveNameWithParent  off
-	      ShowEliminatedStatement off
+	      ShowEliminatedStatement on
 	      IncAutoGenComments      off
 	      SimulinkDataObjDesc     off
 	      SFDataObjDesc	      off
@@ -489,7 +503,7 @@ Model {
 	      InsertBlockDesc	      off
 	      InsertPolySpaceComments off
 	      SimulinkBlockComments   on
-	      MATLABSourceComments    off
+	      MATLABSourceComments    on
 	      EnableCustomComments    off
 	      InlinedPrmAccess	      "Literals"
 	      ReqsInCode	      off
@@ -640,8 +654,8 @@ Model {
 	PropName		"Components"
       }
       Name		      "Configuration"
-      CurrentDlgPage	      "HDL Coder"
-      ConfigPrmDlgPosition     [ 586, 194, 1335, 936 ] 
+      CurrentDlgPage	      "HDL Code Generation/EDA Tool Scripts"
+      ConfigPrmDlgPosition     [ 279, 105, 1162, 743 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -809,7 +823,7 @@ Model {
   }
   System {
     Name		    "hdlcodercpu_eml"
-    Location		    [382, 82, 1124, 466]
+    Location		    [238, 153, 1124, 614]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -829,7 +843,7 @@ Model {
       Name		      "CPU_Subsystem_8_bit"
       SID		      "1"
       Ports		      [1, 2]
-      Position		      [205, 49, 500, 151]
+      Position		      [300, 79, 595, 181]
       BackgroundColor	      "[0.501961, 1.000000, 1.000000]"
       DropShadow	      on
       FontSize		      14
@@ -843,7 +857,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"CPU_Subsystem_8_bit"
-	Location		[-100, 144, 1303, 933]
+	Location		[2, 74, 1421, 849]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -860,7 +874,7 @@ Model {
 	  BlockType		  Inport
 	  Name			  "master_reset"
 	  SID			  "2"
-	  Position		  [45, 528, 75, 542]
+	  Position		  [25, 528, 55, 542]
 	  NamePlacement		  "alternate"
 	  FontSize		  14
 	  FontWeight		  "bold"
@@ -2427,7 +2441,7 @@ Model {
 	  BlockType		  UnitDelay
 	  Name			  "Unit Delay 7"
 	  SID			  "19"
-	  Position		  [115, 518, 135, 552]
+	  Position		  [100, 518, 120, 552]
 	  FontSize		  14
 	  FontWeight		  "bold"
 	}
@@ -2880,7 +2894,7 @@ Model {
       BlockType		      DataTypeConversion
       Name		      "Data Type Conversion"
       SID		      "24"
-      Position		      [540, 108, 615, 142]
+      Position		      [635, 138, 710, 172]
       OutDataTypeStr	      "boolean"
       RndMeth		      "Floor"
       SaturateOnIntegerOverflow	off
@@ -2889,7 +2903,7 @@ Model {
       BlockType		      Constant
       Name		      "Master\nReset"
       SID		      "25"
-      Position		      [110, 85, 140, 115]
+      Position		      [205, 115, 235, 145]
       Value		      "0"
       OutDataTypeStr	      "boolean"
     }
@@ -2898,7 +2912,7 @@ Model {
       Name		      "More Info"
       SID		      "26"
       Ports		      []
-      Position		      [35, 251, 165, 328]
+      Position		      [130, 281, 260, 358]
       DropShadow	      on
       ShowName		      off
       FontSize		      12
@@ -3120,7 +3134,7 @@ Model {
       Name		      "Run Demo"
       SID		      "28"
       Ports		      []
-      Position		      [257, 251, 444, 328]
+      Position		      [352, 281, 539, 358]
       BackgroundColor	      "lightBlue"
       OpenFcn		      "hdldialog(bdroot)"
       FontSize		      14
@@ -3160,7 +3174,7 @@ Model {
       Name		      "Scope"
       SID		      "29"
       Ports		      [1]
-      Position		      [615, 59, 645, 91]
+      Position		      [710, 89, 740, 121]
       Floating		      off
       Location		      [729, 283, 1435, 681]
       Open		      off
@@ -3180,7 +3194,7 @@ Model {
       BlockType		      Stop
       Name		      "Stop Simulation"
       SID		      "30"
-      Position		      [665, 107, 700, 143]
+      Position		      [760, 137, 795, 173]
       BackgroundColor	      "red"
     }
     Line {
@@ -3209,7 +3223,7 @@ Model {
     }
     Annotation {
       Name		      "Copyright 2006-2010 The MathWorks, Inc."
-      Position		      [355, 363]
+      Position		      [450, 393]
     }
   }
 }
