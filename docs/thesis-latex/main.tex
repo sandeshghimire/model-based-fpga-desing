@@ -25,11 +25,19 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[11pt, a4paper, oneside]{Thesis} % Paper size, default font size and one-sided paper
+\documentclass[11pt, a4paper, oneside]{Thesis} % Paper size, default font size
+% and one-sided paper
 
 \graphicspath{{Pictures/}} % Specifies the directory where pictures are stored
 
 \usepackage[square, numbers, comma, sort&compress]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers' 
+
+\usepackage{titlesec}
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+\usepackage[T1]{fontenc}
+
+
 \hypersetup{urlcolor=blue, colorlinks=true} % Colors hyperlinks in blue - change to black if annoying
 \title{\ttitle} % Defines the thesis title - don't touch this
 
@@ -61,11 +69,12 @@
 \begin{titlepage}
 \begin{center}
 
-\textsc{\LARGE \univname}\\[1.5cm] % University name
-\textsc{\Large Doctoral Thesis}\\[0.5cm] % Thesis type
+\textsc{\LARGE \DEPARTMENT  }\\[1.5cm] % University
+% name
+\textsc{\Large Masters Thesis}\\[0.5cm] % Thesis type
 
 \HRule \\[0.4cm] % Horizontal line
-{\huge \bfseries \ttitle}\\[0.4cm] % Thesis title
+{\huge \bfseries \ttitle}\\[0.5cm] % Thesis title
 \HRule \\[1.5cm] % Horizontal line
  
 \begin{minipage}{0.4\textwidth}
@@ -100,7 +109,7 @@
 
 \Declaration{
 
-\addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
 
 I, \authornames, declare that this thesis titled, '\ttitle' and the work presented in it are my own. I confirm that:
 
