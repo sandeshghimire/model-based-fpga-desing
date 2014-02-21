@@ -1,5 +1,5 @@
 EDA Netlist Writer report for CPU_Subsystem_8_bit
-Thu Feb 20 13:47:04 2014
+Thu Feb 20 15:46:29 2014
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -34,7 +34,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Thu Feb 20 13:47:04 2014 ;
+; EDA Netlist Writer Status ; Successful - Thu Feb 20 15:46:29 2014 ;
 ; Revision Name             ; CPU_Subsystem_8_bit                   ;
 ; Top-level Entity Name     ; CPU_Subsystem_8_bit_SCM               ;
 ; Family                    ; Cyclone V                             ;
@@ -47,13 +47,13 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu Feb 20 13:47:02 2014
+    Info: Processing started: Thu Feb 20 15:46:27 2014
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off matlab2vhdl -c CPU_Subsystem_8_bit
 Warning (11101): Unable to generate the VHDL EDA simulation netlist files because the Quartus II software does not currently support VHDL post-compilation simulation for the Cyclone V devices.
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 514 megabytes
-    Info: Processing ended: Thu Feb 20 13:47:05 2014
-    Info: Elapsed time: 00:00:03
+    Info: Processing ended: Thu Feb 20 15:46:29 2014
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
 
