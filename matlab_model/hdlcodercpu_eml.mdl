@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.556"
+    ComputedModelVersion    "1.557"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -53,9 +53,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "sandesh"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Feb 20 14:48:59 2014"
-  RTWModifiedTimeStamp	  314803667
-  ModelVersionFormat	  "1.%<AutoIncrement:556>"
+  LastModifiedDate	  "Thu Feb 20 19:36:44 2014"
+  RTWModifiedTimeStamp	  314821579
+  ModelVersionFormat	  "1.%<AutoIncrement:557>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -823,7 +823,7 @@ Model {
   }
   System {
     Name		    "hdlcodercpu_eml"
-    Location		    [144, 185, 1186, 723]
+    Location		    [155, 243, 1197, 781]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -857,8 +857,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"CPU_Subsystem_8_bit"
-	Location		[2, 74, 1421, 849]
-	Open			off
+	Location		[8, 50, 1912, 1058]
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -3143,7 +3143,7 @@ Model {
       BlockType		      Stop
       Name		      "Stop Simulation"
       SID		      "30"
-      Position		      [760, 137, 795, 173]
+      Position		      [800, 137, 835, 173]
       BackgroundColor	      "red"
     }
     Line {
