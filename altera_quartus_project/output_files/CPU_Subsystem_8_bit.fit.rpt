@@ -1,5 +1,5 @@
 Fitter report for CPU_Subsystem_8_bit
-Thu Feb 20 15:45:33 2014
+Fri Feb 21 10:29:06 2014
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -63,7 +63,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Fitter Summary                                                               ;
 +---------------------------------+--------------------------------------------+
-; Fitter Status                   ; Successful - Thu Feb 20 15:45:33 2014      ;
+; Fitter Status                   ; Successful - Fri Feb 21 10:29:06 2014      ;
 ; Quartus II 64-Bit Version       ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                   ; CPU_Subsystem_8_bit                        ;
 ; Top-level Entity Name           ; CPU_Subsystem_8_bit_SCM                    ;
@@ -3474,7 +3474,7 @@ Warning (205009): Dummy RLC values generated in IBIS model files for device 5CSX
 Info (11191): Automatically promoted 1 clock (1 global)
     Info (11162): clock~inputCLKENA0 with 2161 fanout uses global clock CLKCTRL_G11
 Warning (205009): Dummy RLC values generated in IBIS model files for device 5CSXFC6 with package FBGA and pin count 896
-Info (184021): Fitter periphery placement operations ending: elapsed time is 00:00:01
+Info (184021): Fitter periphery placement operations ending: elapsed time is 00:00:00
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'CPU_Subsystem_8_bit.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332144): No user constrained base clocks found in the design
 Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
@@ -3483,32 +3483,32 @@ Info (332130): Timing requirements not specified -- quality metrics such as perf
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:11
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:12
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:02
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
-Info (170192): Fitter placement operations ending: elapsed time is 00:00:08
+Info (170192): Fitter placement operations ending: elapsed time is 00:00:09
 Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 1% of the available device resources
     Info (170196): Router estimated peak interconnect usage is 29% of the available device resources in the region that extends from location X45_Y23 to location X55_Y34
-Info (170194): Fitter routing operations ending: elapsed time is 00:00:37
+Info (170194): Fitter routing operations ending: elapsed time is 00:00:41
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 2.65 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 3.10 seconds.
 Info (334003): Started post-fitting delay annotation
 Warning (334000): Timing characteristics of device 5CSXFC6D6F31C8ES are preliminary
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Warning (334000): Timing characteristics of device 5CSXFC6D6F31C8ES are preliminary
 Info (334004): Delay annotation completed successfully
-Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:18
+Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:20
 Info (144001): Generated suppressed messages file M:/alarmd/matlab2vhdl/altera_quartus_project/output_files/CPU_Subsystem_8_bit.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 10 warnings
     Info: Peak virtual memory: 1515 megabytes
-    Info: Processing ended: Thu Feb 20 15:45:38 2014
-    Info: Elapsed time: 00:01:53
-    Info: Total CPU time (on all processors): 00:01:46
+    Info: Processing ended: Fri Feb 21 10:29:11 2014
+    Info: Elapsed time: 00:02:07
+    Info: Total CPU time (on all processors): 00:01:57
 
 
 +----------------------------+
