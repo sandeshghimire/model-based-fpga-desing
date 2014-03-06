@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.557"
+    ComputedModelVersion    "1.558"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -53,9 +53,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "sandesh"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Feb 20 19:36:44 2014"
-  RTWModifiedTimeStamp	  314821579
-  ModelVersionFormat	  "1.%<AutoIncrement:557>"
+  LastModifiedDate	  "Wed Mar 05 16:07:06 2014"
+  RTWModifiedTimeStamp	  315936372
+  ModelVersionFormat	  "1.%<AutoIncrement:558>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -654,7 +654,7 @@ Model {
 	PropName		"Components"
       }
       Name		      "Configuration"
-      CurrentDlgPage	      "HDL Code Generation/EDA Tool Scripts"
+      CurrentDlgPage	      "HDL Code Generation"
       ConfigPrmDlgPosition     [ 279, 105, 1162, 743 ] 
     }
     PropName		    "ConfigurationSets"
@@ -823,7 +823,7 @@ Model {
   }
   System {
     Name		    "hdlcodercpu_eml"
-    Location		    [155, 243, 1197, 781]
+    Location		    [2, 74, 1438, 849]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -857,8 +857,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"CPU_Subsystem_8_bit"
-	Location		[8, 50, 1912, 1058]
-	Open			on
+	Location		[2, 82, 1404, 857]
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -869,7 +869,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"94"
+	ZoomFactor		"79"
 	Block {
 	  BlockType		  Inport
 	  Name			  "master_reset"
@@ -3551,7 +3551,7 @@ Stateflow {
       "e\n        hlt = uint8(1);\n        CPU_state = uint8(22);\n\n    otherwise,\n        previous_CPU_state = CPU_s"
       "tate;\n        % by default, go back to the fetch stage again\n        CPU_state = uint8(1);\n                \n"
       "% switch(CPU_state) end here\nend"
-      editorLayout	      "100 M4x1[506 54 1292 812]"
+      editorLayout	      "100 M4x1[108 53 1456 886]"
       fimathString	      "fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecis"
       "ion', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true)"
       treatAsFi		      FI_AND_INT
@@ -4773,7 +4773,7 @@ Stateflow {
       "        % reset\n        PC_value = fi(0, 0, 8, 0, hdl_fm); \n    case 1,\n        % store into PC\n        PC_v"
       "alue = addr_in;\n    case 2,\n        % increment PC\n        PC_value = fi(PC_value + 1, 0, 8, 0, hdl_fm);\nend"
       "\n"
-      editorLayout	      "100 M4x1[355 40 1427 1191]"
+      editorLayout	      "100 M4x1[103 16 1427 912]"
       fimathString	      "fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecis"
       "ion', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true)"
       treatAsFi		      FI_AND_INT
@@ -4928,7 +4928,7 @@ Stateflow {
       "N)\nsign_bit = getmsb(shift_out); \n\n% Is Zero? (Z)\nis_zero = uint8(~all(shift_out));\nzero_ufix1 = fi(is_zero"
       ", 0, 1, 0, hdl_fm);\n\n% Set [C, N, V, Z] in the flag register\nout_flags = bitconcat(bitconcat(bitconcat(c_out,"
       " sign_bit), overflow), zero_ufix1);\n\n"
-      editorLayout	      "100 M4x1[493 9 1427 1191]"
+      editorLayout	      "100 M4x1[493 21 1427 912]"
       fimathString	      "fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecis"
       "ion', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true)"
       treatAsFi		      FI_AND_INT
@@ -5122,7 +5122,7 @@ Stateflow {
       "ffset\n\n% HDL specific fimath\nhdl_fm = fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'Prod"
       "uctMode', 'FullPrecision', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'Ca"
       "stBeforeSum', true);\n\nPC_next = fi(jmp_offset + PC_current, 0, 8, 0, hdl_fm);\n"
-      editorLayout	      "100 M4x1[493 9 1427 1191]"
+      editorLayout	      "100 M4x1[179 123 1427 912]"
       fimathString	      "fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'FullPrecis"
       "ion', 'ProductWordLength', 32,...\n'SumMode', 'FullPrecision', 'SumWordLength', 32,...\n'CastBeforeSum', true)"
       treatAsFi		      FI_AND_INT

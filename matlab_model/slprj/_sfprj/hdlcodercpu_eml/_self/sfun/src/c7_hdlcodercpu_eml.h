@@ -20,8 +20,14 @@ typedef struct {
 
 typedef struct {
   SimStruct *S;
+  int32_T c7_sfEvent;
   uint32_T chartNumber;
   uint32_T instanceNumber;
+  boolean_T c7_PC_value_not_empty;
+  boolean_T c7_doneDoubleBufferReInit;
+  boolean_T c7_isStable;
+  uint8_T c7_PC_value;
+  uint8_T c7_is_active_c7_hdlcodercpu_eml;
   ChartInfoStruct chartInfo;
 } SFc7_hdlcodercpu_emlInstanceStruct;
 

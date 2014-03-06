@@ -32,8 +32,6 @@ static void disable_c6_hdlcodercpu_eml(SFc6_hdlcodercpu_emlInstanceStruct
   *chartInstance);
 static void c6_update_debugger_state_c6_hdlcodercpu_eml
   (SFc6_hdlcodercpu_emlInstanceStruct *chartInstance);
-static void ext_mode_exec_c6_hdlcodercpu_eml(SFc6_hdlcodercpu_emlInstanceStruct *
-  chartInstance);
 static const mxArray *get_sim_state_c6_hdlcodercpu_eml
   (SFc6_hdlcodercpu_emlInstanceStruct *chartInstance);
 static void set_sim_state_c6_hdlcodercpu_eml(SFc6_hdlcodercpu_emlInstanceStruct *
@@ -50,7 +48,7 @@ static void init_script_number_translation(uint32_T c6_machineNumber, uint32_T
   c6_chartNumber);
 static const mxArray *c6_sf_marshallOut(void *chartInstanceVoid, void *c6_inData);
 static uint16_T c6_emlrt_marshallIn(SFc6_hdlcodercpu_emlInstanceStruct
-  *chartInstance, const mxArray *c6_IR_value, const char_T *c6_identifier);
+  *chartInstance, const mxArray *c6_b_IR_value, const char_T *c6_identifier);
 static uint16_T c6_b_emlrt_marshallIn(SFc6_hdlcodercpu_emlInstanceStruct
   *chartInstance, const mxArray *c6_u, const emlrtMsgIdentifier *c6_parentId);
 static void c6_sf_marshallIn(void *chartInstanceVoid, const mxArray
@@ -84,7 +82,7 @@ static void c6_d_sf_marshallIn(void *chartInstanceVoid, const mxArray
 static const mxArray *c6_h_sf_marshallOut(void *chartInstanceVoid, void
   *c6_inData);
 static uint8_T c6_g_emlrt_marshallIn(SFc6_hdlcodercpu_emlInstanceStruct
-  *chartInstance, const mxArray *c6_is_active_c6_hdlcodercpu_eml, const char_T
+  *chartInstance, const mxArray *c6_b_is_active_c6_hdlcodercpu_eml, const char_T
   *c6_identifier);
 static uint8_T c6_h_emlrt_marshallIn(SFc6_hdlcodercpu_emlInstanceStruct
   *chartInstance, const mxArray *c6_u, const emlrtMsgIdentifier *c6_parentId);
@@ -95,16 +93,10 @@ static void init_dsm_address_info(SFc6_hdlcodercpu_emlInstanceStruct
 static void initialize_c6_hdlcodercpu_eml(SFc6_hdlcodercpu_emlInstanceStruct
   *chartInstance)
 {
-  int32_T *c6_sfEvent;
-  boolean_T *c6_IR_value_not_empty;
-  uint8_T *c6_is_active_c6_hdlcodercpu_eml;
-  c6_IR_value_not_empty = (boolean_T *)ssGetDWork(chartInstance->S, 5);
-  c6_is_active_c6_hdlcodercpu_eml = (uint8_T *)ssGetDWork(chartInstance->S, 3);
-  c6_sfEvent = (int32_T *)ssGetDWork(chartInstance->S, 0);
-  *c6_sfEvent = CALL_EVENT;
+  chartInstance->c6_sfEvent = CALL_EVENT;
   _sfTime_ = (real_T)ssGetT(chartInstance->S);
-  *c6_IR_value_not_empty = FALSE;
-  *c6_is_active_c6_hdlcodercpu_eml = 0U;
+  chartInstance->c6_IR_value_not_empty = FALSE;
+  chartInstance->c6_is_active_c6_hdlcodercpu_eml = 0U;
   sf_mex_assign(&c6_c_eml_mx, sf_mex_call_debug("numerictype", 1U, 14U, 15,
     "SignednessBool", 3, FALSE, 15, "Signedness", 15, "Unsigned", 15,
     "WordLength", 6, 2.0, 15, "FractionLength", 6, 0.0, 15, "BinaryPoint", 6,
@@ -148,12 +140,6 @@ static void c6_update_debugger_state_c6_hdlcodercpu_eml
 {
 }
 
-static void ext_mode_exec_c6_hdlcodercpu_eml(SFc6_hdlcodercpu_emlInstanceStruct *
-  chartInstance)
-{
-  c6_update_debugger_state_c6_hdlcodercpu_eml(chartInstance);
-}
-
 static const mxArray *get_sim_state_c6_hdlcodercpu_eml
   (SFc6_hdlcodercpu_emlInstanceStruct *chartInstance)
 {
@@ -173,13 +159,7 @@ static const mxArray *get_sim_state_c6_hdlcodercpu_eml
   uint8_T c6_e_u;
   const mxArray *c6_f_y = NULL;
   uint16_T *c6_IR_out;
-  uint16_T *c6_IR_value;
-  boolean_T *c6_IR_value_not_empty;
-  uint8_T *c6_is_active_c6_hdlcodercpu_eml;
-  c6_IR_value_not_empty = (boolean_T *)ssGetDWork(chartInstance->S, 5);
-  c6_IR_value = (uint16_T *)ssGetDWork(chartInstance->S, 4);
   c6_IR_out = (uint16_T *)ssGetOutputPortSignal(chartInstance->S, 1);
-  c6_is_active_c6_hdlcodercpu_eml = (uint8_T *)ssGetDWork(chartInstance->S, 3);
   c6_st = NULL;
   c6_st = NULL;
   c6_y = NULL;
@@ -194,10 +174,10 @@ static const mxArray *get_sim_state_c6_hdlcodercpu_eml
     sf_mex_dup(c6_eml_mx), 15, "numerictype", 14, sf_mex_dup(c6_b_eml_mx), 15,
     "simulinkarray", 14, c6_c_y, 15, "fimathislocal", 3, TRUE));
   sf_mex_setcell(c6_y, 0, c6_b_y);
-  c6_b_hoistedGlobal = *c6_IR_value;
+  c6_b_hoistedGlobal = chartInstance->c6_IR_value;
   c6_c_u = c6_b_hoistedGlobal;
   c6_d_y = NULL;
-  if (!*c6_IR_value_not_empty) {
+  if (!chartInstance->c6_IR_value_not_empty) {
     sf_mex_assign(&c6_d_y, sf_mex_create("y", NULL, 0, 0U, 1U, 0U, 2, 0, 0));
   } else {
     c6_d_u = c6_c_u;
@@ -209,7 +189,7 @@ static const mxArray *get_sim_state_c6_hdlcodercpu_eml
   }
 
   sf_mex_setcell(c6_y, 1, c6_d_y);
-  c6_c_hoistedGlobal = *c6_is_active_c6_hdlcodercpu_eml;
+  c6_c_hoistedGlobal = chartInstance->c6_is_active_c6_hdlcodercpu_eml;
   c6_e_u = c6_c_hoistedGlobal;
   c6_f_y = NULL;
   sf_mex_assign(&c6_f_y, sf_mex_create("y", &c6_e_u, 3, 0U, 0U, 0U, 0));
@@ -222,22 +202,17 @@ static void set_sim_state_c6_hdlcodercpu_eml(SFc6_hdlcodercpu_emlInstanceStruct 
   chartInstance, const mxArray *c6_st)
 {
   const mxArray *c6_u;
-  boolean_T *c6_doneDoubleBufferReInit;
   uint16_T *c6_IR_out;
-  uint16_T *c6_IR_value;
-  uint8_T *c6_is_active_c6_hdlcodercpu_eml;
-  c6_IR_value = (uint16_T *)ssGetDWork(chartInstance->S, 4);
   c6_IR_out = (uint16_T *)ssGetOutputPortSignal(chartInstance->S, 1);
-  c6_is_active_c6_hdlcodercpu_eml = (uint8_T *)ssGetDWork(chartInstance->S, 3);
-  c6_doneDoubleBufferReInit = (boolean_T *)ssGetDWork(chartInstance->S, 2);
-  *c6_doneDoubleBufferReInit = TRUE;
+  chartInstance->c6_doneDoubleBufferReInit = TRUE;
   c6_u = sf_mex_dup(c6_st);
   *c6_IR_out = c6_c_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getcell
     (c6_u, 0)), "IR_out");
-  *c6_IR_value = c6_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getcell
-    (c6_u, 1)), "IR_value");
-  *c6_is_active_c6_hdlcodercpu_eml = c6_g_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c6_u, 2)), "is_active_c6_hdlcodercpu_eml");
+  chartInstance->c6_IR_value = c6_emlrt_marshallIn(chartInstance, sf_mex_dup
+    (sf_mex_getcell(c6_u, 1)), "IR_value");
+  chartInstance->c6_is_active_c6_hdlcodercpu_eml = c6_g_emlrt_marshallIn
+    (chartInstance, sf_mex_dup(sf_mex_getcell(c6_u, 2)),
+     "is_active_c6_hdlcodercpu_eml");
   sf_mex_destroy(&c6_u);
   c6_update_debugger_state_c6_hdlcodercpu_eml(chartInstance);
   sf_mex_destroy(&c6_st);
@@ -254,20 +229,18 @@ static void finalize_c6_hdlcodercpu_eml(SFc6_hdlcodercpu_emlInstanceStruct
 static void sf_c6_hdlcodercpu_eml(SFc6_hdlcodercpu_emlInstanceStruct
   *chartInstance)
 {
-  int32_T *c6_sfEvent;
   uint8_T *c6_func;
   uint16_T *c6_IR_out;
   uint16_T *c6_IR_in;
   c6_IR_in = (uint16_T *)ssGetInputPortSignal(chartInstance->S, 1);
   c6_IR_out = (uint16_T *)ssGetOutputPortSignal(chartInstance->S, 1);
   c6_func = (uint8_T *)ssGetInputPortSignal(chartInstance->S, 0);
-  c6_sfEvent = (int32_T *)ssGetDWork(chartInstance->S, 0);
   _sfTime_ = (real_T)ssGetT(chartInstance->S);
-  _SFD_CC_CALL(CHART_ENTER_SFUNCTION_TAG, 5U, *c6_sfEvent);
+  _SFD_CC_CALL(CHART_ENTER_SFUNCTION_TAG, 5U, chartInstance->c6_sfEvent);
   _SFD_DATA_RANGE_CHECK((real_T)*c6_func, 0U);
   _SFD_DATA_RANGE_CHECK((real_T)*c6_IR_out, 1U);
   _SFD_DATA_RANGE_CHECK((real_T)*c6_IR_in, 2U);
-  *c6_sfEvent = CALL_EVENT;
+  chartInstance->c6_sfEvent = CALL_EVENT;
   c6_chartstep_c6_hdlcodercpu_eml(chartInstance);
   sf_debug_check_for_state_inconsistency(_hdlcodercpu_emlMachineNumber_,
     chartInstance->chartNumber, chartInstance->instanceNumber);
@@ -314,16 +287,10 @@ static void c6_chartstep_c6_hdlcodercpu_eml(SFc6_hdlcodercpu_emlInstanceStruct
   uint16_T *c6_b_IR_out;
   uint8_T *c6_b_func;
   uint16_T *c6_b_IR_in;
-  boolean_T *c6_IR_value_not_empty;
-  uint16_T *c6_IR_value;
-  int32_T *c6_sfEvent;
-  c6_IR_value_not_empty = (boolean_T *)ssGetDWork(chartInstance->S, 5);
-  c6_IR_value = (uint16_T *)ssGetDWork(chartInstance->S, 4);
   c6_b_IR_in = (uint16_T *)ssGetInputPortSignal(chartInstance->S, 1);
   c6_b_IR_out = (uint16_T *)ssGetOutputPortSignal(chartInstance->S, 1);
   c6_b_func = (uint8_T *)ssGetInputPortSignal(chartInstance->S, 0);
-  c6_sfEvent = (int32_T *)ssGetDWork(chartInstance->S, 0);
-  _SFD_CC_CALL(CHART_ENTER_DURING_FUNCTION_TAG, 5U, *c6_sfEvent);
+  _SFD_CC_CALL(CHART_ENTER_DURING_FUNCTION_TAG, 5U, chartInstance->c6_sfEvent);
   c6_hoistedGlobal = *c6_b_func;
   c6_b_hoistedGlobal = *c6_b_IR_in;
   c6_func = c6_hoistedGlobal;
@@ -339,14 +306,14 @@ static void c6_chartstep_c6_hdlcodercpu_eml(SFc6_hdlcodercpu_emlInstanceStruct
   sf_debug_symbol_scope_add_eml(&c6_IR_in, 4U, c6_c_sf_marshallOut);
   sf_debug_symbol_scope_add_eml_importable(&c6_IR_out, 5U, c6_b_sf_marshallOut,
     c6_b_sf_marshallIn);
-  sf_debug_symbol_scope_add_eml_importable(c6_IR_value, 6U, c6_sf_marshallOut,
-    c6_sf_marshallIn);
+  sf_debug_symbol_scope_add_eml_importable(&chartInstance->c6_IR_value, 6U,
+    c6_sf_marshallOut, c6_sf_marshallIn);
   CV_EML_FCN(0, 0);
-  _SFD_EML_CALL(0U, *c6_sfEvent, 9);
+  _SFD_EML_CALL(0U, chartInstance->c6_sfEvent, 9);
   c6_hdl_fm = c6_eml_mx;
-  _SFD_EML_CALL(0U, *c6_sfEvent, 18);
-  if (CV_EML_IF(0, 0, !*c6_IR_value_not_empty)) {
-    _SFD_EML_CALL(0U, *c6_sfEvent, 19);
+  _SFD_EML_CALL(0U, chartInstance->c6_sfEvent, 18);
+  if (CV_EML_IF(0, 0, !chartInstance->c6_IR_value_not_empty)) {
+    _SFD_EML_CALL(0U, chartInstance->c6_sfEvent, 19);
     sf_mex_destroy(&c6_m0);
     sf_mex_destroy(&c6_m1);
     sf_mex_destroy(&c6_m2);
@@ -354,11 +321,11 @@ static void c6_chartstep_c6_hdlcodercpu_eml(SFc6_hdlcodercpu_emlInstanceStruct
     sf_mex_destroy(&c6_m4);
     sf_mex_destroy(&c6_m5);
     sf_mex_destroy(&c6_m6);
-    *c6_IR_value = 0U;
-    *c6_IR_value_not_empty = TRUE;
+    chartInstance->c6_IR_value = 0U;
+    chartInstance->c6_IR_value_not_empty = TRUE;
   }
 
-  _SFD_EML_CALL(0U, *c6_sfEvent, 22);
+  _SFD_EML_CALL(0U, chartInstance->c6_sfEvent, 22);
   sf_mex_destroy(&c6_m7);
   sf_mex_destroy(&c6_m8);
   sf_mex_destroy(&c6_m9);
@@ -367,7 +334,7 @@ static void c6_chartstep_c6_hdlcodercpu_eml(SFc6_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c6_m12);
   sf_mex_destroy(&c6_m13);
   c6_IR_out = 0U;
-  _SFD_EML_CALL(0U, *c6_sfEvent, 24);
+  _SFD_EML_CALL(0U, chartInstance->c6_sfEvent, 24);
   c6_A = c6_func;
   c6_xfi = c6_A;
   sf_mex_destroy(&c6_m14);
@@ -376,7 +343,7 @@ static void c6_chartstep_c6_hdlcodercpu_eml(SFc6_hdlcodercpu_emlInstanceStruct
   switch (c6_iA) {
    case 0U:
     CV_EML_SWITCH(0, 0, 1);
-    _SFD_EML_CALL(0U, *c6_sfEvent, 27);
+    _SFD_EML_CALL(0U, chartInstance->c6_sfEvent, 27);
     sf_mex_destroy(&c6_m16);
     sf_mex_destroy(&c6_m17);
     sf_mex_destroy(&c6_m18);
@@ -384,19 +351,19 @@ static void c6_chartstep_c6_hdlcodercpu_eml(SFc6_hdlcodercpu_emlInstanceStruct
     sf_mex_destroy(&c6_m20);
     sf_mex_destroy(&c6_m21);
     sf_mex_destroy(&c6_m22);
-    *c6_IR_value = 0U;
+    chartInstance->c6_IR_value = 0U;
     break;
 
    case 1U:
     CV_EML_SWITCH(0, 0, 2);
-    _SFD_EML_CALL(0U, *c6_sfEvent, 30);
-    *c6_IR_value = c6_IR_in;
+    _SFD_EML_CALL(0U, chartInstance->c6_sfEvent, 30);
+    chartInstance->c6_IR_value = c6_IR_in;
     break;
 
    case 2U:
     CV_EML_SWITCH(0, 0, 3);
-    _SFD_EML_CALL(0U, *c6_sfEvent, 33);
-    c6_IR_out = *c6_IR_value;
+    _SFD_EML_CALL(0U, chartInstance->c6_sfEvent, 33);
+    c6_IR_out = chartInstance->c6_IR_value;
     break;
 
    default:
@@ -404,10 +371,10 @@ static void c6_chartstep_c6_hdlcodercpu_eml(SFc6_hdlcodercpu_emlInstanceStruct
     break;
   }
 
-  _SFD_EML_CALL(0U, *c6_sfEvent, -33);
+  _SFD_EML_CALL(0U, chartInstance->c6_sfEvent, -33);
   sf_debug_symbol_scope_pop();
   *c6_b_IR_out = c6_IR_out;
-  _SFD_CC_CALL(EXIT_OUT_OF_FUNCTION_TAG, 5U, *c6_sfEvent);
+  _SFD_CC_CALL(EXIT_OUT_OF_FUNCTION_TAG, 5U, chartInstance->c6_sfEvent);
 }
 
 static void initSimStructsc6_hdlcodercpu_eml(SFc6_hdlcodercpu_emlInstanceStruct *
@@ -427,16 +394,14 @@ static const mxArray *c6_sf_marshallOut(void *chartInstanceVoid, void *c6_inData
   const mxArray *c6_y = NULL;
   uint16_T c6_b_u;
   const mxArray *c6_b_y = NULL;
-  boolean_T *c6_IR_value_not_empty;
   SFc6_hdlcodercpu_emlInstanceStruct *chartInstance;
   chartInstance = (SFc6_hdlcodercpu_emlInstanceStruct *)chartInstanceVoid;
-  c6_IR_value_not_empty = (boolean_T *)ssGetDWork(chartInstance->S, 5);
   c6_mxArrayOutData = NULL;
   c6_mxArrayOutData = NULL;
   if (sf_debug_check_fi_license()) {
     c6_u = *(uint16_T *)c6_inData;
     c6_y = NULL;
-    if (!*c6_IR_value_not_empty) {
+    if (!chartInstance->c6_IR_value_not_empty) {
       sf_mex_assign(&c6_y, sf_mex_create("y", NULL, 0, 0U, 1U, 0U, 2, 0, 0));
     } else {
       c6_b_u = c6_u;
@@ -458,15 +423,15 @@ static const mxArray *c6_sf_marshallOut(void *chartInstanceVoid, void *c6_inData
 }
 
 static uint16_T c6_emlrt_marshallIn(SFc6_hdlcodercpu_emlInstanceStruct
-  *chartInstance, const mxArray *c6_IR_value, const char_T *c6_identifier)
+  *chartInstance, const mxArray *c6_b_IR_value, const char_T *c6_identifier)
 {
   uint16_T c6_y;
   emlrtMsgIdentifier c6_thisId;
   c6_thisId.fIdentifier = c6_identifier;
   c6_thisId.fParent = NULL;
-  c6_y = c6_b_emlrt_marshallIn(chartInstance, sf_mex_dup(c6_IR_value),
+  c6_y = c6_b_emlrt_marshallIn(chartInstance, sf_mex_dup(c6_b_IR_value),
     &c6_thisId);
-  sf_mex_destroy(&c6_IR_value);
+  sf_mex_destroy(&c6_b_IR_value);
   return c6_y;
 }
 
@@ -477,12 +442,10 @@ static uint16_T c6_b_emlrt_marshallIn(SFc6_hdlcodercpu_emlInstanceStruct
   const mxArray *c6_mxFi = NULL;
   const mxArray *c6_mxInt = NULL;
   uint16_T c6_u0;
-  boolean_T *c6_IR_value_not_empty;
-  c6_IR_value_not_empty = (boolean_T *)ssGetDWork(chartInstance->S, 5);
   if (mxIsEmpty(c6_u)) {
-    *c6_IR_value_not_empty = FALSE;
+    chartInstance->c6_IR_value_not_empty = FALSE;
   } else {
-    *c6_IR_value_not_empty = TRUE;
+    chartInstance->c6_IR_value_not_empty = TRUE;
     sf_mex_check_fi(c6_parentId, c6_u, 0, 0U, 0, c6_eml_mx, c6_b_eml_mx);
     sf_mex_assign(&c6_mxFi, sf_mex_dup(c6_u));
     sf_mex_assign(&c6_mxInt, sf_mex_call("simulinkarray", 1U, 1U, 14, sf_mex_dup
@@ -500,20 +463,20 @@ static uint16_T c6_b_emlrt_marshallIn(SFc6_hdlcodercpu_emlInstanceStruct
 static void c6_sf_marshallIn(void *chartInstanceVoid, const mxArray
   *c6_mxArrayInData, const char_T *c6_varName, void *c6_outData)
 {
-  const mxArray *c6_IR_value;
+  const mxArray *c6_b_IR_value;
   const char_T *c6_identifier;
   emlrtMsgIdentifier c6_thisId;
   uint16_T c6_y;
   SFc6_hdlcodercpu_emlInstanceStruct *chartInstance;
   chartInstance = (SFc6_hdlcodercpu_emlInstanceStruct *)chartInstanceVoid;
   if (sf_debug_check_fi_license()) {
-    c6_IR_value = sf_mex_dup(c6_mxArrayInData);
+    c6_b_IR_value = sf_mex_dup(c6_mxArrayInData);
     c6_identifier = c6_varName;
     c6_thisId.fIdentifier = c6_identifier;
     c6_thisId.fParent = NULL;
-    c6_y = c6_b_emlrt_marshallIn(chartInstance, sf_mex_dup(c6_IR_value),
+    c6_y = c6_b_emlrt_marshallIn(chartInstance, sf_mex_dup(c6_b_IR_value),
       &c6_thisId);
-    sf_mex_destroy(&c6_IR_value);
+    sf_mex_destroy(&c6_b_IR_value);
     *(uint16_T *)c6_outData = c6_y;
   }
 
@@ -886,18 +849,19 @@ static int32_T c6_f_emlrt_marshallIn(SFc6_hdlcodercpu_emlInstanceStruct
 static void c6_d_sf_marshallIn(void *chartInstanceVoid, const mxArray
   *c6_mxArrayInData, const char_T *c6_varName, void *c6_outData)
 {
-  const mxArray *c6_sfEvent;
+  const mxArray *c6_b_sfEvent;
   const char_T *c6_identifier;
   emlrtMsgIdentifier c6_thisId;
   int32_T c6_y;
   SFc6_hdlcodercpu_emlInstanceStruct *chartInstance;
   chartInstance = (SFc6_hdlcodercpu_emlInstanceStruct *)chartInstanceVoid;
-  c6_sfEvent = sf_mex_dup(c6_mxArrayInData);
+  c6_b_sfEvent = sf_mex_dup(c6_mxArrayInData);
   c6_identifier = c6_varName;
   c6_thisId.fIdentifier = c6_identifier;
   c6_thisId.fParent = NULL;
-  c6_y = c6_f_emlrt_marshallIn(chartInstance, sf_mex_dup(c6_sfEvent), &c6_thisId);
-  sf_mex_destroy(&c6_sfEvent);
+  c6_y = c6_f_emlrt_marshallIn(chartInstance, sf_mex_dup(c6_b_sfEvent),
+    &c6_thisId);
+  sf_mex_destroy(&c6_b_sfEvent);
   *(int32_T *)c6_outData = c6_y;
   sf_mex_destroy(&c6_mxArrayInData);
 }
@@ -934,7 +898,7 @@ static const mxArray *c6_h_sf_marshallOut(void *chartInstanceVoid, void
 }
 
 static uint8_T c6_g_emlrt_marshallIn(SFc6_hdlcodercpu_emlInstanceStruct
-  *chartInstance, const mxArray *c6_is_active_c6_hdlcodercpu_eml, const char_T
+  *chartInstance, const mxArray *c6_b_is_active_c6_hdlcodercpu_eml, const char_T
   *c6_identifier)
 {
   uint8_T c6_y;
@@ -942,8 +906,8 @@ static uint8_T c6_g_emlrt_marshallIn(SFc6_hdlcodercpu_emlInstanceStruct
   c6_thisId.fIdentifier = c6_identifier;
   c6_thisId.fParent = NULL;
   c6_y = c6_h_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (c6_is_active_c6_hdlcodercpu_eml), &c6_thisId);
-  sf_mex_destroy(&c6_is_active_c6_hdlcodercpu_eml);
+    (c6_b_is_active_c6_hdlcodercpu_eml), &c6_thisId);
+  sf_mex_destroy(&c6_b_is_active_c6_hdlcodercpu_eml);
   return c6_y;
 }
 
@@ -964,7 +928,6 @@ static void init_dsm_address_info(SFc6_hdlcodercpu_emlInstanceStruct
 }
 
 /* SFunction Glue Code */
-static uint32_T* sf_get_sfun_dwork_checksum();
 void sf_c6_hdlcodercpu_eml_get_check_sum(mxArray *plhs[])
 {
   ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3285679824U);
@@ -1235,34 +1198,8 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
   }
 }
 
-static void sf_check_dwork_consistency(SimStruct *S)
-{
-  if (sim_mode_is_rtw_gen(S) || sim_mode_is_external(S)) {
-    const uint32_T *sfunDWorkChecksum = sf_get_sfun_dwork_checksum();
-    mxArray* mxRTWDWorkChecksum = sf_get_dwork_info_from_mat_file(S,
-      "hdlcodercpu_eml", "hdlcodercpu_eml", 6, "dworkChecksum");
-    if (mxRTWDWorkChecksum != NULL) {
-      double *pr = mxGetPr(mxRTWDWorkChecksum);
-      if ((uint32_T)pr[0] != sfunDWorkChecksum[0] ||
-          (uint32_T)pr[1] != sfunDWorkChecksum[1] ||
-          (uint32_T)pr[2] != sfunDWorkChecksum[2] ||
-          (uint32_T)pr[3] != sfunDWorkChecksum[3]) {
-        sf_mex_error_message("Code generation and simulation targets registered different sets of persistent variables for the block. "
-                             "External or Rapid Accelerator mode simulation requires code generation and simulation targets to "
-                             "register the same set of persistent variables for this block. "
-                             "This discrepancy is typically caused by MATLAB functions that have different code paths for "
-                             "simulation and code generation targets where these code paths define different sets of persistent variables. "
-                             "Please identify these code paths in the offending block and rewrite the MATLAB code so that "
-                             "the set of persistent variables is the same between simulation and code generation.");
-      }
-    }
-  }
-}
-
 static void sf_opaque_initialize_c6_hdlcodercpu_eml(void *chartInstanceVar)
 {
-  sf_check_dwork_consistency(((SFc6_hdlcodercpu_emlInstanceStruct*)
-    chartInstanceVar)->S);
   chart_debug_initialization(((SFc6_hdlcodercpu_emlInstanceStruct*)
     chartInstanceVar)->S,0);
   initialize_params_c6_hdlcodercpu_eml((SFc6_hdlcodercpu_emlInstanceStruct*)
@@ -1286,12 +1223,6 @@ static void sf_opaque_disable_c6_hdlcodercpu_eml(void *chartInstanceVar)
 static void sf_opaque_gateway_c6_hdlcodercpu_eml(void *chartInstanceVar)
 {
   sf_c6_hdlcodercpu_eml((SFc6_hdlcodercpu_emlInstanceStruct*) chartInstanceVar);
-}
-
-static void sf_opaque_ext_mode_exec_c6_hdlcodercpu_eml(void *chartInstanceVar)
-{
-  ext_mode_exec_c6_hdlcodercpu_eml((SFc6_hdlcodercpu_emlInstanceStruct*)
-    chartInstanceVar);
 }
 
 extern const mxArray* sf_internal_get_sim_state_c6_hdlcodercpu_eml(SimStruct* S)
@@ -1392,33 +1323,6 @@ static void mdlProcessParameters_c6_hdlcodercpu_eml(SimStruct *S)
   }
 }
 
-mxArray *sf_c6_hdlcodercpu_eml_get_testpoint_info(void)
-{
-  const char *infoEncStr[] = {
-    "100 S'varName','path'{{T\"is_active_c6_hdlcodercpu_eml\",T\"is_active_c6_hdlcodercpu_eml\"}}"
-  };
-
-  mxArray *mxTpInfo = sf_mex_decode_encoded_mx_struct_array(infoEncStr, 1, 10);
-  return mxTpInfo;
-}
-
-static void sf_set_sfun_dwork_info(SimStruct *S)
-{
-  const char *dworkEncStr[] = {
-    "100 S1x6'type','isSigned','wordLength','bias','slope','exponent','isComplex','size'{{T\"int32\",,,,,,M[0],M[]},{T\"boolean\",,,,,,M[0],M[]},{T\"boolean\",,,,,,M[0],M[]},{T\"uint8\",,,,,,M[0],M[]},{T\"fixpt\",M[0],M[12],M[0],M[1],M[0],M[0],M[]},{T\"boolean\",,,,,,M[0],M[]}}"
-  };
-
-  sf_set_encoded_dwork_info(S, dworkEncStr, 6, 10);
-}
-
-static uint32_T* sf_get_sfun_dwork_checksum()
-{
-  static uint32_T checksum[4] = { 3138933005U, 3231710108U, 2505194799U,
-    1655921417U };
-
-  return checksum;
-}
-
 static void mdlSetWorkWidths_c6_hdlcodercpu_eml(SimStruct *S)
 {
   if (sim_mode_is_rtw_gen(S) || sim_mode_is_external(S)) {
@@ -1442,7 +1346,6 @@ static void mdlSetWorkWidths_c6_hdlcodercpu_eml(SimStruct *S)
     sf_set_rtw_dwork_info(S,"hdlcodercpu_eml","hdlcodercpu_eml",6);
     ssSetHasSubFunctions(S,!(chartIsInlinable));
   } else {
-    sf_set_sfun_dwork_info(S);
   }
 
   ssSetOptions(S,ssGetOptions(S)|SS_OPTION_WORKS_WITH_CODE_REUSE);
@@ -1496,8 +1399,7 @@ static void mdlStart_c6_hdlcodercpu_eml(SimStruct *S)
   chartInstance->chartInfo.mdlStart = mdlStart_c6_hdlcodercpu_eml;
   chartInstance->chartInfo.mdlSetWorkWidths =
     mdlSetWorkWidths_c6_hdlcodercpu_eml;
-  chartInstance->chartInfo.extModeExec =
-    sf_opaque_ext_mode_exec_c6_hdlcodercpu_eml;
+  chartInstance->chartInfo.extModeExec = NULL;
   chartInstance->chartInfo.restoreLastMajorStepConfiguration = NULL;
   chartInstance->chartInfo.restoreBeforeLastMajorStepConfiguration = NULL;
   chartInstance->chartInfo.storeCurrentConfiguration = NULL;

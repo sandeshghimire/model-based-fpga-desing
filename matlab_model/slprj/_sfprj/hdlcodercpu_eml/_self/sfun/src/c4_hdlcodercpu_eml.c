@@ -42,8 +42,6 @@ static void disable_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
   *chartInstance);
 static void c4_update_debugger_state_c4_hdlcodercpu_eml
   (SFc4_hdlcodercpu_emlInstanceStruct *chartInstance);
-static void ext_mode_exec_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct *
-  chartInstance);
 static const mxArray *get_sim_state_c4_hdlcodercpu_eml
   (SFc4_hdlcodercpu_emlInstanceStruct *chartInstance);
 static void set_sim_state_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct *
@@ -159,13 +157,9 @@ static void init_dsm_address_info(SFc4_hdlcodercpu_emlInstanceStruct
 static void initialize_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
   *chartInstance)
 {
-  int32_T *c4_sfEvent;
-  uint8_T *c4_is_active_c4_hdlcodercpu_eml;
-  c4_is_active_c4_hdlcodercpu_eml = (uint8_T *)ssGetDWork(chartInstance->S, 3);
-  c4_sfEvent = (int32_T *)ssGetDWork(chartInstance->S, 0);
-  *c4_sfEvent = CALL_EVENT;
+  chartInstance->c4_sfEvent = CALL_EVENT;
   _sfTime_ = (real_T)ssGetT(chartInstance->S);
-  *c4_is_active_c4_hdlcodercpu_eml = 0U;
+  chartInstance->c4_is_active_c4_hdlcodercpu_eml = 0U;
   sf_mex_assign(&c4_f_eml_mx, sf_mex_call_debug("numerictype", 1U, 10U, 15,
     "WordLength", 6, 9.0, 15, "FractionLength", 6, 0.0, 15, "BinaryPoint", 6,
     0.0, 15, "Slope", 6, 1.0, 15, "FixedExponent", 6, 0.0));
@@ -219,12 +213,6 @@ static void c4_update_debugger_state_c4_hdlcodercpu_eml
 {
 }
 
-static void ext_mode_exec_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct *
-  chartInstance)
-{
-  c4_update_debugger_state_c4_hdlcodercpu_eml(chartInstance);
-}
-
 static const mxArray *get_sim_state_c4_hdlcodercpu_eml
   (SFc4_hdlcodercpu_emlInstanceStruct *chartInstance)
 {
@@ -245,10 +233,8 @@ static const mxArray *get_sim_state_c4_hdlcodercpu_eml
   const mxArray *c4_f_y = NULL;
   int8_T *c4_alu_out;
   uint8_T *c4_out_flags;
-  uint8_T *c4_is_active_c4_hdlcodercpu_eml;
   c4_out_flags = (uint8_T *)ssGetOutputPortSignal(chartInstance->S, 2);
   c4_alu_out = (int8_T *)ssGetOutputPortSignal(chartInstance->S, 1);
-  c4_is_active_c4_hdlcodercpu_eml = (uint8_T *)ssGetDWork(chartInstance->S, 3);
   c4_st = NULL;
   c4_st = NULL;
   c4_y = NULL;
@@ -273,7 +259,7 @@ static const mxArray *get_sim_state_c4_hdlcodercpu_eml
     sf_mex_dup(c4_eml_mx), 15, "numerictype", 14, sf_mex_dup(c4_b_eml_mx), 15,
     "simulinkarray", 14, c4_e_y, 15, "fimathislocal", 3, TRUE));
   sf_mex_setcell(c4_y, 1, c4_d_y);
-  c4_c_hoistedGlobal = *c4_is_active_c4_hdlcodercpu_eml;
+  c4_c_hoistedGlobal = chartInstance->c4_is_active_c4_hdlcodercpu_eml;
   c4_e_u = c4_c_hoistedGlobal;
   c4_f_y = NULL;
   sf_mex_assign(&c4_f_y, sf_mex_create("y", &c4_e_u, 3, 0U, 0U, 0U, 0));
@@ -286,22 +272,19 @@ static void set_sim_state_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct 
   chartInstance, const mxArray *c4_st)
 {
   const mxArray *c4_u;
-  boolean_T *c4_doneDoubleBufferReInit;
   int8_T *c4_alu_out;
   uint8_T *c4_out_flags;
-  uint8_T *c4_is_active_c4_hdlcodercpu_eml;
   c4_out_flags = (uint8_T *)ssGetOutputPortSignal(chartInstance->S, 2);
   c4_alu_out = (int8_T *)ssGetOutputPortSignal(chartInstance->S, 1);
-  c4_is_active_c4_hdlcodercpu_eml = (uint8_T *)ssGetDWork(chartInstance->S, 3);
-  c4_doneDoubleBufferReInit = (boolean_T *)ssGetDWork(chartInstance->S, 2);
-  *c4_doneDoubleBufferReInit = TRUE;
+  chartInstance->c4_doneDoubleBufferReInit = TRUE;
   c4_u = sf_mex_dup(c4_st);
   *c4_alu_out = c4_b_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getcell
     (c4_u, 0)), "alu_out");
   *c4_out_flags = c4_l_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getcell
     (c4_u, 1)), "out_flags");
-  *c4_is_active_c4_hdlcodercpu_eml = c4_f_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c4_u, 2)), "is_active_c4_hdlcodercpu_eml");
+  chartInstance->c4_is_active_c4_hdlcodercpu_eml = c4_f_emlrt_marshallIn
+    (chartInstance, sf_mex_dup(sf_mex_getcell(c4_u, 2)),
+     "is_active_c4_hdlcodercpu_eml");
   sf_mex_destroy(&c4_u);
   c4_update_debugger_state_c4_hdlcodercpu_eml(chartInstance);
   sf_mex_destroy(&c4_st);
@@ -321,7 +304,6 @@ static void finalize_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
 static void sf_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
   *chartInstance)
 {
-  int32_T *c4_sfEvent;
   uint8_T *c4_in_flags;
   uint8_T *c4_func;
   int8_T *c4_alu_in;
@@ -334,16 +316,15 @@ static void sf_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
   c4_alu_in = (int8_T *)ssGetInputPortSignal(chartInstance->S, 2);
   c4_func = (uint8_T *)ssGetInputPortSignal(chartInstance->S, 1);
   c4_in_flags = (uint8_T *)ssGetInputPortSignal(chartInstance->S, 0);
-  c4_sfEvent = (int32_T *)ssGetDWork(chartInstance->S, 0);
   _sfTime_ = (real_T)ssGetT(chartInstance->S);
-  _SFD_CC_CALL(CHART_ENTER_SFUNCTION_TAG, 3U, *c4_sfEvent);
+  _SFD_CC_CALL(CHART_ENTER_SFUNCTION_TAG, 3U, chartInstance->c4_sfEvent);
   _SFD_DATA_RANGE_CHECK((real_T)*c4_in_flags, 0U);
   _SFD_DATA_RANGE_CHECK((real_T)*c4_func, 1U);
   _SFD_DATA_RANGE_CHECK((real_T)*c4_alu_in, 2U);
   _SFD_DATA_RANGE_CHECK((real_T)*c4_AC, 3U);
   _SFD_DATA_RANGE_CHECK((real_T)*c4_alu_out, 4U);
   _SFD_DATA_RANGE_CHECK((real_T)*c4_out_flags, 5U);
-  *c4_sfEvent = CALL_EVENT;
+  chartInstance->c4_sfEvent = CALL_EVENT;
   c4_chartstep_c4_hdlcodercpu_eml(chartInstance);
   sf_debug_check_for_state_inconsistency(_hdlcodercpu_emlMachineNumber_,
     chartInstance->chartNumber, chartInstance->instanceNumber);
@@ -492,15 +473,13 @@ static void c4_chartstep_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
   int8_T *c4_b_AC;
   int8_T *c4_d_alu_out;
   uint8_T *c4_b_out_flags;
-  int32_T *c4_sfEvent;
   c4_b_out_flags = (uint8_T *)ssGetOutputPortSignal(chartInstance->S, 2);
   c4_d_alu_out = (int8_T *)ssGetOutputPortSignal(chartInstance->S, 1);
   c4_b_AC = (int8_T *)ssGetInputPortSignal(chartInstance->S, 3);
   c4_b_alu_in = (int8_T *)ssGetInputPortSignal(chartInstance->S, 2);
   c4_b_func = (uint8_T *)ssGetInputPortSignal(chartInstance->S, 1);
   c4_b_in_flags = (uint8_T *)ssGetInputPortSignal(chartInstance->S, 0);
-  c4_sfEvent = (int32_T *)ssGetDWork(chartInstance->S, 0);
-  _SFD_CC_CALL(CHART_ENTER_DURING_FUNCTION_TAG, 3U, *c4_sfEvent);
+  _SFD_CC_CALL(CHART_ENTER_DURING_FUNCTION_TAG, 3U, chartInstance->c4_sfEvent);
   c4_hoistedGlobal = *c4_b_in_flags;
   c4_b_hoistedGlobal = *c4_b_func;
   c4_c_hoistedGlobal = *c4_b_alu_in;
@@ -535,9 +514,9 @@ static void c4_chartstep_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
   sf_debug_symbol_scope_add_eml_importable(&c4_out_flags, 13U, c4_sf_marshallOut,
     c4_sf_marshallIn);
   CV_EML_FCN(0, 0);
-  _SFD_EML_CALL(0U, *c4_sfEvent, 8);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 8);
   c4_hdl_fm = c4_eml_mx;
-  _SFD_EML_CALL(0U, *c4_sfEvent, 16);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 16);
   c4_a = c4_in_flags;
   sf_mex_destroy(&c4_m0);
   sf_mex_destroy(&c4_m1);
@@ -545,7 +524,7 @@ static void c4_chartstep_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
   c4_a1 = c4_a;
   c4_slice_temp = (uint8_T)((uint8_T)((uint32_T)c4_a1 >> 3) & 1U);
   c4_carry = c4_slice_temp;
-  _SFD_EML_CALL(0U, *c4_sfEvent, 19);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 19);
   c4_b_a = c4_in_flags;
   sf_mex_destroy(&c4_m2);
   sf_mex_destroy(&c4_m3);
@@ -553,7 +532,7 @@ static void c4_chartstep_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
   c4_b_a1 = c4_b_a;
   c4_b_slice_temp = (uint8_T)((uint8_T)((uint32_T)c4_b_a1 >> 1) & 1U);
   c4_overflow = c4_b_slice_temp;
-  _SFD_EML_CALL(0U, *c4_sfEvent, 22);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 22);
   c4_varargin_1 = c4_AC;
   c4_b_varargin_1 = c4_varargin_1;
   sf_mex_destroy(&c4_m4);
@@ -569,7 +548,7 @@ static void c4_chartstep_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c4_m12);
   sf_mex_destroy(&c4_m13);
   sf_mex_destroy(&c4_m14);
-  _SFD_EML_CALL(0U, *c4_sfEvent, 26);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 26);
   switch (c4_uint8(chartInstance, c4_func)) {
    case 0U:
     CV_EML_SWITCH(0, 0, 1);
@@ -577,13 +556,13 @@ static void c4_chartstep_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
 
    case 1U:
     CV_EML_SWITCH(0, 0, 2);
-    _SFD_EML_CALL(0U, *c4_sfEvent, 31);
+    _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 31);
     c4_alu_out = c4_bitand(chartInstance, c4_alu_in, c4_AC);
     break;
 
    case 2U:
     CV_EML_SWITCH(0, 0, 3);
-    _SFD_EML_CALL(0U, *c4_sfEvent, 34);
+    _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 34);
     c4_sum_w_carry(chartInstance, c4_AC, c4_alu_in, c4_carry, &c4_b_alu_out,
                    &c4_b_carry, &c4_b_overflow);
     c4_alu_out = c4_b_alu_out;
@@ -593,7 +572,7 @@ static void c4_chartstep_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
 
    case 3U:
     CV_EML_SWITCH(0, 0, 4);
-    _SFD_EML_CALL(0U, *c4_sfEvent, 37);
+    _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 37);
     c4_sub_w_borrow(chartInstance, c4_AC, c4_alu_in, c4_carry, &c4_c_alu_out,
                     &c4_c_carry, &c4_c_overflow);
     c4_alu_out = c4_c_alu_out;
@@ -603,7 +582,7 @@ static void c4_chartstep_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
 
    case 4U:
     CV_EML_SWITCH(0, 0, 5);
-    _SFD_EML_CALL(0U, *c4_sfEvent, 40);
+    _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 40);
     c4_c_varargin_1 = c4_b_bitcmp(chartInstance, c4_AC);
     c4_d_varargin_1 = c4_c_varargin_1;
     sf_mex_destroy(&c4_m15);
@@ -623,13 +602,13 @@ static void c4_chartstep_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
 
    case 5U:
     CV_EML_SWITCH(0, 0, 6);
-    _SFD_EML_CALL(0U, *c4_sfEvent, 43);
+    _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 43);
     c4_carry = c4_bitcmp(chartInstance, c4_carry);
     break;
 
    case 6U:
     CV_EML_SWITCH(0, 0, 7);
-    _SFD_EML_CALL(0U, *c4_sfEvent, 46);
+    _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 46);
     c4_e_varargin_1 = c4_alu_in;
     c4_f_varargin_1 = c4_e_varargin_1;
     sf_mex_destroy(&c4_m26);
@@ -649,7 +628,7 @@ static void c4_chartstep_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
 
    case 7U:
     CV_EML_SWITCH(0, 0, 8);
-    _SFD_EML_CALL(0U, *c4_sfEvent, 49);
+    _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 49);
     sf_mex_destroy(&c4_m37);
     sf_mex_destroy(&c4_m38);
     sf_mex_destroy(&c4_m39);
@@ -665,7 +644,7 @@ static void c4_chartstep_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
     break;
   }
 
-  _SFD_EML_CALL(0U, *c4_sfEvent, 53);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 53);
   c4_c_a = c4_alu_out;
   sf_mex_destroy(&c4_m44);
   sf_mex_destroy(&c4_m45);
@@ -680,9 +659,9 @@ static void c4_chartstep_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
   c4_c_slice_temp = (uint8_T)((uint8_T)(int8_T)((int8_T)(uint8_T)((uint32_T)
     (uint8_T)c4_c_a >> 7) & 1) & 1U);
   c4_sign_bit = c4_c_slice_temp;
-  _SFD_EML_CALL(0U, *c4_sfEvent, 56);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 56);
   c4_is_zero = (uint8_T)!c4_all(chartInstance, c4_alu_out);
-  _SFD_EML_CALL(0U, *c4_sfEvent, 57);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 57);
   c4_g_varargin_1 = c4_is_zero;
   c4_h_varargin_1 = c4_g_varargin_1;
   c4_d_var1 = c4_h_varargin_1;
@@ -694,7 +673,7 @@ static void c4_chartstep_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c4_m57);
   sf_mex_destroy(&c4_m58);
   sf_mex_destroy(&c4_m59);
-  _SFD_EML_CALL(0U, *c4_sfEvent, 60);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 60);
   c4_i_varargin_1 = c4_carry;
   c4_varargin_2 = c4_sign_bit;
   c4_j_varargin_1 = c4_i_varargin_1;
@@ -729,11 +708,11 @@ static void c4_chartstep_c4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct
   c4_out_flags = (uint8_T)((uint8_T)((uint8_T)((uint8_T)((uint8_T)
     (c4_n_varargin_1 & 15U) << 1) & 15U) | (uint8_T)(c4_c_varargout_2 & 15U)) &
     15U);
-  _SFD_EML_CALL(0U, *c4_sfEvent, -60);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, -60);
   sf_debug_symbol_scope_pop();
   *c4_d_alu_out = c4_alu_out;
   *c4_b_out_flags = c4_out_flags;
-  _SFD_CC_CALL(EXIT_OUT_OF_FUNCTION_TAG, 3U, *c4_sfEvent);
+  _SFD_CC_CALL(EXIT_OUT_OF_FUNCTION_TAG, 3U, chartInstance->c4_sfEvent);
 }
 
 static void initSimStructsc4_hdlcodercpu_eml(SFc4_hdlcodercpu_emlInstanceStruct *
@@ -1862,8 +1841,6 @@ static void c4_sub_w_borrow(SFc4_hdlcodercpu_emlInstanceStruct *chartInstance,
   uint8_T c4_b_overflow;
   uint8_T c4_b_carry;
   int8_T c4_b_diff;
-  int32_T *c4_sfEvent;
-  c4_sfEvent = (int32_T *)ssGetDWork(chartInstance->S, 0);
   sf_debug_symbol_scope_push_eml(0U, 8U, 8U, c4_c_debug_family_names,
     c4_debug_family_var_map);
   sf_debug_symbol_scope_add_eml_importable(&c4_nargin, 0U, c4_e_sf_marshallOut,
@@ -1883,14 +1860,14 @@ static void c4_sub_w_borrow(SFc4_hdlcodercpu_emlInstanceStruct *chartInstance,
   sf_debug_symbol_scope_add_eml_importable(c4_overflow, 7U, c4_f_sf_marshallOut,
     c4_d_sf_marshallIn);
   CV_EML_FCN(0, 1);
-  _SFD_EML_CALL(0U, *c4_sfEvent, 70);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 70);
   c4_sum_w_carry(chartInstance, c4_u1, c4_b_bitcmp(chartInstance, c4_u2),
                  c4_bitcmp(chartInstance, c4_b_in), &c4_b_diff, &c4_b_carry,
                  &c4_b_overflow);
   *c4_diff = c4_b_diff;
   *c4_carry = c4_b_carry;
   *c4_overflow = c4_b_overflow;
-  _SFD_EML_CALL(0U, *c4_sfEvent, -70);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, -70);
   sf_debug_symbol_scope_pop();
 }
 
@@ -2079,9 +2056,7 @@ static void c4_sum_w_carry(SFc4_hdlcodercpu_emlInstanceStruct *chartInstance,
   const mxArray *c4_m199 = NULL;
   const mxArray *c4_m200 = NULL;
   const mxArray *c4_m201 = NULL;
-  int32_T *c4_sfEvent;
   boolean_T guard1 = FALSE;
-  c4_sfEvent = (int32_T *)ssGetDWork(chartInstance->S, 0);
   sf_debug_symbol_scope_push_eml(0U, 14U, 14U, c4_b_debug_family_names,
     c4_debug_family_var_map);
   sf_debug_symbol_scope_add_eml(&c4_hdl_fm, 0U, c4_i_sf_marshallOut);
@@ -2112,9 +2087,9 @@ static void c4_sum_w_carry(SFc4_hdlcodercpu_emlInstanceStruct *chartInstance,
   sf_debug_symbol_scope_add_eml_importable(c4_overflow, 13U, c4_f_sf_marshallOut,
     c4_d_sf_marshallIn);
   CV_EML_FCN(0, 2);
-  _SFD_EML_CALL(0U, *c4_sfEvent, 79);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 79);
   c4_hdl_fm = c4_eml_mx;
-  _SFD_EML_CALL(0U, *c4_sfEvent, 87);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 87);
   sf_mex_destroy(&c4_m87);
   sf_mex_destroy(&c4_m88);
   sf_mex_destroy(&c4_m89);
@@ -2139,7 +2114,7 @@ static void c4_sum_w_carry(SFc4_hdlcodercpu_emlInstanceStruct *chartInstance,
   sf_mex_destroy(&c4_m102);
   sf_mex_destroy(&c4_m103);
   sf_mex_destroy(&c4_m104);
-  _SFD_EML_CALL(0U, *c4_sfEvent, 90);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 90);
   sf_mex_destroy(&c4_m105);
   sf_mex_destroy(&c4_m106);
   sf_mex_destroy(&c4_m107);
@@ -2164,7 +2139,7 @@ static void c4_sum_w_carry(SFc4_hdlcodercpu_emlInstanceStruct *chartInstance,
   sf_mex_destroy(&c4_m120);
   sf_mex_destroy(&c4_m121);
   sf_mex_destroy(&c4_m122);
-  _SFD_EML_CALL(0U, *c4_sfEvent, 93);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 93);
   c4_e_varargin_1 = c4_b_plus(chartInstance, c4_plus(chartInstance, c4_temp_u1,
     c4_temp_u2), c4_c_in);
   c4_f_varargin_1 = c4_e_varargin_1;
@@ -2183,7 +2158,7 @@ static void c4_sum_w_carry(SFc4_hdlcodercpu_emlInstanceStruct *chartInstance,
   sf_mex_destroy(&c4_m131);
   sf_mex_destroy(&c4_m132);
   sf_mex_destroy(&c4_m133);
-  _SFD_EML_CALL(0U, *c4_sfEvent, 96);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 96);
   c4_a = c4_temp_sum;
   sf_mex_destroy(&c4_m134);
   sf_mex_destroy(&c4_m135);
@@ -2201,7 +2176,7 @@ static void c4_sum_w_carry(SFc4_hdlcodercpu_emlInstanceStruct *chartInstance,
   c4_slice_temp = (uint8_T)((uint8_T)((int16_T)(c4_i8 & 256) != 0 ? (int16_T)
     (c4_i8 | -256) : (int16_T)(c4_i8 & 255)) & 1U);
   *c4_carry = c4_slice_temp;
-  _SFD_EML_CALL(0U, *c4_sfEvent, 99);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 99);
   c4_g_varargin_1 = c4_temp_sum;
   c4_h_varargin_1 = c4_g_varargin_1;
   sf_mex_destroy(&c4_m143);
@@ -2217,7 +2192,7 @@ static void c4_sum_w_carry(SFc4_hdlcodercpu_emlInstanceStruct *chartInstance,
   sf_mex_destroy(&c4_m151);
   sf_mex_destroy(&c4_m152);
   sf_mex_destroy(&c4_m153);
-  _SFD_EML_CALL(0U, *c4_sfEvent, 102);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 102);
   c4_b_a = *c4_sum;
   sf_mex_destroy(&c4_m154);
   sf_mex_destroy(&c4_m155);
@@ -2232,7 +2207,7 @@ static void c4_sum_w_carry(SFc4_hdlcodercpu_emlInstanceStruct *chartInstance,
   c4_b_slice_temp = (uint8_T)((uint8_T)(int8_T)((int8_T)(uint8_T)((uint32_T)
     (uint8_T)c4_b_a >> 7) & 1) & 1U);
   c4_sign_bit = c4_b_slice_temp;
-  _SFD_EML_CALL(0U, *c4_sfEvent, 106);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 106);
   c4_c_a = c4_u1;
   sf_mex_destroy(&c4_m163);
   sf_mex_destroy(&c4_m164);
@@ -2316,7 +2291,7 @@ static void c4_sum_w_carry(SFc4_hdlcodercpu_emlInstanceStruct *chartInstance,
   }
 
   c4_overflow_int = (uint8_T)c4_e_b0;
-  _SFD_EML_CALL(0U, *c4_sfEvent, 110);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, 110);
   c4_i_varargin_1 = c4_overflow_int;
   c4_j_varargin_1 = c4_i_varargin_1;
   c4_e_var1 = c4_j_varargin_1;
@@ -2328,7 +2303,7 @@ static void c4_sum_w_carry(SFc4_hdlcodercpu_emlInstanceStruct *chartInstance,
   sf_mex_destroy(&c4_m199);
   sf_mex_destroy(&c4_m200);
   sf_mex_destroy(&c4_m201);
-  _SFD_EML_CALL(0U, *c4_sfEvent, -110);
+  _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, -110);
   sf_debug_symbol_scope_pop();
 }
 
@@ -2558,18 +2533,19 @@ static int32_T c4_k_emlrt_marshallIn(SFc4_hdlcodercpu_emlInstanceStruct
 static void c4_i_sf_marshallIn(void *chartInstanceVoid, const mxArray
   *c4_mxArrayInData, const char_T *c4_varName, void *c4_outData)
 {
-  const mxArray *c4_sfEvent;
+  const mxArray *c4_b_sfEvent;
   const char_T *c4_identifier;
   emlrtMsgIdentifier c4_thisId;
   int32_T c4_y;
   SFc4_hdlcodercpu_emlInstanceStruct *chartInstance;
   chartInstance = (SFc4_hdlcodercpu_emlInstanceStruct *)chartInstanceVoid;
-  c4_sfEvent = sf_mex_dup(c4_mxArrayInData);
+  c4_b_sfEvent = sf_mex_dup(c4_mxArrayInData);
   c4_identifier = c4_varName;
   c4_thisId.fIdentifier = c4_identifier;
   c4_thisId.fParent = NULL;
-  c4_y = c4_k_emlrt_marshallIn(chartInstance, sf_mex_dup(c4_sfEvent), &c4_thisId);
-  sf_mex_destroy(&c4_sfEvent);
+  c4_y = c4_k_emlrt_marshallIn(chartInstance, sf_mex_dup(c4_b_sfEvent),
+    &c4_thisId);
+  sf_mex_destroy(&c4_b_sfEvent);
   *(int32_T *)c4_outData = c4_y;
   sf_mex_destroy(&c4_mxArrayInData);
 }
@@ -2697,7 +2673,6 @@ static void init_dsm_address_info(SFc4_hdlcodercpu_emlInstanceStruct
 }
 
 /* SFunction Glue Code */
-static uint32_T* sf_get_sfun_dwork_checksum();
 void sf_c4_hdlcodercpu_eml_get_check_sum(mxArray *plhs[])
 {
   ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3930751794U);
@@ -3088,34 +3063,8 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
   }
 }
 
-static void sf_check_dwork_consistency(SimStruct *S)
-{
-  if (sim_mode_is_rtw_gen(S) || sim_mode_is_external(S)) {
-    const uint32_T *sfunDWorkChecksum = sf_get_sfun_dwork_checksum();
-    mxArray* mxRTWDWorkChecksum = sf_get_dwork_info_from_mat_file(S,
-      "hdlcodercpu_eml", "hdlcodercpu_eml", 4, "dworkChecksum");
-    if (mxRTWDWorkChecksum != NULL) {
-      double *pr = mxGetPr(mxRTWDWorkChecksum);
-      if ((uint32_T)pr[0] != sfunDWorkChecksum[0] ||
-          (uint32_T)pr[1] != sfunDWorkChecksum[1] ||
-          (uint32_T)pr[2] != sfunDWorkChecksum[2] ||
-          (uint32_T)pr[3] != sfunDWorkChecksum[3]) {
-        sf_mex_error_message("Code generation and simulation targets registered different sets of persistent variables for the block. "
-                             "External or Rapid Accelerator mode simulation requires code generation and simulation targets to "
-                             "register the same set of persistent variables for this block. "
-                             "This discrepancy is typically caused by MATLAB functions that have different code paths for "
-                             "simulation and code generation targets where these code paths define different sets of persistent variables. "
-                             "Please identify these code paths in the offending block and rewrite the MATLAB code so that "
-                             "the set of persistent variables is the same between simulation and code generation.");
-      }
-    }
-  }
-}
-
 static void sf_opaque_initialize_c4_hdlcodercpu_eml(void *chartInstanceVar)
 {
-  sf_check_dwork_consistency(((SFc4_hdlcodercpu_emlInstanceStruct*)
-    chartInstanceVar)->S);
   chart_debug_initialization(((SFc4_hdlcodercpu_emlInstanceStruct*)
     chartInstanceVar)->S,0);
   initialize_params_c4_hdlcodercpu_eml((SFc4_hdlcodercpu_emlInstanceStruct*)
@@ -3139,12 +3088,6 @@ static void sf_opaque_disable_c4_hdlcodercpu_eml(void *chartInstanceVar)
 static void sf_opaque_gateway_c4_hdlcodercpu_eml(void *chartInstanceVar)
 {
   sf_c4_hdlcodercpu_eml((SFc4_hdlcodercpu_emlInstanceStruct*) chartInstanceVar);
-}
-
-static void sf_opaque_ext_mode_exec_c4_hdlcodercpu_eml(void *chartInstanceVar)
-{
-  ext_mode_exec_c4_hdlcodercpu_eml((SFc4_hdlcodercpu_emlInstanceStruct*)
-    chartInstanceVar);
 }
 
 extern const mxArray* sf_internal_get_sim_state_c4_hdlcodercpu_eml(SimStruct* S)
@@ -3245,33 +3188,6 @@ static void mdlProcessParameters_c4_hdlcodercpu_eml(SimStruct *S)
   }
 }
 
-mxArray *sf_c4_hdlcodercpu_eml_get_testpoint_info(void)
-{
-  const char *infoEncStr[] = {
-    "100 S'varName','path'{{T\"is_active_c4_hdlcodercpu_eml\",T\"is_active_c4_hdlcodercpu_eml\"}}"
-  };
-
-  mxArray *mxTpInfo = sf_mex_decode_encoded_mx_struct_array(infoEncStr, 1, 10);
-  return mxTpInfo;
-}
-
-static void sf_set_sfun_dwork_info(SimStruct *S)
-{
-  const char *dworkEncStr[] = {
-    "100 S1x4'type','isSigned','wordLength','bias','slope','exponent','isComplex','size'{{T\"int32\",,,,,,M[0],M[]},{T\"boolean\",,,,,,M[0],M[]},{T\"boolean\",,,,,,M[0],M[]},{T\"uint8\",,,,,,M[0],M[]}}"
-  };
-
-  sf_set_encoded_dwork_info(S, dworkEncStr, 4, 10);
-}
-
-static uint32_T* sf_get_sfun_dwork_checksum()
-{
-  static uint32_T checksum[4] = { 3851270630U, 3363230343U, 1651207761U,
-    946165807U };
-
-  return checksum;
-}
-
 static void mdlSetWorkWidths_c4_hdlcodercpu_eml(SimStruct *S)
 {
   if (sim_mode_is_rtw_gen(S) || sim_mode_is_external(S)) {
@@ -3297,7 +3213,6 @@ static void mdlSetWorkWidths_c4_hdlcodercpu_eml(SimStruct *S)
     sf_set_rtw_dwork_info(S,"hdlcodercpu_eml","hdlcodercpu_eml",4);
     ssSetHasSubFunctions(S,!(chartIsInlinable));
   } else {
-    sf_set_sfun_dwork_info(S);
   }
 
   ssSetOptions(S,ssGetOptions(S)|SS_OPTION_WORKS_WITH_CODE_REUSE);
@@ -3351,8 +3266,7 @@ static void mdlStart_c4_hdlcodercpu_eml(SimStruct *S)
   chartInstance->chartInfo.mdlStart = mdlStart_c4_hdlcodercpu_eml;
   chartInstance->chartInfo.mdlSetWorkWidths =
     mdlSetWorkWidths_c4_hdlcodercpu_eml;
-  chartInstance->chartInfo.extModeExec =
-    sf_opaque_ext_mode_exec_c4_hdlcodercpu_eml;
+  chartInstance->chartInfo.extModeExec = NULL;
   chartInstance->chartInfo.restoreLastMajorStepConfiguration = NULL;
   chartInstance->chartInfo.restoreBeforeLastMajorStepConfiguration = NULL;
   chartInstance->chartInfo.storeCurrentConfiguration = NULL;

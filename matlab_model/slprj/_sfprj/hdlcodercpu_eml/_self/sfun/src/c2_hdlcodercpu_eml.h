@@ -20,8 +20,24 @@ typedef struct {
 
 typedef struct {
   SimStruct *S;
+  int32_T c2_sfEvent;
   uint32_T chartNumber;
   uint32_T instanceNumber;
+  boolean_T c2_CPU_state_not_empty;
+  boolean_T c2_address_data_not_empty;
+  boolean_T c2_doneDoubleBufferReInit;
+  boolean_T c2_indirect_address_not_empty;
+  boolean_T c2_isStable;
+  boolean_T c2_major_opcode_not_empty;
+  boolean_T c2_minor_opcode_not_empty;
+  boolean_T c2_previous_CPU_state_not_empty;
+  uint8_T c2_CPU_state;
+  uint8_T c2_address_data;
+  uint8_T c2_indirect_address;
+  uint8_T c2_is_active_c2_hdlcodercpu_eml;
+  uint8_T c2_major_opcode;
+  uint8_T c2_minor_opcode;
+  uint8_T c2_previous_CPU_state;
   ChartInfoStruct chartInfo;
 } SFc2_hdlcodercpu_emlInstanceStruct;
 

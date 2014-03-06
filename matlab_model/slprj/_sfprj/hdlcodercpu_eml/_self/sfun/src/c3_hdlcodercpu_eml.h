@@ -20,8 +20,14 @@ typedef struct {
 
 typedef struct {
   SimStruct *S;
+  int32_T c3_sfEvent;
   uint32_T chartNumber;
   uint32_T instanceNumber;
+  boolean_T c3_AC_value_not_empty;
+  boolean_T c3_doneDoubleBufferReInit;
+  boolean_T c3_isStable;
+  int8_T c3_AC_value;
+  uint8_T c3_is_active_c3_hdlcodercpu_eml;
   ChartInfoStruct chartInfo;
 } SFc3_hdlcodercpu_emlInstanceStruct;
 

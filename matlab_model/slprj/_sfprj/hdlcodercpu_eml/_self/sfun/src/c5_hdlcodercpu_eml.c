@@ -32,8 +32,6 @@ static void disable_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   *chartInstance);
 static void c5_update_debugger_state_c5_hdlcodercpu_eml
   (SFc5_hdlcodercpu_emlInstanceStruct *chartInstance);
-static void ext_mode_exec_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct *
-  chartInstance);
 static const mxArray *get_sim_state_c5_hdlcodercpu_eml
   (SFc5_hdlcodercpu_emlInstanceStruct *chartInstance);
 static void set_sim_state_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct *
@@ -50,8 +48,8 @@ static void init_script_number_translation(uint32_T c5_machineNumber, uint32_T
   c5_chartNumber);
 static const mxArray *c5_sf_marshallOut(void *chartInstanceVoid, void *c5_inData);
 static void c5_emlrt_marshallIn(SFc5_hdlcodercpu_emlInstanceStruct
-  *chartInstance, const mxArray *c5_data, const char_T *c5_identifier, uint16_T
-  c5_y[256]);
+  *chartInstance, const mxArray *c5_b_data, const char_T *c5_identifier,
+  uint16_T c5_y[256]);
 static void c5_b_emlrt_marshallIn(SFc5_hdlcodercpu_emlInstanceStruct
   *chartInstance, const mxArray *c5_u, const emlrtMsgIdentifier *c5_parentId,
   uint16_T c5_y[256]);
@@ -93,7 +91,7 @@ static void c5_d_sf_marshallIn(void *chartInstanceVoid, const mxArray
 static const mxArray *c5_h_sf_marshallOut(void *chartInstanceVoid, void
   *c5_inData);
 static uint8_T c5_g_emlrt_marshallIn(SFc5_hdlcodercpu_emlInstanceStruct
-  *chartInstance, const mxArray *c5_is_active_c5_hdlcodercpu_eml, const char_T
+  *chartInstance, const mxArray *c5_b_is_active_c5_hdlcodercpu_eml, const char_T
   *c5_identifier);
 static uint8_T c5_h_emlrt_marshallIn(SFc5_hdlcodercpu_emlInstanceStruct
   *chartInstance, const mxArray *c5_u, const emlrtMsgIdentifier *c5_parentId);
@@ -104,16 +102,10 @@ static void init_dsm_address_info(SFc5_hdlcodercpu_emlInstanceStruct
 static void initialize_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   *chartInstance)
 {
-  int32_T *c5_sfEvent;
-  boolean_T *c5_data_not_empty;
-  uint8_T *c5_is_active_c5_hdlcodercpu_eml;
-  c5_data_not_empty = (boolean_T *)ssGetDWork(chartInstance->S, 5);
-  c5_is_active_c5_hdlcodercpu_eml = (uint8_T *)ssGetDWork(chartInstance->S, 3);
-  c5_sfEvent = (int32_T *)ssGetDWork(chartInstance->S, 0);
-  *c5_sfEvent = CALL_EVENT;
+  chartInstance->c5_sfEvent = CALL_EVENT;
   _sfTime_ = (real_T)ssGetT(chartInstance->S);
-  *c5_data_not_empty = FALSE;
-  *c5_is_active_c5_hdlcodercpu_eml = 0U;
+  chartInstance->c5_data_not_empty = FALSE;
+  chartInstance->c5_is_active_c5_hdlcodercpu_eml = 0U;
   sf_mex_assign(&c5_c_eml_mx, sf_mex_call_debug("numerictype", 1U, 14U, 15,
     "SignednessBool", 3, FALSE, 15, "Signedness", 15, "Unsigned", 15,
     "WordLength", 6, 1.0, 15, "FractionLength", 6, 0.0, 15, "BinaryPoint", 6,
@@ -157,12 +149,6 @@ static void c5_update_debugger_state_c5_hdlcodercpu_eml
 {
 }
 
-static void ext_mode_exec_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct *
-  chartInstance)
-{
-  c5_update_debugger_state_c5_hdlcodercpu_eml(chartInstance);
-}
-
 static const mxArray *get_sim_state_c5_hdlcodercpu_eml
   (SFc5_hdlcodercpu_emlInstanceStruct *chartInstance)
 {
@@ -181,13 +167,7 @@ static const mxArray *get_sim_state_c5_hdlcodercpu_eml
   uint8_T c5_d_u;
   const mxArray *c5_f_y = NULL;
   uint16_T *c5_instr_out;
-  boolean_T *c5_data_not_empty;
-  uint8_T *c5_is_active_c5_hdlcodercpu_eml;
-  uint16_T (*c5_data)[256];
-  c5_data_not_empty = (boolean_T *)ssGetDWork(chartInstance->S, 5);
-  c5_data = (uint16_T (*)[256])ssGetDWork(chartInstance->S, 4);
   c5_instr_out = (uint16_T *)ssGetOutputPortSignal(chartInstance->S, 1);
-  c5_is_active_c5_hdlcodercpu_eml = (uint8_T *)ssGetDWork(chartInstance->S, 3);
   c5_st = NULL;
   c5_st = NULL;
   c5_y = NULL;
@@ -203,11 +183,11 @@ static const mxArray *get_sim_state_c5_hdlcodercpu_eml
     "simulinkarray", 14, c5_c_y, 15, "fimathislocal", 3, TRUE));
   sf_mex_setcell(c5_y, 0, c5_b_y);
   c5_d_y = NULL;
-  if (!*c5_data_not_empty) {
+  if (!chartInstance->c5_data_not_empty) {
     sf_mex_assign(&c5_d_y, sf_mex_create("y", NULL, 0, 0U, 1U, 0U, 2, 0, 0));
   } else {
     for (c5_i0 = 0; c5_i0 < 256; c5_i0++) {
-      c5_c_u[c5_i0] = (*c5_data)[c5_i0];
+      c5_c_u[c5_i0] = chartInstance->c5_data[c5_i0];
     }
 
     c5_e_y = NULL;
@@ -218,7 +198,7 @@ static const mxArray *get_sim_state_c5_hdlcodercpu_eml
   }
 
   sf_mex_setcell(c5_y, 1, c5_d_y);
-  c5_b_hoistedGlobal = *c5_is_active_c5_hdlcodercpu_eml;
+  c5_b_hoistedGlobal = chartInstance->c5_is_active_c5_hdlcodercpu_eml;
   c5_d_u = c5_b_hoistedGlobal;
   c5_f_y = NULL;
   sf_mex_assign(&c5_f_y, sf_mex_create("y", &c5_d_u, 3, 0U, 0U, 0U, 0));
@@ -233,26 +213,21 @@ static void set_sim_state_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct 
   const mxArray *c5_u;
   uint16_T c5_uv0[256];
   int32_T c5_i1;
-  boolean_T *c5_doneDoubleBufferReInit;
   uint16_T *c5_instr_out;
-  uint8_T *c5_is_active_c5_hdlcodercpu_eml;
-  uint16_T (*c5_data)[256];
-  c5_data = (uint16_T (*)[256])ssGetDWork(chartInstance->S, 4);
   c5_instr_out = (uint16_T *)ssGetOutputPortSignal(chartInstance->S, 1);
-  c5_is_active_c5_hdlcodercpu_eml = (uint8_T *)ssGetDWork(chartInstance->S, 3);
-  c5_doneDoubleBufferReInit = (boolean_T *)ssGetDWork(chartInstance->S, 2);
-  *c5_doneDoubleBufferReInit = TRUE;
+  chartInstance->c5_doneDoubleBufferReInit = TRUE;
   c5_u = sf_mex_dup(c5_st);
   *c5_instr_out = c5_c_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getcell
     (c5_u, 0)), "instr_out");
   c5_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getcell(c5_u, 1)), "data",
                       c5_uv0);
   for (c5_i1 = 0; c5_i1 < 256; c5_i1++) {
-    (*c5_data)[c5_i1] = c5_uv0[c5_i1];
+    chartInstance->c5_data[c5_i1] = c5_uv0[c5_i1];
   }
 
-  *c5_is_active_c5_hdlcodercpu_eml = c5_g_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c5_u, 2)), "is_active_c5_hdlcodercpu_eml");
+  chartInstance->c5_is_active_c5_hdlcodercpu_eml = c5_g_emlrt_marshallIn
+    (chartInstance, sf_mex_dup(sf_mex_getcell(c5_u, 2)),
+     "is_active_c5_hdlcodercpu_eml");
   sf_mex_destroy(&c5_u);
   c5_update_debugger_state_c5_hdlcodercpu_eml(chartInstance);
   sf_mex_destroy(&c5_st);
@@ -269,20 +244,18 @@ static void finalize_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
 static void sf_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   *chartInstance)
 {
-  int32_T *c5_sfEvent;
   uint8_T *c5_addr;
   uint8_T *c5_read;
   uint16_T *c5_instr_out;
   c5_instr_out = (uint16_T *)ssGetOutputPortSignal(chartInstance->S, 1);
   c5_read = (uint8_T *)ssGetInputPortSignal(chartInstance->S, 1);
   c5_addr = (uint8_T *)ssGetInputPortSignal(chartInstance->S, 0);
-  c5_sfEvent = (int32_T *)ssGetDWork(chartInstance->S, 0);
   _sfTime_ = (real_T)ssGetT(chartInstance->S);
-  _SFD_CC_CALL(CHART_ENTER_SFUNCTION_TAG, 4U, *c5_sfEvent);
+  _SFD_CC_CALL(CHART_ENTER_SFUNCTION_TAG, 4U, chartInstance->c5_sfEvent);
   _SFD_DATA_RANGE_CHECK((real_T)*c5_addr, 0U);
   _SFD_DATA_RANGE_CHECK((real_T)*c5_read, 1U);
   _SFD_DATA_RANGE_CHECK((real_T)*c5_instr_out, 2U);
-  *c5_sfEvent = CALL_EVENT;
+  chartInstance->c5_sfEvent = CALL_EVENT;
   c5_chartstep_c5_hdlcodercpu_eml(chartInstance);
   sf_debug_check_for_state_inconsistency(_hdlcodercpu_emlMachineNumber_,
     chartInstance->chartNumber, chartInstance->instanceNumber);
@@ -928,16 +901,10 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   uint16_T *c5_b_instr_out;
   uint8_T *c5_b_addr;
   uint8_T *c5_b_read;
-  boolean_T *c5_data_not_empty;
-  uint16_T (*c5_data)[256];
-  int32_T *c5_sfEvent;
-  c5_data_not_empty = (boolean_T *)ssGetDWork(chartInstance->S, 5);
-  c5_data = (uint16_T (*)[256])ssGetDWork(chartInstance->S, 4);
   c5_b_instr_out = (uint16_T *)ssGetOutputPortSignal(chartInstance->S, 1);
   c5_b_read = (uint8_T *)ssGetInputPortSignal(chartInstance->S, 1);
   c5_b_addr = (uint8_T *)ssGetInputPortSignal(chartInstance->S, 0);
-  c5_sfEvent = (int32_T *)ssGetDWork(chartInstance->S, 0);
-  _SFD_CC_CALL(CHART_ENTER_DURING_FUNCTION_TAG, 4U, *c5_sfEvent);
+  _SFD_CC_CALL(CHART_ENTER_DURING_FUNCTION_TAG, 4U, chartInstance->c5_sfEvent);
   c5_hoistedGlobal = *c5_b_addr;
   c5_b_hoistedGlobal = *c5_b_read;
   c5_addr = c5_hoistedGlobal;
@@ -953,23 +920,23 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_debug_symbol_scope_add_eml(&c5_read, 4U, c5_c_sf_marshallOut);
   sf_debug_symbol_scope_add_eml_importable(&c5_instr_out, 5U,
     c5_b_sf_marshallOut, c5_b_sf_marshallIn);
-  sf_debug_symbol_scope_add_eml_importable(*c5_data, 6U, c5_sf_marshallOut,
-    c5_sf_marshallIn);
+  sf_debug_symbol_scope_add_eml_importable(chartInstance->c5_data, 6U,
+    c5_sf_marshallOut, c5_sf_marshallIn);
   CV_EML_FCN(0, 0);
-  _SFD_EML_CALL(0U, *c5_sfEvent, 7);
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 7);
   c5_hdl_fm = c5_eml_mx;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 16);
-  if (CV_EML_IF(0, 0, !*c5_data_not_empty)) {
-    _SFD_EML_CALL(0U, *c5_sfEvent, 17);
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 16);
+  if (CV_EML_IF(0, 0, !chartInstance->c5_data_not_empty)) {
+    _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 17);
     c5_fi_helper(chartInstance);
     for (c5_i2 = 0; c5_i2 < 256; c5_i2++) {
-      (*c5_data)[c5_i2] = 0U;
+      chartInstance->c5_data[c5_i2] = 0U;
     }
 
-    *c5_data_not_empty = TRUE;
+    chartInstance->c5_data_not_empty = TRUE;
   }
 
-  _SFD_EML_CALL(0U, *c5_sfEvent, 21);
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 21);
   sf_mex_destroy(&c5_m0);
   sf_mex_destroy(&c5_m1);
   sf_mex_destroy(&c5_m2);
@@ -977,8 +944,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m4);
   sf_mex_destroy(&c5_m5);
   sf_mex_destroy(&c5_m6);
-  (*c5_data)[0] = 2314U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 22);
+  chartInstance->c5_data[0] = 2314U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 22);
   sf_mex_destroy(&c5_m7);
   sf_mex_destroy(&c5_m8);
   sf_mex_destroy(&c5_m9);
@@ -986,8 +953,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m11);
   sf_mex_destroy(&c5_m12);
   sf_mex_destroy(&c5_m13);
-  (*c5_data)[1] = 2560U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 23);
+  chartInstance->c5_data[1] = 2560U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 23);
   sf_mex_destroy(&c5_m14);
   sf_mex_destroy(&c5_m15);
   sf_mex_destroy(&c5_m16);
@@ -995,8 +962,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m18);
   sf_mex_destroy(&c5_m19);
   sf_mex_destroy(&c5_m20);
-  (*c5_data)[2] = 2316U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 24);
+  chartInstance->c5_data[2] = 2316U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 24);
   sf_mex_destroy(&c5_m21);
   sf_mex_destroy(&c5_m22);
   sf_mex_destroy(&c5_m23);
@@ -1004,8 +971,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m25);
   sf_mex_destroy(&c5_m26);
   sf_mex_destroy(&c5_m27);
-  (*c5_data)[3] = 2561U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 25);
+  chartInstance->c5_data[3] = 2561U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 25);
   sf_mex_destroy(&c5_m28);
   sf_mex_destroy(&c5_m29);
   sf_mex_destroy(&c5_m30);
@@ -1013,8 +980,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m32);
   sf_mex_destroy(&c5_m33);
   sf_mex_destroy(&c5_m34);
-  (*c5_data)[4] = 2322U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 26);
+  chartInstance->c5_data[4] = 2322U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 26);
   sf_mex_destroy(&c5_m35);
   sf_mex_destroy(&c5_m36);
   sf_mex_destroy(&c5_m37);
@@ -1022,8 +989,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m39);
   sf_mex_destroy(&c5_m40);
   sf_mex_destroy(&c5_m41);
-  (*c5_data)[5] = 2572U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 27);
+  chartInstance->c5_data[5] = 2572U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 27);
   sf_mex_destroy(&c5_m42);
   sf_mex_destroy(&c5_m43);
   sf_mex_destroy(&c5_m44);
@@ -1031,8 +998,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m46);
   sf_mex_destroy(&c5_m47);
   sf_mex_destroy(&c5_m48);
-  (*c5_data)[6] = 2310U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 28);
+  chartInstance->c5_data[6] = 2310U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 28);
   sf_mex_destroy(&c5_m49);
   sf_mex_destroy(&c5_m50);
   sf_mex_destroy(&c5_m51);
@@ -1040,8 +1007,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m53);
   sf_mex_destroy(&c5_m54);
   sf_mex_destroy(&c5_m55);
-  (*c5_data)[7] = 2573U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 29);
+  chartInstance->c5_data[7] = 2573U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 29);
   sf_mex_destroy(&c5_m56);
   sf_mex_destroy(&c5_m57);
   sf_mex_destroy(&c5_m58);
@@ -1049,8 +1016,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m60);
   sf_mex_destroy(&c5_m61);
   sf_mex_destroy(&c5_m62);
-  (*c5_data)[8] = 2323U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 30);
+  chartInstance->c5_data[8] = 2323U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 30);
   sf_mex_destroy(&c5_m63);
   sf_mex_destroy(&c5_m64);
   sf_mex_destroy(&c5_m65);
@@ -1058,8 +1025,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m67);
   sf_mex_destroy(&c5_m68);
   sf_mex_destroy(&c5_m69);
-  (*c5_data)[9] = 2574U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 31);
+  chartInstance->c5_data[9] = 2574U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 31);
   sf_mex_destroy(&c5_m70);
   sf_mex_destroy(&c5_m71);
   sf_mex_destroy(&c5_m72);
@@ -1067,8 +1034,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m74);
   sf_mex_destroy(&c5_m75);
   sf_mex_destroy(&c5_m76);
-  (*c5_data)[10] = 2555U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 32);
+  chartInstance->c5_data[10] = 2555U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 32);
   sf_mex_destroy(&c5_m77);
   sf_mex_destroy(&c5_m78);
   sf_mex_destroy(&c5_m79);
@@ -1076,8 +1043,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m81);
   sf_mex_destroy(&c5_m82);
   sf_mex_destroy(&c5_m83);
-  (*c5_data)[11] = 2575U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 33);
+  chartInstance->c5_data[11] = 2575U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 33);
   sf_mex_destroy(&c5_m84);
   sf_mex_destroy(&c5_m85);
   sf_mex_destroy(&c5_m86);
@@ -1085,8 +1052,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m88);
   sf_mex_destroy(&c5_m89);
   sf_mex_destroy(&c5_m90);
-  (*c5_data)[12] = 2319U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 34);
+  chartInstance->c5_data[12] = 2319U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 34);
   sf_mex_destroy(&c5_m91);
   sf_mex_destroy(&c5_m92);
   sf_mex_destroy(&c5_m93);
@@ -1094,8 +1061,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m95);
   sf_mex_destroy(&c5_m96);
   sf_mex_destroy(&c5_m97);
-  (*c5_data)[13] = 2576U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 35);
+  chartInstance->c5_data[13] = 2576U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 35);
   sf_mex_destroy(&c5_m98);
   sf_mex_destroy(&c5_m99);
   sf_mex_destroy(&c5_m100);
@@ -1103,8 +1070,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m102);
   sf_mex_destroy(&c5_m103);
   sf_mex_destroy(&c5_m104);
-  (*c5_data)[14] = 2558U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 36);
+  chartInstance->c5_data[14] = 2558U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 36);
   sf_mex_destroy(&c5_m105);
   sf_mex_destroy(&c5_m106);
   sf_mex_destroy(&c5_m107);
@@ -1112,8 +1079,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m109);
   sf_mex_destroy(&c5_m110);
   sf_mex_destroy(&c5_m111);
-  (*c5_data)[15] = 2577U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 37);
+  chartInstance->c5_data[15] = 2577U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 37);
   sf_mex_destroy(&c5_m112);
   sf_mex_destroy(&c5_m113);
   sf_mex_destroy(&c5_m114);
@@ -1121,8 +1088,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m116);
   sf_mex_destroy(&c5_m117);
   sf_mex_destroy(&c5_m118);
-  (*c5_data)[16] = 2306U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 38);
+  chartInstance->c5_data[16] = 2306U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 38);
   sf_mex_destroy(&c5_m119);
   sf_mex_destroy(&c5_m120);
   sf_mex_destroy(&c5_m121);
@@ -1130,8 +1097,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m123);
   sf_mex_destroy(&c5_m124);
   sf_mex_destroy(&c5_m125);
-  (*c5_data)[17] = 2578U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 39);
+  chartInstance->c5_data[17] = 2578U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 39);
   sf_mex_destroy(&c5_m126);
   sf_mex_destroy(&c5_m127);
   sf_mex_destroy(&c5_m128);
@@ -1139,8 +1106,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m130);
   sf_mex_destroy(&c5_m131);
   sf_mex_destroy(&c5_m132);
-  (*c5_data)[18] = 2315U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 40);
+  chartInstance->c5_data[18] = 2315U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 40);
   sf_mex_destroy(&c5_m133);
   sf_mex_destroy(&c5_m134);
   sf_mex_destroy(&c5_m135);
@@ -1148,8 +1115,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m137);
   sf_mex_destroy(&c5_m138);
   sf_mex_destroy(&c5_m139);
-  (*c5_data)[19] = 2579U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 41);
+  chartInstance->c5_data[19] = 2579U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 41);
   sf_mex_destroy(&c5_m140);
   sf_mex_destroy(&c5_m141);
   sf_mex_destroy(&c5_m142);
@@ -1157,8 +1124,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m144);
   sf_mex_destroy(&c5_m145);
   sf_mex_destroy(&c5_m146);
-  (*c5_data)[20] = 2324U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 42);
+  chartInstance->c5_data[20] = 2324U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 42);
   sf_mex_destroy(&c5_m147);
   sf_mex_destroy(&c5_m148);
   sf_mex_destroy(&c5_m149);
@@ -1166,8 +1133,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m151);
   sf_mex_destroy(&c5_m152);
   sf_mex_destroy(&c5_m153);
-  (*c5_data)[21] = 2580U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 43);
+  chartInstance->c5_data[21] = 2580U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 43);
   sf_mex_destroy(&c5_m154);
   sf_mex_destroy(&c5_m155);
   sf_mex_destroy(&c5_m156);
@@ -1175,8 +1142,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m158);
   sf_mex_destroy(&c5_m159);
   sf_mex_destroy(&c5_m160);
-  (*c5_data)[22] = 2314U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 44);
+  chartInstance->c5_data[22] = 2314U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 44);
   sf_mex_destroy(&c5_m161);
   sf_mex_destroy(&c5_m162);
   sf_mex_destroy(&c5_m163);
@@ -1184,8 +1151,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m165);
   sf_mex_destroy(&c5_m166);
   sf_mex_destroy(&c5_m167);
-  (*c5_data)[23] = 2581U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 45);
+  chartInstance->c5_data[23] = 2581U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 45);
   sf_mex_destroy(&c5_m168);
   sf_mex_destroy(&c5_m169);
   sf_mex_destroy(&c5_m170);
@@ -1193,8 +1160,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m172);
   sf_mex_destroy(&c5_m173);
   sf_mex_destroy(&c5_m174);
-  (*c5_data)[24] = 2305U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 46);
+  chartInstance->c5_data[24] = 2305U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 46);
   sf_mex_destroy(&c5_m175);
   sf_mex_destroy(&c5_m176);
   sf_mex_destroy(&c5_m177);
@@ -1202,8 +1169,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m179);
   sf_mex_destroy(&c5_m180);
   sf_mex_destroy(&c5_m181);
-  (*c5_data)[25] = 2562U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 47);
+  chartInstance->c5_data[25] = 2562U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 47);
   sf_mex_destroy(&c5_m182);
   sf_mex_destroy(&c5_m183);
   sf_mex_destroy(&c5_m184);
@@ -1211,8 +1178,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m186);
   sf_mex_destroy(&c5_m187);
   sf_mex_destroy(&c5_m188);
-  (*c5_data)[26] = 2305U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 48);
+  chartInstance->c5_data[26] = 2305U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 48);
   sf_mex_destroy(&c5_m189);
   sf_mex_destroy(&c5_m190);
   sf_mex_destroy(&c5_m191);
@@ -1220,8 +1187,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m193);
   sf_mex_destroy(&c5_m194);
   sf_mex_destroy(&c5_m195);
-  (*c5_data)[27] = 2563U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 49);
+  chartInstance->c5_data[27] = 2563U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 49);
   sf_mex_destroy(&c5_m196);
   sf_mex_destroy(&c5_m197);
   sf_mex_destroy(&c5_m198);
@@ -1229,8 +1196,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m200);
   sf_mex_destroy(&c5_m201);
   sf_mex_destroy(&c5_m202);
-  (*c5_data)[28] = 2305U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 50);
+  chartInstance->c5_data[28] = 2305U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 50);
   sf_mex_destroy(&c5_m203);
   sf_mex_destroy(&c5_m204);
   sf_mex_destroy(&c5_m205);
@@ -1238,8 +1205,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m207);
   sf_mex_destroy(&c5_m208);
   sf_mex_destroy(&c5_m209);
-  (*c5_data)[29] = 2564U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 51);
+  chartInstance->c5_data[29] = 2564U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 51);
   sf_mex_destroy(&c5_m210);
   sf_mex_destroy(&c5_m211);
   sf_mex_destroy(&c5_m212);
@@ -1247,8 +1214,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m214);
   sf_mex_destroy(&c5_m215);
   sf_mex_destroy(&c5_m216);
-  (*c5_data)[30] = 2U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 52);
+  chartInstance->c5_data[30] = 2U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 52);
   sf_mex_destroy(&c5_m217);
   sf_mex_destroy(&c5_m218);
   sf_mex_destroy(&c5_m219);
@@ -1256,8 +1223,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m221);
   sf_mex_destroy(&c5_m222);
   sf_mex_destroy(&c5_m223);
-  (*c5_data)[31] = 3704U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 53);
+  chartInstance->c5_data[31] = 3704U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 53);
   sf_mex_destroy(&c5_m224);
   sf_mex_destroy(&c5_m225);
   sf_mex_destroy(&c5_m226);
@@ -1265,8 +1232,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m228);
   sf_mex_destroy(&c5_m229);
   sf_mex_destroy(&c5_m230);
-  (*c5_data)[32] = 1540U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 54);
+  chartInstance->c5_data[32] = 1540U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 54);
   sf_mex_destroy(&c5_m231);
   sf_mex_destroy(&c5_m232);
   sf_mex_destroy(&c5_m233);
@@ -1274,8 +1241,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m235);
   sf_mex_destroy(&c5_m236);
   sf_mex_destroy(&c5_m237);
-  (*c5_data)[33] = 3704U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 55);
+  chartInstance->c5_data[33] = 3704U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 55);
   sf_mex_destroy(&c5_m238);
   sf_mex_destroy(&c5_m239);
   sf_mex_destroy(&c5_m240);
@@ -1283,8 +1250,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m242);
   sf_mex_destroy(&c5_m243);
   sf_mex_destroy(&c5_m244);
-  (*c5_data)[34] = 1025U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 56);
+  chartInstance->c5_data[34] = 1025U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 56);
   sf_mex_destroy(&c5_m245);
   sf_mex_destroy(&c5_m246);
   sf_mex_destroy(&c5_m247);
@@ -1292,8 +1259,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m249);
   sf_mex_destroy(&c5_m250);
   sf_mex_destroy(&c5_m251);
-  (*c5_data)[35] = 2565U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 57);
+  chartInstance->c5_data[35] = 2565U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 57);
   sf_mex_destroy(&c5_m252);
   sf_mex_destroy(&c5_m253);
   sf_mex_destroy(&c5_m254);
@@ -1301,8 +1268,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m256);
   sf_mex_destroy(&c5_m257);
   sf_mex_destroy(&c5_m258);
-  (*c5_data)[36] = 261U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 58);
+  chartInstance->c5_data[36] = 261U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 58);
   sf_mex_destroy(&c5_m259);
   sf_mex_destroy(&c5_m260);
   sf_mex_destroy(&c5_m261);
@@ -1310,8 +1277,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m263);
   sf_mex_destroy(&c5_m264);
   sf_mex_destroy(&c5_m265);
-  (*c5_data)[37] = 2566U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 59);
+  chartInstance->c5_data[37] = 2566U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 59);
   sf_mex_destroy(&c5_m266);
   sf_mex_destroy(&c5_m267);
   sf_mex_destroy(&c5_m268);
@@ -1319,8 +1286,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m270);
   sf_mex_destroy(&c5_m271);
   sf_mex_destroy(&c5_m272);
-  (*c5_data)[38] = 2U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 60);
+  chartInstance->c5_data[38] = 2U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 60);
   sf_mex_destroy(&c5_m273);
   sf_mex_destroy(&c5_m274);
   sf_mex_destroy(&c5_m275);
@@ -1328,8 +1295,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m277);
   sf_mex_destroy(&c5_m278);
   sf_mex_destroy(&c5_m279);
-  (*c5_data)[39] = 3704U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 61);
+  chartInstance->c5_data[39] = 3704U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 61);
   sf_mex_destroy(&c5_m280);
   sf_mex_destroy(&c5_m281);
   sf_mex_destroy(&c5_m282);
@@ -1337,8 +1304,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m284);
   sf_mex_destroy(&c5_m285);
   sf_mex_destroy(&c5_m286);
-  (*c5_data)[40] = 1025U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 62);
+  chartInstance->c5_data[40] = 1025U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 62);
   sf_mex_destroy(&c5_m287);
   sf_mex_destroy(&c5_m288);
   sf_mex_destroy(&c5_m289);
@@ -1346,8 +1313,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m291);
   sf_mex_destroy(&c5_m292);
   sf_mex_destroy(&c5_m293);
-  (*c5_data)[41] = 2567U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 63);
+  chartInstance->c5_data[41] = 2567U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 63);
   sf_mex_destroy(&c5_m294);
   sf_mex_destroy(&c5_m295);
   sf_mex_destroy(&c5_m296);
@@ -1355,8 +1322,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m298);
   sf_mex_destroy(&c5_m299);
   sf_mex_destroy(&c5_m300);
-  (*c5_data)[42] = 263U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 64);
+  chartInstance->c5_data[42] = 263U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 64);
   sf_mex_destroy(&c5_m301);
   sf_mex_destroy(&c5_m302);
   sf_mex_destroy(&c5_m303);
@@ -1364,8 +1331,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m305);
   sf_mex_destroy(&c5_m306);
   sf_mex_destroy(&c5_m307);
-  (*c5_data)[43] = 3704U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 65);
+  chartInstance->c5_data[43] = 3704U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 65);
   sf_mex_destroy(&c5_m308);
   sf_mex_destroy(&c5_m309);
   sf_mex_destroy(&c5_m310);
@@ -1373,8 +1340,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m312);
   sf_mex_destroy(&c5_m313);
   sf_mex_destroy(&c5_m314);
-  (*c5_data)[44] = 1542U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 66);
+  chartInstance->c5_data[44] = 1542U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 66);
   sf_mex_destroy(&c5_m315);
   sf_mex_destroy(&c5_m316);
   sf_mex_destroy(&c5_m317);
@@ -1382,8 +1349,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m319);
   sf_mex_destroy(&c5_m320);
   sf_mex_destroy(&c5_m321);
-  (*c5_data)[45] = 3330U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 67);
+  chartInstance->c5_data[45] = 3330U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 67);
   sf_mex_destroy(&c5_m322);
   sf_mex_destroy(&c5_m323);
   sf_mex_destroy(&c5_m324);
@@ -1391,8 +1358,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m326);
   sf_mex_destroy(&c5_m327);
   sf_mex_destroy(&c5_m328);
-  (*c5_data)[46] = 2055U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 68);
+  chartInstance->c5_data[46] = 2055U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 68);
   sf_mex_destroy(&c5_m329);
   sf_mex_destroy(&c5_m330);
   sf_mex_destroy(&c5_m331);
@@ -1400,8 +1367,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m333);
   sf_mex_destroy(&c5_m334);
   sf_mex_destroy(&c5_m335);
-  (*c5_data)[47] = 2304U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 69);
+  chartInstance->c5_data[47] = 2304U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 69);
   sf_mex_destroy(&c5_m336);
   sf_mex_destroy(&c5_m337);
   sf_mex_destroy(&c5_m338);
@@ -1409,8 +1376,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m340);
   sf_mex_destroy(&c5_m341);
   sf_mex_destroy(&c5_m342);
-  (*c5_data)[48] = 2563U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 70);
+  chartInstance->c5_data[48] = 2563U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 70);
   sf_mex_destroy(&c5_m343);
   sf_mex_destroy(&c5_m344);
   sf_mex_destroy(&c5_m345);
@@ -1418,8 +1385,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m347);
   sf_mex_destroy(&c5_m348);
   sf_mex_destroy(&c5_m349);
-  (*c5_data)[49] = 263U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 71);
+  chartInstance->c5_data[49] = 263U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 71);
   sf_mex_destroy(&c5_m350);
   sf_mex_destroy(&c5_m351);
   sf_mex_destroy(&c5_m352);
@@ -1427,8 +1394,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m354);
   sf_mex_destroy(&c5_m355);
   sf_mex_destroy(&c5_m356);
-  (*c5_data)[50] = 2821U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 72);
+  chartInstance->c5_data[50] = 2821U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 72);
   sf_mex_destroy(&c5_m357);
   sf_mex_destroy(&c5_m358);
   sf_mex_destroy(&c5_m359);
@@ -1436,8 +1403,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m361);
   sf_mex_destroy(&c5_m362);
   sf_mex_destroy(&c5_m363);
-  (*c5_data)[51] = 6U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 73);
+  chartInstance->c5_data[51] = 6U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 73);
   sf_mex_destroy(&c5_m364);
   sf_mex_destroy(&c5_m365);
   sf_mex_destroy(&c5_m366);
@@ -1445,8 +1412,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m368);
   sf_mex_destroy(&c5_m369);
   sf_mex_destroy(&c5_m370);
-  (*c5_data)[52] = 2823U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 74);
+  chartInstance->c5_data[52] = 2823U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 74);
   sf_mex_destroy(&c5_m371);
   sf_mex_destroy(&c5_m372);
   sf_mex_destroy(&c5_m373);
@@ -1454,8 +1421,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m375);
   sf_mex_destroy(&c5_m376);
   sf_mex_destroy(&c5_m377);
-  (*c5_data)[53] = 2305U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 75);
+  chartInstance->c5_data[53] = 2305U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 75);
   sf_mex_destroy(&c5_m378);
   sf_mex_destroy(&c5_m379);
   sf_mex_destroy(&c5_m380);
@@ -1463,8 +1430,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m382);
   sf_mex_destroy(&c5_m383);
   sf_mex_destroy(&c5_m384);
-  (*c5_data)[54] = 3704U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 76);
+  chartInstance->c5_data[54] = 3704U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 76);
   sf_mex_destroy(&c5_m385);
   sf_mex_destroy(&c5_m386);
   sf_mex_destroy(&c5_m387);
@@ -1472,8 +1439,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m389);
   sf_mex_destroy(&c5_m390);
   sf_mex_destroy(&c5_m391);
-  (*c5_data)[55] = 1026U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 77);
+  chartInstance->c5_data[55] = 1026U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 77);
   sf_mex_destroy(&c5_m392);
   sf_mex_destroy(&c5_m393);
   sf_mex_destroy(&c5_m394);
@@ -1481,8 +1448,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m396);
   sf_mex_destroy(&c5_m397);
   sf_mex_destroy(&c5_m398);
-  (*c5_data)[56] = 2562U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 78);
+  chartInstance->c5_data[56] = 2562U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 78);
   sf_mex_destroy(&c5_m399);
   sf_mex_destroy(&c5_m400);
   sf_mex_destroy(&c5_m401);
@@ -1490,8 +1457,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m403);
   sf_mex_destroy(&c5_m404);
   sf_mex_destroy(&c5_m405);
-  (*c5_data)[57] = 0U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 79);
+  chartInstance->c5_data[57] = 0U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 79);
   sf_mex_destroy(&c5_m406);
   sf_mex_destroy(&c5_m407);
   sf_mex_destroy(&c5_m408);
@@ -1499,8 +1466,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m410);
   sf_mex_destroy(&c5_m411);
   sf_mex_destroy(&c5_m412);
-  (*c5_data)[58] = 3704U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 80);
+  chartInstance->c5_data[58] = 3704U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 80);
   sf_mex_destroy(&c5_m413);
   sf_mex_destroy(&c5_m414);
   sf_mex_destroy(&c5_m415);
@@ -1508,8 +1475,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m417);
   sf_mex_destroy(&c5_m418);
   sf_mex_destroy(&c5_m419);
-  (*c5_data)[59] = 1538U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 81);
+  chartInstance->c5_data[59] = 1538U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 81);
   sf_mex_destroy(&c5_m420);
   sf_mex_destroy(&c5_m421);
   sf_mex_destroy(&c5_m422);
@@ -1517,8 +1484,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m424);
   sf_mex_destroy(&c5_m425);
   sf_mex_destroy(&c5_m426);
-  (*c5_data)[60] = 3842U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 82);
+  chartInstance->c5_data[60] = 3842U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 82);
   sf_mex_destroy(&c5_m427);
   sf_mex_destroy(&c5_m428);
   sf_mex_destroy(&c5_m429);
@@ -1526,8 +1493,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m431);
   sf_mex_destroy(&c5_m432);
   sf_mex_destroy(&c5_m433);
-  (*c5_data)[61] = 2271U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 83);
+  chartInstance->c5_data[61] = 2271U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 83);
   sf_mex_destroy(&c5_m434);
   sf_mex_destroy(&c5_m435);
   sf_mex_destroy(&c5_m436);
@@ -1535,8 +1502,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m438);
   sf_mex_destroy(&c5_m439);
   sf_mex_destroy(&c5_m440);
-  (*c5_data)[62] = 2305U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 84);
+  chartInstance->c5_data[62] = 2305U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 84);
   sf_mex_destroy(&c5_m441);
   sf_mex_destroy(&c5_m442);
   sf_mex_destroy(&c5_m443);
@@ -1544,8 +1511,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m445);
   sf_mex_destroy(&c5_m446);
   sf_mex_destroy(&c5_m447);
-  (*c5_data)[63] = 2564U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 85);
+  chartInstance->c5_data[63] = 2564U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 85);
   sf_mex_destroy(&c5_m448);
   sf_mex_destroy(&c5_m449);
   sf_mex_destroy(&c5_m450);
@@ -1553,8 +1520,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m452);
   sf_mex_destroy(&c5_m453);
   sf_mex_destroy(&c5_m454);
-  (*c5_data)[64] = 3U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 86);
+  chartInstance->c5_data[64] = 3U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 86);
   sf_mex_destroy(&c5_m455);
   sf_mex_destroy(&c5_m456);
   sf_mex_destroy(&c5_m457);
@@ -1562,8 +1529,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m459);
   sf_mex_destroy(&c5_m460);
   sf_mex_destroy(&c5_m461);
-  (*c5_data)[65] = 3704U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 87);
+  chartInstance->c5_data[65] = 3704U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 87);
   sf_mex_destroy(&c5_m462);
   sf_mex_destroy(&c5_m463);
   sf_mex_destroy(&c5_m464);
@@ -1571,8 +1538,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m466);
   sf_mex_destroy(&c5_m467);
   sf_mex_destroy(&c5_m468);
-  (*c5_data)[66] = 1540U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 88);
+  chartInstance->c5_data[66] = 1540U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 88);
   sf_mex_destroy(&c5_m469);
   sf_mex_destroy(&c5_m470);
   sf_mex_destroy(&c5_m471);
@@ -1580,8 +1547,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m473);
   sf_mex_destroy(&c5_m474);
   sf_mex_destroy(&c5_m475);
-  (*c5_data)[67] = 3842U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 89);
+  chartInstance->c5_data[67] = 3842U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 89);
   sf_mex_destroy(&c5_m476);
   sf_mex_destroy(&c5_m477);
   sf_mex_destroy(&c5_m478);
@@ -1589,8 +1556,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m480);
   sf_mex_destroy(&c5_m481);
   sf_mex_destroy(&c5_m482);
-  (*c5_data)[68] = 2260U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 90);
+  chartInstance->c5_data[68] = 2260U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 90);
   sf_mex_destroy(&c5_m483);
   sf_mex_destroy(&c5_m484);
   sf_mex_destroy(&c5_m485);
@@ -1598,8 +1565,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m487);
   sf_mex_destroy(&c5_m488);
   sf_mex_destroy(&c5_m489);
-  (*c5_data)[69] = 2304U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 91);
+  chartInstance->c5_data[69] = 2304U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 91);
   sf_mex_destroy(&c5_m490);
   sf_mex_destroy(&c5_m491);
   sf_mex_destroy(&c5_m492);
@@ -1607,8 +1574,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m494);
   sf_mex_destroy(&c5_m495);
   sf_mex_destroy(&c5_m496);
-  (*c5_data)[70] = 2562U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 92);
+  chartInstance->c5_data[70] = 2562U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 92);
   sf_mex_destroy(&c5_m497);
   sf_mex_destroy(&c5_m498);
   sf_mex_destroy(&c5_m499);
@@ -1616,8 +1583,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m501);
   sf_mex_destroy(&c5_m502);
   sf_mex_destroy(&c5_m503);
-  (*c5_data)[71] = 257U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 93);
+  chartInstance->c5_data[71] = 257U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 93);
   sf_mex_destroy(&c5_m504);
   sf_mex_destroy(&c5_m505);
   sf_mex_destroy(&c5_m506);
@@ -1625,8 +1592,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m508);
   sf_mex_destroy(&c5_m509);
   sf_mex_destroy(&c5_m510);
-  (*c5_data)[72] = 2815U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 94);
+  chartInstance->c5_data[72] = 2815U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 94);
   sf_mex_destroy(&c5_m511);
   sf_mex_destroy(&c5_m512);
   sf_mex_destroy(&c5_m513);
@@ -1634,8 +1601,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m515);
   sf_mex_destroy(&c5_m516);
   sf_mex_destroy(&c5_m517);
-  (*c5_data)[73] = 3696U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 95);
+  chartInstance->c5_data[73] = 3696U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 95);
   sf_mex_destroy(&c5_m518);
   sf_mex_destroy(&c5_m519);
   sf_mex_destroy(&c5_m520);
@@ -1643,8 +1610,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m522);
   sf_mex_destroy(&c5_m523);
   sf_mex_destroy(&c5_m524);
-  (*c5_data)[74] = 2305U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 96);
+  chartInstance->c5_data[74] = 2305U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 96);
   sf_mex_destroy(&c5_m525);
   sf_mex_destroy(&c5_m526);
   sf_mex_destroy(&c5_m527);
@@ -1652,8 +1619,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m529);
   sf_mex_destroy(&c5_m530);
   sf_mex_destroy(&c5_m531);
-  (*c5_data)[75] = 3704U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 97);
+  chartInstance->c5_data[75] = 3704U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 97);
   sf_mex_destroy(&c5_m532);
   sf_mex_destroy(&c5_m533);
   sf_mex_destroy(&c5_m534);
@@ -1661,8 +1628,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m536);
   sf_mex_destroy(&c5_m537);
   sf_mex_destroy(&c5_m538);
-  (*c5_data)[76] = 1025U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 98);
+  chartInstance->c5_data[76] = 1025U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 98);
   sf_mex_destroy(&c5_m539);
   sf_mex_destroy(&c5_m540);
   sf_mex_destroy(&c5_m541);
@@ -1670,8 +1637,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m543);
   sf_mex_destroy(&c5_m544);
   sf_mex_destroy(&c5_m545);
-  (*c5_data)[77] = 2561U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 99);
+  chartInstance->c5_data[77] = 2561U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 99);
   sf_mex_destroy(&c5_m546);
   sf_mex_destroy(&c5_m547);
   sf_mex_destroy(&c5_m548);
@@ -1679,8 +1646,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m550);
   sf_mex_destroy(&c5_m551);
   sf_mex_destroy(&c5_m552);
-  (*c5_data)[78] = 2305U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 100);
+  chartInstance->c5_data[78] = 2305U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 100);
   sf_mex_destroy(&c5_m553);
   sf_mex_destroy(&c5_m554);
   sf_mex_destroy(&c5_m555);
@@ -1688,8 +1655,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m557);
   sf_mex_destroy(&c5_m558);
   sf_mex_destroy(&c5_m559);
-  (*c5_data)[79] = 3704U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 101);
+  chartInstance->c5_data[79] = 3704U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 101);
   sf_mex_destroy(&c5_m560);
   sf_mex_destroy(&c5_m561);
   sf_mex_destroy(&c5_m562);
@@ -1697,8 +1664,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m564);
   sf_mex_destroy(&c5_m565);
   sf_mex_destroy(&c5_m566);
-  (*c5_data)[80] = 1026U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 102);
+  chartInstance->c5_data[80] = 1026U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 102);
   sf_mex_destroy(&c5_m567);
   sf_mex_destroy(&c5_m568);
   sf_mex_destroy(&c5_m569);
@@ -1706,8 +1673,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m571);
   sf_mex_destroy(&c5_m572);
   sf_mex_destroy(&c5_m573);
-  (*c5_data)[81] = 2562U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 103);
+  chartInstance->c5_data[81] = 2562U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 103);
   sf_mex_destroy(&c5_m574);
   sf_mex_destroy(&c5_m575);
   sf_mex_destroy(&c5_m576);
@@ -1715,8 +1682,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m578);
   sf_mex_destroy(&c5_m579);
   sf_mex_destroy(&c5_m580);
-  (*c5_data)[82] = 0U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 104);
+  chartInstance->c5_data[82] = 0U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 104);
   sf_mex_destroy(&c5_m581);
   sf_mex_destroy(&c5_m582);
   sf_mex_destroy(&c5_m583);
@@ -1724,8 +1691,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m585);
   sf_mex_destroy(&c5_m586);
   sf_mex_destroy(&c5_m587);
-  (*c5_data)[83] = 3704U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 105);
+  chartInstance->c5_data[83] = 3704U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 105);
   sf_mex_destroy(&c5_m588);
   sf_mex_destroy(&c5_m589);
   sf_mex_destroy(&c5_m590);
@@ -1733,8 +1700,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m592);
   sf_mex_destroy(&c5_m593);
   sf_mex_destroy(&c5_m594);
-  (*c5_data)[84] = 1538U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 106);
+  chartInstance->c5_data[84] = 1538U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 106);
   sf_mex_destroy(&c5_m595);
   sf_mex_destroy(&c5_m596);
   sf_mex_destroy(&c5_m597);
@@ -1742,8 +1709,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m599);
   sf_mex_destroy(&c5_m600);
   sf_mex_destroy(&c5_m601);
-  (*c5_data)[85] = 3842U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 107);
+  chartInstance->c5_data[85] = 3842U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 107);
   sf_mex_destroy(&c5_m602);
   sf_mex_destroy(&c5_m603);
   sf_mex_destroy(&c5_m604);
@@ -1751,8 +1718,8 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m606);
   sf_mex_destroy(&c5_m607);
   sf_mex_destroy(&c5_m608);
-  (*c5_data)[86] = 2289U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 108);
+  chartInstance->c5_data[86] = 2289U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 108);
   sf_mex_destroy(&c5_m609);
   sf_mex_destroy(&c5_m610);
   sf_mex_destroy(&c5_m611);
@@ -1760,20 +1727,20 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
   sf_mex_destroy(&c5_m613);
   sf_mex_destroy(&c5_m614);
   sf_mex_destroy(&c5_m615);
-  (*c5_data)[87] = 3648U;
-  _SFD_EML_CALL(0U, *c5_sfEvent, 112);
+  chartInstance->c5_data[87] = 3648U;
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 112);
   if (CV_EML_IF(0, 1, c5_eq(chartInstance, c5_read))) {
-    _SFD_EML_CALL(0U, *c5_sfEvent, 113);
+    _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 113);
     c5_u0 = (uint32_T)c5_addr + 1U;
     if (c5_u0 > 255U) {
       c5_u0 = 255U;
     }
 
-    c5_instr_out = (*c5_data)[(uint8_T)_SFD_EML_ARRAY_BOUNDS_CHECK("data",
-      (int32_T)(uint8_T)_SFD_INTEGER_CHECK("addr+1", (real_T)(uint8_T)c5_u0), 1,
-      256, 1, 0) - 1];
+    c5_instr_out = chartInstance->c5_data[(uint8_T)_SFD_EML_ARRAY_BOUNDS_CHECK(
+      "data", (int32_T)(uint8_T)_SFD_INTEGER_CHECK("addr+1", (real_T)(uint8_T)
+      c5_u0), 1, 256, 1, 0) - 1];
   } else {
-    _SFD_EML_CALL(0U, *c5_sfEvent, 115);
+    _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, 115);
     sf_mex_destroy(&c5_m616);
     sf_mex_destroy(&c5_m617);
     sf_mex_destroy(&c5_m618);
@@ -1784,10 +1751,10 @@ static void c5_chartstep_c5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct
     c5_instr_out = 0U;
   }
 
-  _SFD_EML_CALL(0U, *c5_sfEvent, -115);
+  _SFD_EML_CALL(0U, chartInstance->c5_sfEvent, -115);
   sf_debug_symbol_scope_pop();
   *c5_b_instr_out = c5_instr_out;
-  _SFD_CC_CALL(EXIT_OUT_OF_FUNCTION_TAG, 4U, *c5_sfEvent);
+  _SFD_CC_CALL(EXIT_OUT_OF_FUNCTION_TAG, 4U, chartInstance->c5_sfEvent);
 }
 
 static void initSimStructsc5_hdlcodercpu_eml(SFc5_hdlcodercpu_emlInstanceStruct *
@@ -1809,10 +1776,8 @@ static const mxArray *c5_sf_marshallOut(void *chartInstanceVoid, void *c5_inData
   int32_T c5_i4;
   uint16_T c5_b_u[256];
   const mxArray *c5_b_y = NULL;
-  boolean_T *c5_data_not_empty;
   SFc5_hdlcodercpu_emlInstanceStruct *chartInstance;
   chartInstance = (SFc5_hdlcodercpu_emlInstanceStruct *)chartInstanceVoid;
-  c5_data_not_empty = (boolean_T *)ssGetDWork(chartInstance->S, 5);
   c5_mxArrayOutData = NULL;
   c5_mxArrayOutData = NULL;
   for (c5_i3 = 0; c5_i3 < 256; c5_i3++) {
@@ -1820,7 +1785,7 @@ static const mxArray *c5_sf_marshallOut(void *chartInstanceVoid, void *c5_inData
   }
 
   c5_y = NULL;
-  if (!*c5_data_not_empty) {
+  if (!chartInstance->c5_data_not_empty) {
     sf_mex_assign(&c5_y, sf_mex_create("y", NULL, 0, 0U, 1U, 0U, 2, 0, 0));
   } else {
     for (c5_i4 = 0; c5_i4 < 256; c5_i4++) {
@@ -1839,14 +1804,14 @@ static const mxArray *c5_sf_marshallOut(void *chartInstanceVoid, void *c5_inData
 }
 
 static void c5_emlrt_marshallIn(SFc5_hdlcodercpu_emlInstanceStruct
-  *chartInstance, const mxArray *c5_data, const char_T *c5_identifier, uint16_T
-  c5_y[256])
+  *chartInstance, const mxArray *c5_b_data, const char_T *c5_identifier,
+  uint16_T c5_y[256])
 {
   emlrtMsgIdentifier c5_thisId;
   c5_thisId.fIdentifier = c5_identifier;
   c5_thisId.fParent = NULL;
-  c5_b_emlrt_marshallIn(chartInstance, sf_mex_dup(c5_data), &c5_thisId, c5_y);
-  sf_mex_destroy(&c5_data);
+  c5_b_emlrt_marshallIn(chartInstance, sf_mex_dup(c5_b_data), &c5_thisId, c5_y);
+  sf_mex_destroy(&c5_b_data);
 }
 
 static void c5_b_emlrt_marshallIn(SFc5_hdlcodercpu_emlInstanceStruct
@@ -1859,16 +1824,14 @@ static void c5_b_emlrt_marshallIn(SFc5_hdlcodercpu_emlInstanceStruct
   const mxArray *c5_mxInt = NULL;
   uint16_T c5_uv2[256];
   int32_T c5_i6;
-  boolean_T *c5_data_not_empty;
-  c5_data_not_empty = (boolean_T *)ssGetDWork(chartInstance->S, 5);
   for (c5_i5 = 0; c5_i5 < 2; c5_i5++) {
     c5_uv1[c5_i5] = 1U + 255U * (uint32_T)c5_i5;
   }
 
   if (mxIsEmpty(c5_u)) {
-    *c5_data_not_empty = FALSE;
+    chartInstance->c5_data_not_empty = FALSE;
   } else {
-    *c5_data_not_empty = TRUE;
+    chartInstance->c5_data_not_empty = TRUE;
     sf_mex_check_fi(c5_parentId, c5_u, 0, 2U, c5_uv1, c5_eml_mx, c5_b_eml_mx);
     sf_mex_assign(&c5_mxFi, sf_mex_dup(c5_u));
     sf_mex_assign(&c5_mxInt, sf_mex_call("simulinkarray", 1U, 1U, 14, sf_mex_dup
@@ -1888,19 +1851,19 @@ static void c5_b_emlrt_marshallIn(SFc5_hdlcodercpu_emlInstanceStruct
 static void c5_sf_marshallIn(void *chartInstanceVoid, const mxArray
   *c5_mxArrayInData, const char_T *c5_varName, void *c5_outData)
 {
-  const mxArray *c5_data;
+  const mxArray *c5_b_data;
   const char_T *c5_identifier;
   emlrtMsgIdentifier c5_thisId;
   uint16_T c5_y[256];
   int32_T c5_i7;
   SFc5_hdlcodercpu_emlInstanceStruct *chartInstance;
   chartInstance = (SFc5_hdlcodercpu_emlInstanceStruct *)chartInstanceVoid;
-  c5_data = sf_mex_dup(c5_mxArrayInData);
+  c5_b_data = sf_mex_dup(c5_mxArrayInData);
   c5_identifier = c5_varName;
   c5_thisId.fIdentifier = c5_identifier;
   c5_thisId.fParent = NULL;
-  c5_b_emlrt_marshallIn(chartInstance, sf_mex_dup(c5_data), &c5_thisId, c5_y);
-  sf_mex_destroy(&c5_data);
+  c5_b_emlrt_marshallIn(chartInstance, sf_mex_dup(c5_b_data), &c5_thisId, c5_y);
+  sf_mex_destroy(&c5_b_data);
   for (c5_i7 = 0; c5_i7 < 256; c5_i7++) {
     (*(uint16_T (*)[256])c5_outData)[c5_i7] = c5_y[c5_i7];
   }
@@ -2377,18 +2340,19 @@ static int32_T c5_f_emlrt_marshallIn(SFc5_hdlcodercpu_emlInstanceStruct
 static void c5_d_sf_marshallIn(void *chartInstanceVoid, const mxArray
   *c5_mxArrayInData, const char_T *c5_varName, void *c5_outData)
 {
-  const mxArray *c5_sfEvent;
+  const mxArray *c5_b_sfEvent;
   const char_T *c5_identifier;
   emlrtMsgIdentifier c5_thisId;
   int32_T c5_y;
   SFc5_hdlcodercpu_emlInstanceStruct *chartInstance;
   chartInstance = (SFc5_hdlcodercpu_emlInstanceStruct *)chartInstanceVoid;
-  c5_sfEvent = sf_mex_dup(c5_mxArrayInData);
+  c5_b_sfEvent = sf_mex_dup(c5_mxArrayInData);
   c5_identifier = c5_varName;
   c5_thisId.fIdentifier = c5_identifier;
   c5_thisId.fParent = NULL;
-  c5_y = c5_f_emlrt_marshallIn(chartInstance, sf_mex_dup(c5_sfEvent), &c5_thisId);
-  sf_mex_destroy(&c5_sfEvent);
+  c5_y = c5_f_emlrt_marshallIn(chartInstance, sf_mex_dup(c5_b_sfEvent),
+    &c5_thisId);
+  sf_mex_destroy(&c5_b_sfEvent);
   *(int32_T *)c5_outData = c5_y;
   sf_mex_destroy(&c5_mxArrayInData);
 }
@@ -2425,7 +2389,7 @@ static const mxArray *c5_h_sf_marshallOut(void *chartInstanceVoid, void
 }
 
 static uint8_T c5_g_emlrt_marshallIn(SFc5_hdlcodercpu_emlInstanceStruct
-  *chartInstance, const mxArray *c5_is_active_c5_hdlcodercpu_eml, const char_T
+  *chartInstance, const mxArray *c5_b_is_active_c5_hdlcodercpu_eml, const char_T
   *c5_identifier)
 {
   uint8_T c5_y;
@@ -2433,8 +2397,8 @@ static uint8_T c5_g_emlrt_marshallIn(SFc5_hdlcodercpu_emlInstanceStruct
   c5_thisId.fIdentifier = c5_identifier;
   c5_thisId.fParent = NULL;
   c5_y = c5_h_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (c5_is_active_c5_hdlcodercpu_eml), &c5_thisId);
-  sf_mex_destroy(&c5_is_active_c5_hdlcodercpu_eml);
+    (c5_b_is_active_c5_hdlcodercpu_eml), &c5_thisId);
+  sf_mex_destroy(&c5_b_is_active_c5_hdlcodercpu_eml);
   return c5_y;
 }
 
@@ -2455,7 +2419,6 @@ static void init_dsm_address_info(SFc5_hdlcodercpu_emlInstanceStruct
 }
 
 /* SFunction Glue Code */
-static uint32_T* sf_get_sfun_dwork_checksum();
 void sf_c5_hdlcodercpu_eml_get_check_sum(mxArray *plhs[])
 {
   ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(4109103486U);
@@ -2703,34 +2666,8 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
   }
 }
 
-static void sf_check_dwork_consistency(SimStruct *S)
-{
-  if (sim_mode_is_rtw_gen(S) || sim_mode_is_external(S)) {
-    const uint32_T *sfunDWorkChecksum = sf_get_sfun_dwork_checksum();
-    mxArray* mxRTWDWorkChecksum = sf_get_dwork_info_from_mat_file(S,
-      "hdlcodercpu_eml", "hdlcodercpu_eml", 5, "dworkChecksum");
-    if (mxRTWDWorkChecksum != NULL) {
-      double *pr = mxGetPr(mxRTWDWorkChecksum);
-      if ((uint32_T)pr[0] != sfunDWorkChecksum[0] ||
-          (uint32_T)pr[1] != sfunDWorkChecksum[1] ||
-          (uint32_T)pr[2] != sfunDWorkChecksum[2] ||
-          (uint32_T)pr[3] != sfunDWorkChecksum[3]) {
-        sf_mex_error_message("Code generation and simulation targets registered different sets of persistent variables for the block. "
-                             "External or Rapid Accelerator mode simulation requires code generation and simulation targets to "
-                             "register the same set of persistent variables for this block. "
-                             "This discrepancy is typically caused by MATLAB functions that have different code paths for "
-                             "simulation and code generation targets where these code paths define different sets of persistent variables. "
-                             "Please identify these code paths in the offending block and rewrite the MATLAB code so that "
-                             "the set of persistent variables is the same between simulation and code generation.");
-      }
-    }
-  }
-}
-
 static void sf_opaque_initialize_c5_hdlcodercpu_eml(void *chartInstanceVar)
 {
-  sf_check_dwork_consistency(((SFc5_hdlcodercpu_emlInstanceStruct*)
-    chartInstanceVar)->S);
   chart_debug_initialization(((SFc5_hdlcodercpu_emlInstanceStruct*)
     chartInstanceVar)->S,0);
   initialize_params_c5_hdlcodercpu_eml((SFc5_hdlcodercpu_emlInstanceStruct*)
@@ -2754,12 +2691,6 @@ static void sf_opaque_disable_c5_hdlcodercpu_eml(void *chartInstanceVar)
 static void sf_opaque_gateway_c5_hdlcodercpu_eml(void *chartInstanceVar)
 {
   sf_c5_hdlcodercpu_eml((SFc5_hdlcodercpu_emlInstanceStruct*) chartInstanceVar);
-}
-
-static void sf_opaque_ext_mode_exec_c5_hdlcodercpu_eml(void *chartInstanceVar)
-{
-  ext_mode_exec_c5_hdlcodercpu_eml((SFc5_hdlcodercpu_emlInstanceStruct*)
-    chartInstanceVar);
 }
 
 extern const mxArray* sf_internal_get_sim_state_c5_hdlcodercpu_eml(SimStruct* S)
@@ -2860,33 +2791,6 @@ static void mdlProcessParameters_c5_hdlcodercpu_eml(SimStruct *S)
   }
 }
 
-mxArray *sf_c5_hdlcodercpu_eml_get_testpoint_info(void)
-{
-  const char *infoEncStr[] = {
-    "100 S'varName','path'{{T\"is_active_c5_hdlcodercpu_eml\",T\"is_active_c5_hdlcodercpu_eml\"}}"
-  };
-
-  mxArray *mxTpInfo = sf_mex_decode_encoded_mx_struct_array(infoEncStr, 1, 10);
-  return mxTpInfo;
-}
-
-static void sf_set_sfun_dwork_info(SimStruct *S)
-{
-  const char *dworkEncStr[] = {
-    "100 S1x6'type','isSigned','wordLength','bias','slope','exponent','isComplex','size'{{T\"int32\",,,,,,M[0],M[]},{T\"boolean\",,,,,,M[0],M[]},{T\"boolean\",,,,,,M[0],M[]},{T\"uint8\",,,,,,M[0],M[]},{T\"fixpt\",M[0],M[12],M[0],M[1],M[0],M[0],M1x2[1 256]},{T\"boolean\",,,,,,M[0],M[]}}"
-  };
-
-  sf_set_encoded_dwork_info(S, dworkEncStr, 6, 10);
-}
-
-static uint32_T* sf_get_sfun_dwork_checksum()
-{
-  static uint32_T checksum[4] = { 4149257581U, 1525444516U, 3654664659U,
-    3513016558U };
-
-  return checksum;
-}
-
 static void mdlSetWorkWidths_c5_hdlcodercpu_eml(SimStruct *S)
 {
   if (sim_mode_is_rtw_gen(S) || sim_mode_is_external(S)) {
@@ -2910,7 +2814,6 @@ static void mdlSetWorkWidths_c5_hdlcodercpu_eml(SimStruct *S)
     sf_set_rtw_dwork_info(S,"hdlcodercpu_eml","hdlcodercpu_eml",5);
     ssSetHasSubFunctions(S,!(chartIsInlinable));
   } else {
-    sf_set_sfun_dwork_info(S);
   }
 
   ssSetOptions(S,ssGetOptions(S)|SS_OPTION_WORKS_WITH_CODE_REUSE);
@@ -2964,8 +2867,7 @@ static void mdlStart_c5_hdlcodercpu_eml(SimStruct *S)
   chartInstance->chartInfo.mdlStart = mdlStart_c5_hdlcodercpu_eml;
   chartInstance->chartInfo.mdlSetWorkWidths =
     mdlSetWorkWidths_c5_hdlcodercpu_eml;
-  chartInstance->chartInfo.extModeExec =
-    sf_opaque_ext_mode_exec_c5_hdlcodercpu_eml;
+  chartInstance->chartInfo.extModeExec = NULL;
   chartInstance->chartInfo.restoreLastMajorStepConfiguration = NULL;
   chartInstance->chartInfo.restoreBeforeLastMajorStepConfiguration = NULL;
   chartInstance->chartInfo.storeCurrentConfiguration = NULL;

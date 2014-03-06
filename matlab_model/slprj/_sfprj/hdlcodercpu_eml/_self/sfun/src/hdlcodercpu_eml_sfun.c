@@ -84,108 +84,6 @@ unsigned int sf_hdlcodercpu_eml_method_dispatcher(SimStruct *simstructPtr,
   return 0;
 }
 
-unsigned int sf_hdlcodercpu_eml_process_testpoint_info_call( int nlhs, mxArray *
-  plhs[], int nrhs, const mxArray * prhs[] )
-{
-
-#ifdef MATLAB_MEX_FILE
-
-  char commandName[32];
-  char machineName[128];
-  if (nrhs < 3 || !mxIsChar(prhs[0]) || !mxIsChar(prhs[1]))
-    return 0;
-
-  /* Possible call to get testpoint info. */
-  mxGetString(prhs[0], commandName,sizeof(commandName)/sizeof(char));
-  commandName[(sizeof(commandName)/sizeof(char)-1)] = '\0';
-  if (strcmp(commandName,"get_testpoint_info"))
-    return 0;
-  mxGetString(prhs[1], machineName, sizeof(machineName)/sizeof(char));
-  machineName[(sizeof(machineName)/sizeof(char)-1)] = '\0';
-  if (!strcmp(machineName, "hdlcodercpu_eml")) {
-    unsigned int chartFileNumber;
-    chartFileNumber = (unsigned int)mxGetScalar(prhs[2]);
-    switch (chartFileNumber) {
-     case 1:
-      {
-        extern mxArray *sf_c1_hdlcodercpu_eml_get_testpoint_info(void);
-        plhs[0] = sf_c1_hdlcodercpu_eml_get_testpoint_info();
-        break;
-      }
-
-     case 2:
-      {
-        extern mxArray *sf_c2_hdlcodercpu_eml_get_testpoint_info(void);
-        plhs[0] = sf_c2_hdlcodercpu_eml_get_testpoint_info();
-        break;
-      }
-
-     case 3:
-      {
-        extern mxArray *sf_c3_hdlcodercpu_eml_get_testpoint_info(void);
-        plhs[0] = sf_c3_hdlcodercpu_eml_get_testpoint_info();
-        break;
-      }
-
-     case 4:
-      {
-        extern mxArray *sf_c4_hdlcodercpu_eml_get_testpoint_info(void);
-        plhs[0] = sf_c4_hdlcodercpu_eml_get_testpoint_info();
-        break;
-      }
-
-     case 5:
-      {
-        extern mxArray *sf_c5_hdlcodercpu_eml_get_testpoint_info(void);
-        plhs[0] = sf_c5_hdlcodercpu_eml_get_testpoint_info();
-        break;
-      }
-
-     case 6:
-      {
-        extern mxArray *sf_c6_hdlcodercpu_eml_get_testpoint_info(void);
-        plhs[0] = sf_c6_hdlcodercpu_eml_get_testpoint_info();
-        break;
-      }
-
-     case 7:
-      {
-        extern mxArray *sf_c7_hdlcodercpu_eml_get_testpoint_info(void);
-        plhs[0] = sf_c7_hdlcodercpu_eml_get_testpoint_info();
-        break;
-      }
-
-     case 8:
-      {
-        extern mxArray *sf_c8_hdlcodercpu_eml_get_testpoint_info(void);
-        plhs[0] = sf_c8_hdlcodercpu_eml_get_testpoint_info();
-        break;
-      }
-
-     case 9:
-      {
-        extern mxArray *sf_c9_hdlcodercpu_eml_get_testpoint_info(void);
-        plhs[0] = sf_c9_hdlcodercpu_eml_get_testpoint_info();
-        break;
-      }
-
-     default:
-      plhs[0] = mxCreateDoubleMatrix(0,0,mxREAL);
-    }
-
-    return 1;
-  }
-
-  return 0;
-
-#else
-
-  return 0;
-
-#endif
-
-}
-
 unsigned int sf_hdlcodercpu_eml_process_check_sum_call( int nlhs, mxArray *
   plhs[], int nrhs, const mxArray * prhs[] )
 {
@@ -216,10 +114,10 @@ unsigned int sf_hdlcodercpu_eml_process_check_sum_call( int nlhs, mxArray *
       ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(0U);
       ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(0U);
     } else if (!strcmp(commandName,"makefile")) {
-      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(4285442225U);
-      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(471566380U);
-      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(240124791U);
-      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2132045282U);
+      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2554882588U);
+      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2607695874U);
+      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1943657928U);
+      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3644472904U);
     } else if (nrhs==3 && !strcmp(commandName,"chart")) {
       unsigned int chartFileNumber;
       chartFileNumber = (unsigned int)mxGetScalar(prhs[2]);
@@ -294,18 +192,18 @@ unsigned int sf_hdlcodercpu_eml_process_check_sum_call( int nlhs, mxArray *
         ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(0.0);
       }
     } else if (!strcmp(commandName,"target")) {
-      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(934368057U);
-      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(736119041U);
-      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(596138056U);
-      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(4091366098U);
+      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1461027429U);
+      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3651853000U);
+      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2323421235U);
+      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(512376388U);
     } else {
       return 0;
     }
   } else {
-    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3497908498U);
-    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1718139351U);
-    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2878887174U);
-    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1575183929U);
+    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3288050698U);
+    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3346416297U);
+    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1328181411U);
+    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1243728982U);
   }
 
   return 1;
