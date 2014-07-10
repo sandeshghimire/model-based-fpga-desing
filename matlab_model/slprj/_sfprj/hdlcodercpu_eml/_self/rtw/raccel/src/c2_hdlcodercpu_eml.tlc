@@ -1,0 +1,99 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   16 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "sfEvent"\
+      SFName       ""\
+      Path         ""\
+    }\
+    ChartData {\
+      Name         "isStable"\
+      SFName       ""\
+      Path         ""\
+    }\
+    ChartData {\
+      Name         "doneDoubleBufferReInit"\
+      SFName       ""\
+      Path         ""\
+    }\
+    ChartData {\
+      Name         "is_active_c2_hdlcodercpu_eml"\
+      SFName       "is_active_c2_hdlcodercpu_eml"\
+      Path         "is_active_c2_hdlcodercpu_eml"\
+      IsTestPoint  1\
+    }\
+    ChartData {\
+      Name         "CPU_state"\
+      SFName       ""\
+      Path         ""\
+    }\
+    ChartData {\
+      Name         "CPU_state_not_empty"\
+      SFName       ""\
+      Path         ""\
+    }\
+    ChartData {\
+      Name         "previous_CPU_state"\
+      SFName       ""\
+      Path         ""\
+    }\
+    ChartData {\
+      Name         "previous_CPU_state_not_empty"\
+      SFName       ""\
+      Path         ""\
+    }\
+    ChartData {\
+      Name         "major_opcode"\
+      SFName       ""\
+      Path         ""\
+    }\
+    ChartData {\
+      Name         "major_opcode_not_empty"\
+      SFName       ""\
+      Path         ""\
+    }\
+    ChartData {\
+      Name         "minor_opcode"\
+      SFName       ""\
+      Path         ""\
+    }\
+    ChartData {\
+      Name         "minor_opcode_not_empty"\
+      SFName       ""\
+      Path         ""\
+    }\
+    ChartData {\
+      Name         "address_data"\
+      SFName       ""\
+      Path         ""\
+    }\
+    ChartData {\
+      Name         "address_data_not_empty"\
+      SFName       ""\
+      Path         ""\
+    }\
+    ChartData {\
+      Name         "indirect_address"\
+      SFName       ""\
+      Path         ""\
+    }\
+    ChartData {\
+      Name         "indirect_address_not_empty"\
+      SFName       ""\
+      Path         ""\
+    }\
+  }
+  %return ChartDataElements
+%endfunction
