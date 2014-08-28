@@ -1,3 +1,4 @@
+hdlcodercpu_eml_sfun.obj
 c1_hdlcodercpu_eml.obj
 c2_hdlcodercpu_eml.obj
 c3_hdlcodercpu_eml.obj
@@ -8,4 +9,3 @@ c7_hdlcodercpu_eml.obj
 c8_hdlcodercpu_eml.obj
 c9_hdlcodercpu_eml.obj
 hdlcodercpu_eml_sfun_registry.obj
-hdlcodercpu_eml_sfun.obj

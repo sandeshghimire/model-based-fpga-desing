@@ -1,10 +1,12 @@
+#include "__cf_hdlcodercpu_eml.h"
 #ifndef RTW_HEADER_hdlcodercpu_eml_h_
 #define RTW_HEADER_hdlcodercpu_eml_h_
-#ifndef hdlcodercpu_eml_COMMON_INCLUDES_
-# define hdlcodercpu_eml_COMMON_INCLUDES_
-#include <stdlib.h>
-#include <stddef.h>
 #include <string.h>
+#include <stddef.h>
+#include "rtw_modelmap.h"
+#ifndef hdlcodercpu_eml_COMMON_INCLUDES_
+#define hdlcodercpu_eml_COMMON_INCLUDES_
+#include <stdlib.h>
 #include "rtwtypes.h"
 #include "simstruc.h"
 #include "fixedpoint.h"
@@ -12,165 +14,52 @@
 #include "rt_logging.h"
 #include "dt_info.h"
 #include "ext_work.h"
-#include "rt_nonfinite.h"
 #endif
-
 #include "hdlcodercpu_eml_types.h"
-#define MODEL_NAME                     hdlcodercpu_eml
-#define NSAMPLE_TIMES                  (1)
-#define NINPUTS                        (0)
-#define NOUTPUTS                       (0)
-#define NBLOCKIO                       (34)
-#define NUM_ZC_EVENTS                  (0)
+#include "multiword_types.h"
+#include "rt_defines.h"
+#include "rtGetInf.h"
+#include "rt_nonfinite.h"
+#define MODEL_NAME hdlcodercpu_eml
+#define NSAMPLE_TIMES (1) 
+#define NINPUTS (0)       
+#define NOUTPUTS (0)     
+#define NBLOCKIO (12) 
+#define NUM_ZC_EVENTS (0) 
 #ifndef NCSTATES
-# define NCSTATES                      (0)
+#define NCSTATES (0)   
 #elif NCSTATES != 0
-# error Invalid specification of NCSTATES defined in compiler command
+#error Invalid specification of NCSTATES defined in compiler command
 #endif
-
 #ifndef rtmGetDataMapInfo
-# define rtmGetDataMapInfo(rtm)        (NULL)
+#define rtmGetDataMapInfo(rtm) (*rt_dataMapInfoPtr)
 #endif
-
 #ifndef rtmSetDataMapInfo
-# define rtmSetDataMapInfo(rtm, val)
+#define rtmSetDataMapInfo(rtm, val) (rt_dataMapInfoPtr = &val)
 #endif
-
-typedef struct {
-  uint16_T UnitDelay1;
-  uint16_T IR_out;
-  uint16_T instr_out;
-  int8_T UnitDelay6;
-  int8_T feedbackforindirectaddressing;
-  int8_T UnitDelay2;
-  int8_T Switch1;
-  int8_T select;
-  int8_T switch_a[256];
-  int8_T y;
-  int8_T shift_out;
-  int8_T AC_data;
-  int8_T addr_inc;
-  int8_T alu_out;
-  int8_T AC_out;
-  uint8_T UnitDelay4;
-  uint8_T addr_out;
-  uint8_T PC_next;
-  uint8_T DM_addr;
-  uint8_T hlt;
-  boolean_T UnitDelay7;
-  boolean_T DataTypeConversion;
-  boolean_T print_data;
-  uint8_T UnitDelay3;
-  uint8_T out_flags;
-  uint8_T out_flags_n;
-  uint8_T out_flags_m;
-  uint8_T ALU_func;
-  uint8_T AC_func;
-  uint8_T DM_r_w;
-  uint8_T IM_read;
-  uint8_T shifter_sel;
-  uint8_T IR_func;
-  uint8_T PC_func;
-} BlockIO;
-
-typedef struct {
-  struct {
-    void *LoggedData;
-  } Scope_PWORK;
-
-  struct {
-    void *LoggedData;
-  } Scope_PWORK_j;
-
-  int32_T sfEvent;
-  int32_T sfEvent_k;
-  int32_T sfEvent_kd;
-  int32_T sfEvent_e;
-  int32_T sfEvent_c;
-  int32_T sfEvent_p;
-  int32_T sfEvent_g;
-  int32_T sfEvent_n;
-  int32_T sfEvent_j;
-  uint16_T UnitDelay1_DSTATE;
-  uint16_T IR_value;
-  uint16_T data[256];
-  int8_T UnitDelay6_DSTATE;
-  int8_T UnitDelay5_DSTATE;
-  int8_T UnitDelay2_DSTATE;
-  int8_T din_d_DSTATE;
-  int8_T ram_data_DSTATE;
-  int8_T ram_DSTATE[256];
-  uint8_T UnitDelay4_DSTATE;
-  boolean_T UnitDelay7_DSTATE;
-  boolean_T we_d_DSTATE;
-  uint8_T UnitDelay3_DSTATE;
-  int8_T AC_value;
-  uint8_T is_active_c1_hdlcodercpu_eml;
-  uint8_T is_active_c8_hdlcodercpu_eml;
-  uint8_T is_active_c7_hdlcodercpu_eml;
-  uint8_T PC_value;
-  uint8_T is_active_c9_hdlcodercpu_eml;
-  uint8_T is_active_c6_hdlcodercpu_eml;
-  uint8_T is_active_c5_hdlcodercpu_eml;
-  uint8_T is_active_c2_hdlcodercpu_eml;
-  uint8_T CPU_state;
-  uint8_T previous_CPU_state;
-  uint8_T major_opcode;
-  uint8_T minor_opcode;
-  uint8_T address_data;
-  uint8_T indirect_address;
-  uint8_T is_active_c4_hdlcodercpu_eml;
-  uint8_T is_active_c3_hdlcodercpu_eml;
-  boolean_T isStable;
-  boolean_T doneDoubleBufferReInit;
-  boolean_T isStable_j;
-  boolean_T doneDoubleBufferReInit_b;
-  boolean_T isStable_jk;
-  boolean_T doneDoubleBufferReInit_a;
-  boolean_T PC_value_not_empty;
-  boolean_T isStable_i;
-  boolean_T doneDoubleBufferReInit_i;
-  boolean_T isStable_i4;
-  boolean_T doneDoubleBufferReInit_ad;
-  boolean_T IR_value_not_empty;
-  boolean_T isStable_f;
-  boolean_T doneDoubleBufferReInit_e;
-  boolean_T data_not_empty;
-  boolean_T isStable_iq;
-  boolean_T doneDoubleBufferReInit_g;
-  boolean_T CPU_state_not_empty;
-  boolean_T previous_CPU_state_not_empty;
-  boolean_T major_opcode_not_empty;
-  boolean_T minor_opcode_not_empty;
-  boolean_T address_data_not_empty;
-  boolean_T indirect_address_not_empty;
-  boolean_T isStable_n;
-  boolean_T doneDoubleBufferReInit_m;
-  boolean_T isStable_o;
-  boolean_T doneDoubleBufferReInit_n;
-  boolean_T AC_value_not_empty;
-} D_Work;
-
-typedef struct {
-  const boolean_T Compare;
-} ConstBlockIO;
-
-extern const ConstBlockIO rtrtC;
-extern const char *RT_MEMORY_ALLOCATION_ERROR;
-extern BlockIO rtB;
-extern D_Work rtDWork;
-extern SimStruct *const rtS;
-extern const int_T gblNumToFiles;
-extern const int_T gblNumFrFiles;
-extern const int_T gblNumFrWksBlocks;
-extern rtInportTUtable *gblInportTUtables;
-extern const char *gblInportFileName;
-extern const int_T gblNumRootInportBlks;
-extern const int_T gblNumModelInputs;
-extern const int_T gblInportDataTypeIdx[];
-extern const int_T gblInportDims[];
-extern const int_T gblInportComplex[];
-extern const int_T gblInportInterpoFlag[];
-extern const int_T gblInportContinuous[];
-
+typedef struct { uint16_T fcetjhhiex ; int8_T a5hp1ity41 ; int8_T ml1z4011om
+; int8_T aepsxaam4m ; int8_T iht3vcokcy [ 256 ] ; int8_T kkvw0ptxgn ; int8_T
+ahogxsodi5 ; int8_T mara0lwcgp ; uint8_T gyn0k3gkkt ; uint8_T nydvymh33o ;
+boolean_T drljjcdixn ; uint8_T nr2ykwyg2x ; } B ; typedef struct { struct {
+void * LoggedData ; } hio3mwober ; struct { void * LoggedData ; } buythqrmps
+; uint16_T hzjbagfonx ; uint16_T m0riydqyff ; uint16_T l32z4pgrvm [ 256 ] ;
+int8_T dbjbvxg23s ; int8_T boyw4d0uwn ; int8_T b0w1eco2iu ; int8_T l0owajfezg
+; int8_T hcle0rjezs ; int8_T gkfgmh3s00 [ 256 ] ; uint8_T ids0ty3k2c ;
+boolean_T kcb5h3l2rz ; boolean_T j3nrtien2t ; uint8_T kmbjhnlkaw ; int8_T
+posk0eizok ; uint8_T aieo2sbtyk ; uint8_T gqdvjn31au ; uint8_T mpui0k5sli ;
+uint8_T hithci51lt ; uint8_T ecskwlmtwq ; uint8_T pxavurktwi ; uint8_T
+corjqxlsl3 ; } DW ; typedef struct { const boolean_T nvfvuebnci ; } ConstB ;
+typedef struct { rtwCAPI_ModelMappingInfo mmi ; } DataMapInfo ; extern const
+ConstB rtrtC ; extern const char * RT_MEMORY_ALLOCATION_ERROR ; extern B rtB
+; extern DW rtDW ; extern const rtwCAPI_ModelMappingStaticInfo *
+hdlcodercpu_eml_GetCAPIStaticMap ( void ) ; extern SimStruct * const rtS ;
+extern const int_T gblNumToFiles ; extern const int_T gblNumFrFiles ; extern
+const int_T gblNumFrWksBlocks ; extern rtInportTUtable * gblInportTUtables ;
+extern const char * gblInportFileName ; extern const int_T
+gblNumRootInportBlks ; extern const int_T gblNumModelInputs ; extern const
+int_T gblInportDataTypeIdx [ ] ; extern const int_T gblInportDims [ ] ;
+extern const int_T gblInportComplex [ ] ; extern const int_T
+gblInportInterpoFlag [ ] ; extern const int_T gblInportContinuous [ ] ;
+extern DataMapInfo * rt_dataMapInfoPtr ; extern rtwCAPI_ModelMappingInfo *
+rt_modelMapInfoPtr ;
 #endif

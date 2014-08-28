@@ -7,21 +7,11 @@ CPU = AMD64
 
 MACHINE     = hdlcodercpu_eml
 TARGET      = sfun
-CHART_SRCS 	= \
-     c1_hdlcodercpu_eml.c\
-     c2_hdlcodercpu_eml.c\
-     c3_hdlcodercpu_eml.c\
-     c4_hdlcodercpu_eml.c\
-     c5_hdlcodercpu_eml.c\
-     c6_hdlcodercpu_eml.c\
-     c7_hdlcodercpu_eml.c\
-     c8_hdlcodercpu_eml.c\
-     c9_hdlcodercpu_eml.c
-MACHINE_SRC	= hdlcodercpu_eml_sfun.c
+CHART_SRCS   = c1_hdlcodercpu_eml.c c2_hdlcodercpu_eml.c c3_hdlcodercpu_eml.c c4_hdlcodercpu_eml.c c5_hdlcodercpu_eml.c c6_hdlcodercpu_eml.c c7_hdlcodercpu_eml.c c8_hdlcodercpu_eml.c c9_hdlcodercpu_eml.c
+MACHINE_SRC  = hdlcodercpu_eml_sfun.c
 MACHINE_REG = hdlcodercpu_eml_sfun_registry.c
-MEX_WRAPPER =
 MAKEFILE    = hdlcodercpu_eml_sfun.mak
-MATLAB_ROOT	= C:\Program Files\MATLAB\R2011a
+MATLAB_ROOT  = C:\Program Files\MATLAB\R2014a
 BUILDARGS   =
 
 #--------------------------- Tool Specifications ------------------------------
@@ -39,40 +29,42 @@ LIBCMD = lib.exe
 
 USER_INCLUDES   = 
 AUX_INCLUDES   = 
-ML_INCLUDES     = /I "$(MATLAB_ROOT)\extern\include"
-SL_INCLUDES     = /I "$(MATLAB_ROOT)\simulink\include"
-SF_INCLUDES     = /I "C:\Program Files\MATLAB\R2011a\stateflow\c\mex\include" /I "C:\Program Files\MATLAB\R2011a\stateflow\c\debugger\include"
-
-DSP_INCLUDES    =
+MLSLSF_INCLUDES = \
+    /I "C:\Program Files\MATLAB\R2014a\extern\include" \
+    /I "C:\Program Files\MATLAB\R2014a\simulink\include" \
+    /I "C:\Program Files\MATLAB\R2014a\stateflow\c\mex\include" \
+    /I "C:\Program Files\MATLAB\R2014a\rtw\c\src" \
+    /I "C:\Users\sandesh\Desktop\model-based-fpga-desing\matlab_model\slprj\_sfprj\hdlcodercpu_eml\_self\sfun\src" 
 
 COMPILER_INCLUDES = /I "$(MSVC_ROOT)\include"
 
-INCLUDE_PATH = $(USER_INCLUDES) $(AUX_INCLUDES) $(ML_INCLUDES) $(SL_INCLUDES) $(SF_INCLUDES) $(DSP_INCLUDES)
+THIRD_PARTY_INCLUDES   = 
+INCLUDE_PATH = $(USER_INCLUDES) $(AUX_INCLUDES) $(MLSLSF_INCLUDES)\
+ $(THIRD_PARTY_INCLUDES)
 LIB_PATH     = "$(MSVC_ROOT)\lib"
 
-CFLAGS = /c /Zp8 /GR /W3 /EHs /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0 /DMATLAB_MEX_FILE /nologo /MD $(COMPFLAGS)  
-LDFLAGS = /nologo /dll /OPT:NOREF /export:mexFunction 
-AUXLDFLAGS = 
-
+CFLAGS = /c /Zp8 /GR /W3 /EHs /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0 /DMATLAB_MEX_FILE /nologo /MD 
+LDFLAGS = /nologo /dll /MANIFEST /OPT:NOREF /export:mexFunction  
 #----------------------------- Source Files -----------------------------------
 
-REQ_SRCS  = $(MACHINE_SRC) $(MACHINE_REG) $(MEX_WRAPPER) $(CHART_SRCS)
+REQ_SRCS  =  $(MACHINE_SRC) $(MACHINE_REG) $(CHART_SRCS)
 
 USER_ABS_OBJS =
 
 AUX_ABS_OBJS =
 
+THIRD_PARTY_OBJS =
+
 REQ_OBJS = $(REQ_SRCS:.cpp=.obj)
 REQ_OBJS2 = $(REQ_OBJS:.c=.obj)
-OBJS = $(REQ_OBJS2) $(USER_ABS_OBJS) $(AUX_ABS_OBJS)
+OBJS = $(REQ_OBJS2) $(USER_ABS_OBJS) $(AUX_ABS_OBJS) $(THIRD_PARTY_OBJS)
 OBJLIST_FILE = hdlcodercpu_eml_sfun.mol
-SFCLIB = "C:\Program Files\MATLAB\R2011a\stateflow\c\mex\lib\win64\sfc_mex.lib" "C:\Program Files\MATLAB\R2011a\stateflow\c\debugger\lib\win64\sfc_debug.lib"
-AUX_LNK_OBJS =
-USER_LIBS =
-LINK_MACHINE_LIBS =
-
-DSP_LIBS    =
-BLAS_LIBS   = "C:\Program Files\MATLAB\R2011a\extern\lib\win64\microsoft\libmwblascompat32.lib"
+SFCLIB = 
+AUX_LNK_OBJS =     
+USER_LIBS = 
+LINK_MACHINE_LIBS = 
+BLAS_LIBS = "C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libmwblas.lib" 
+THIRD_PARTY_LIBS = 
 
 #--------------------------------- Rules --------------------------------------
 
@@ -81,11 +73,14 @@ MEX_FILE_NAME = $(MEX_FILE_NAME_WO_EXT).mexw64
 MEX_FILE_CSF =
 all : $(MEX_FILE_NAME) $(MEX_FILE_CSF)
 
-MEXLIB = "C:\Program Files\MATLAB\R2011a\extern\lib\win64\microsoft\libmx.lib" "C:\Program Files\MATLAB\R2011a\extern\lib\win64\microsoft\libmex.lib" "C:\Program Files\MATLAB\R2011a\extern\lib\win64\microsoft\libmat.lib" "C:\Program Files\MATLAB\R2011a\extern\lib\win64\microsoft\libfixedpoint.lib" "C:\Program Files\MATLAB\R2011a\extern\lib\win64\microsoft\libut.lib" "C:\Program Files\MATLAB\R2011a\extern\lib\win64\microsoft\libmwmathutil.lib" "C:\Program Files\MATLAB\R2011a\extern\lib\win64\microsoft\libemlrt.lib" "C:\Program Files\MATLAB\R2011a\lib\win64\libippmwipt.lib"
+TMWLIB = "C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\sf_runtime.lib" "C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libmx.lib" "C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libmex.lib" "C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libmat.lib" "C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libfixedpoint.lib" "C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libut.lib" "C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libmwmathutil.lib" "C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libemlrt.lib" "C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libmwsl_log_load_blocks.lib" "C:\Program Files\MATLAB\R2014a\lib\win64\libippmwipt.lib" 
 
-$(MEX_FILE_NAME) : $(MAKEFILE) $(OBJS) $(SFCLIB) $(AUX_LNK_OBJS) $(USER_LIBS)
-	@echo ### Linking ...
-	$(LD) $(LDFLAGS) $(AUXLDFLAGS) /OUT:$(MEX_FILE_NAME) /map:"$(MEX_FILE_NAME_WO_EXT).map" $(USER_LIBS) $(SFCLIB) $(AUX_LNK_OBJS) $(MEXLIB) $(LINK_MACHINE_LIBS) $(DSP_LIBS) $(BLAS_LIBS) @$(OBJLIST_FILE)
+$(MEX_FILE_NAME) : $(MAKEFILE) $(OBJS) $(SFCLIB) $(AUX_LNK_OBJS) $(USER_LIBS) $(THIRD_PARTY_LIBS)
+ @echo ### Linking ...
+ $(LD) $(LDFLAGS) /OUT:$(MEX_FILE_NAME) /map:"$(MEX_FILE_NAME_WO_EXT).map"\
+  $(USER_LIBS) $(SFCLIB) $(AUX_LNK_OBJS)\
+  $(TMWLIB) $(LINK_MACHINE_LIBS) $(DSP_LIBS) $(BLAS_LIBS) $(THIRD_PARTY_LIBS)\
+  @$(OBJLIST_FILE)
      mt -outputresource:"$(MEX_FILE_NAME);2" -manifest "$(MEX_FILE_NAME).manifest"
 	@echo ### Created $@
 
@@ -96,4 +91,5 @@ $(MEX_FILE_NAME) : $(MAKEFILE) $(OBJS) $(SFCLIB) $(AUX_LNK_OBJS) $(USER_LIBS)
 .cpp.obj :
 	@echo ### Compiling "$<"
 	$(CC) $(CFLAGS) $(INCLUDE_PATH) "$<"
+
 

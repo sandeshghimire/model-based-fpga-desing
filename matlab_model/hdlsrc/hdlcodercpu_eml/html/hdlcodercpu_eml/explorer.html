@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel= "stylesheet" href="explorer_files/dtree.css" type="text/css" />
+    <script type="text/javascript" src="explorer_files/dtree.js"></script>
+    <script type="text/javascript" src="slwebview.js"></script>
+    <script type="text/javascript" src="id_mapping.js"></script>
+    <title>Simulink Web View</title>
+  </head>
+  <body leftmargin="3"  topmargin="0" marginwidth="3" marginheight="3">
+    <script type="text/javascript">
+<!--
+var explorer = new dTree('explorer');
+explorer.add(0,-1,"Simulink Root","javascript:toggleExpose();","Simulink Root","hdlcodercpu_eml_CPU_Subsystem_8_bit_slwebview_model");
+explorer.add(1,0,"hdlcodercpu_eml","","hdlcodercpu_eml","hdlcodercpu_eml_CPU_Subsystem_8_bit_slwebview_model","explorer_files/SimulinkModelIcon.png","explorer_files/SimulinkModelIcon.png",1);
+explorer.add(2,1,"CPU_Subsystem_8_bit","javascript:changeSysByName('hdlcodercpu_eml:1',1);","hdlcodercpu_eml:1","hdlcodercpu_eml_CPU_Subsystem_8_bit_slwebview_model","explorer_files/SubSystemIcon.gif","explorer_files/SubSystemIcon.gif",0);
+explorer.add(3,2,"Accumulator","javascript:changeSysByName('hdlcodercpu_eml:3',1);","hdlcodercpu_eml:3","hdlcodercpu_eml_CPU_Subsystem_8_bit_slwebview_model","explorer_files/eml.png","explorer_files/eml.png",0);
+explorer.add(4,2,"Arithmetic Logical Unit (8-bit)","javascript:changeSysByName('hdlcodercpu_eml:4',1);","hdlcodercpu_eml:4","hdlcodercpu_eml_CPU_Subsystem_8_bit_slwebview_model","explorer_files/eml.png","explorer_files/eml.png",0);
+explorer.add(5,2,"Control Unit","javascript:changeSysByName('hdlcodercpu_eml:5',1);","hdlcodercpu_eml:5","hdlcodercpu_eml_CPU_Subsystem_8_bit_slwebview_model","explorer_files/eml.png","explorer_files/eml.png",0);
+explorer.add(6,2,"Data Memory","javascript:changeSysByName('hdlcodercpu_eml:6',1);","hdlcodercpu_eml:6","hdlcodercpu_eml_CPU_Subsystem_8_bit_slwebview_model","explorer_files/MaskedSubsystemIcon.gif","explorer_files/MaskedSubsystemIcon.gif",0);
+explorer.add(7,2,"Instruction ROM","javascript:changeSysByName('hdlcodercpu_eml:8',1);","hdlcodercpu_eml:8","hdlcodercpu_eml_CPU_Subsystem_8_bit_slwebview_model","explorer_files/eml.png","explorer_files/eml.png",0);
+explorer.add(8,2,"Instruction Register","javascript:changeSysByName('hdlcodercpu_eml:9',1);","hdlcodercpu_eml:9","hdlcodercpu_eml_CPU_Subsystem_8_bit_slwebview_model","explorer_files/eml.png","explorer_files/eml.png",0);
+explorer.add(9,2,"PC Incrementer","javascript:changeSysByName('hdlcodercpu_eml:10',1);","hdlcodercpu_eml:10","hdlcodercpu_eml_CPU_Subsystem_8_bit_slwebview_model","explorer_files/eml.png","explorer_files/eml.png",0);
+explorer.add(10,2,"Program Counter","javascript:changeSysByName('hdlcodercpu_eml:11',1);","hdlcodercpu_eml:11","hdlcodercpu_eml_CPU_Subsystem_8_bit_slwebview_model","explorer_files/eml.png","explorer_files/eml.png",0);
+explorer.add(11,2,"Shifter (8-bit)","javascript:changeSysByName('hdlcodercpu_eml:13',1);","hdlcodercpu_eml:13","hdlcodercpu_eml_CPU_Subsystem_8_bit_slwebview_model","explorer_files/eml.png","explorer_files/eml.png",0);
+explorer.add(12,2,"output_enable","javascript:changeSysByName('hdlcodercpu_eml:21',1);","hdlcodercpu_eml:21","hdlcodercpu_eml_CPU_Subsystem_8_bit_slwebview_model","explorer_files/eml.png","explorer_files/eml.png",0);
+explorer.add(13,6,"is_new","javascript:changeSysByName('hdlcodercpu_eml:6:526',1);","hdlcodercpu_eml:6:526","hdlcodercpu_eml_CPU_Subsystem_8_bit_slwebview_model","explorer_files/MaskedSubsystemIcon.gif","explorer_files/MaskedSubsystemIcon.gif",0);
+var svgState = getSvgState(gHomeSys);
+svgState.tree = explorer;
+document.write(svgState.tree);
+//-->
+    </script>
+  </body>
+</html>
+

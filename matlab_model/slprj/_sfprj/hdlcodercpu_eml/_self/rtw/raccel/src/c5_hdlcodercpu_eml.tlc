@@ -7,43 +7,18 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   6 \
+    NumChartData   1 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
       IsTestPoint  0\
     }\
     ChartData {\
-      Name         "sfEvent"\
-      SFName       ""\
-      Path         ""\
-    }\
-    ChartData {\
-      Name         "isStable"\
-      SFName       ""\
-      Path         ""\
-    }\
-    ChartData {\
-      Name         "doneDoubleBufferReInit"\
-      SFName       ""\
-      Path         ""\
-    }\
-    ChartData {\
-      Name         "is_active_c5_hdlcodercpu_eml"\
-      SFName       "is_active_c5_hdlcodercpu_eml"\
-      Path         "is_active_c5_hdlcodercpu_eml"\
-      IsTestPoint  1\
-    }\
-    ChartData {\
       Name         "data"\
+      Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
       Dimensions   [1,256]\
-    }\
-    ChartData {\
-      Name         "data_not_empty"\
-      SFName       ""\
-      Path         ""\
     }\
   }
   %return ChartDataElements

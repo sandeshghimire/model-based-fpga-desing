@@ -1,7 +1,6 @@
 %implements "machineSource" "C"
 %function CacheMachineDefinitions(block,system) void
 %openfile tmpFcnBuf
-            
 %closefile tmpFcnBuf
 %<SLibCacheCodeToFile("sf_machine_data_defn",tmpFcnBuf)>\
 
@@ -21,7 +20,7 @@
   %openfile tmpFcnBuf
   %<DumpMachineInitializer(block)>\
   %closefile tmpFcnBuf
-  %return tmpFcnBuf				
+  %return tmpFcnBuf              
 %endfunction %% GlobalMachineInitializer
 
 %function DumpMachineTerminator(block) Output
@@ -38,7 +37,7 @@
   %openfile tmpFcnBuf
   %<DumpMachineTerminator(block)>\
   %closefile tmpFcnBuf
-  %return tmpFcnBuf				
+  %return tmpFcnBuf              
 %endfunction %% GlobalMachineTerminator
 
 %function CacheMachineFunctions(block,system) void

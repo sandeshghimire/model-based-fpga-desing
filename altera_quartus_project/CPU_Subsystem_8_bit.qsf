@@ -41,7 +41,7 @@ set_global_assignment -name DEVICE 5CSXFC6D6F31C8ES
 set_global_assignment -name TOP_LEVEL_ENTITY CPU_Subsystem_8_bit_SCM
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "11:24:07  FEBRUARY 20, 2014"
-set_global_assignment -name LAST_QUARTUS_VERSION 13.1
+set_global_assignment -name LAST_QUARTUS_VERSION 14.0
 set_global_assignment -name VHDL_FILE ../matlab_model/hdlsrc/SinglePortRAM_Inst0.vhd
 set_global_assignment -name VHDL_FILE ../matlab_model/hdlsrc/Shifter_8_bit.vhd
 set_global_assignment -name VHDL_FILE ../matlab_model/hdlsrc/RAM_256x8b_0.vhd

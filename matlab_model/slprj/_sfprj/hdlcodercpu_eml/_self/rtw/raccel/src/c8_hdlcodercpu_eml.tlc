@@ -7,32 +7,11 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   4 \
+    NumChartData   0 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
       IsTestPoint  0\
-    }\
-    ChartData {\
-      Name         "sfEvent"\
-      SFName       ""\
-      Path         ""\
-    }\
-    ChartData {\
-      Name         "isStable"\
-      SFName       ""\
-      Path         ""\
-    }\
-    ChartData {\
-      Name         "doneDoubleBufferReInit"\
-      SFName       ""\
-      Path         ""\
-    }\
-    ChartData {\
-      Name         "is_active_c8_hdlcodercpu_eml"\
-      SFName       "is_active_c8_hdlcodercpu_eml"\
-      Path         "is_active_c8_hdlcodercpu_eml"\
-      IsTestPoint  1\
     }\
   }
   %return ChartDataElements

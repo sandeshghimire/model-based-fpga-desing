@@ -1,0 +1,4 @@
+#include "__cf_gm_hdlcodercpu_eml.h"
+#ifndef RTW_HEADER_gm_hdlcodercpu_eml_acc_types_h_
+#define RTW_HEADER_gm_hdlcodercpu_eml_acc_types_h_
+#endif

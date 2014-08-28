@@ -2,44 +2,39 @@
 #define __c2_hdlcodercpu_eml_h__
 
 /* Include files */
-#include "sfc_sf.h"
-#include "sfc_mex.h"
+#include "sf_runtime/sfc_sf.h"
+#include "sf_runtime/sfc_mex.h"
 #include "rtwtypes.h"
+#include "multiword_types.h"
 
 /* Type Definitions */
-typedef struct {
-  const char * context;
-  const char * name;
-  const char * dominantType;
-  const char * resolved;
-  uint32_T fileTimeLo;
-  uint32_T fileTimeHi;
-  uint32_T mFileTimeLo;
-  uint32_T mFileTimeHi;
-} c2_ResolvedFunctionInfo;
+#ifndef typedef_SFc2_hdlcodercpu_emlInstanceStruct
+#define typedef_SFc2_hdlcodercpu_emlInstanceStruct
 
 typedef struct {
   SimStruct *S;
-  int32_T c2_sfEvent;
+  ChartInfoStruct chartInfo;
   uint32_T chartNumber;
   uint32_T instanceNumber;
-  boolean_T c2_CPU_state_not_empty;
-  boolean_T c2_address_data_not_empty;
-  boolean_T c2_doneDoubleBufferReInit;
-  boolean_T c2_indirect_address_not_empty;
+  int32_T c2_sfEvent;
   boolean_T c2_isStable;
-  boolean_T c2_major_opcode_not_empty;
-  boolean_T c2_minor_opcode_not_empty;
-  boolean_T c2_previous_CPU_state_not_empty;
-  uint8_T c2_CPU_state;
-  uint8_T c2_address_data;
-  uint8_T c2_indirect_address;
+  boolean_T c2_doneDoubleBufferReInit;
   uint8_T c2_is_active_c2_hdlcodercpu_eml;
-  uint8_T c2_major_opcode;
-  uint8_T c2_minor_opcode;
+  uint8_T c2_CPU_state;
+  boolean_T c2_CPU_state_not_empty;
   uint8_T c2_previous_CPU_state;
-  ChartInfoStruct chartInfo;
+  boolean_T c2_previous_CPU_state_not_empty;
+  uint8_T c2_major_opcode;
+  boolean_T c2_major_opcode_not_empty;
+  uint8_T c2_minor_opcode;
+  boolean_T c2_minor_opcode_not_empty;
+  uint8_T c2_address_data;
+  boolean_T c2_address_data_not_empty;
+  uint8_T c2_indirect_address;
+  boolean_T c2_indirect_address_not_empty;
 } SFc2_hdlcodercpu_emlInstanceStruct;
+
+#endif                                 /*typedef_SFc2_hdlcodercpu_emlInstanceStruct*/
 
 /* Named Constants */
 

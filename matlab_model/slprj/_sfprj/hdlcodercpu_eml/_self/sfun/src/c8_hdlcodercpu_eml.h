@@ -2,32 +2,27 @@
 #define __c8_hdlcodercpu_eml_h__
 
 /* Include files */
-#include "sfc_sf.h"
-#include "sfc_mex.h"
+#include "sf_runtime/sfc_sf.h"
+#include "sf_runtime/sfc_mex.h"
 #include "rtwtypes.h"
+#include "multiword_types.h"
 
 /* Type Definitions */
-typedef struct {
-  const char * context;
-  const char * name;
-  const char * dominantType;
-  const char * resolved;
-  uint32_T fileTimeLo;
-  uint32_T fileTimeHi;
-  uint32_T mFileTimeLo;
-  uint32_T mFileTimeHi;
-} c8_ResolvedFunctionInfo;
+#ifndef typedef_SFc8_hdlcodercpu_emlInstanceStruct
+#define typedef_SFc8_hdlcodercpu_emlInstanceStruct
 
 typedef struct {
   SimStruct *S;
-  int32_T c8_sfEvent;
+  ChartInfoStruct chartInfo;
   uint32_T chartNumber;
   uint32_T instanceNumber;
-  boolean_T c8_doneDoubleBufferReInit;
+  int32_T c8_sfEvent;
   boolean_T c8_isStable;
+  boolean_T c8_doneDoubleBufferReInit;
   uint8_T c8_is_active_c8_hdlcodercpu_eml;
-  ChartInfoStruct chartInfo;
 } SFc8_hdlcodercpu_emlInstanceStruct;
+
+#endif                                 /*typedef_SFc8_hdlcodercpu_emlInstanceStruct*/
 
 /* Named Constants */
 

@@ -1,8 +1,8 @@
 @echo off
-call setup_msvc100free.bat
+call setup_mssdk71.bat
 
 cd .
-nmake -f hdlcodercpu_eml.mk  GENERATE_REPORT=0 RSIM_SOLVER_SELECTION=2
+nmake -f hdlcodercpu_eml.mk  RSIM_SOLVER_SELECTION=2 OPTS="-DON_TARGET_WAIT_FOR_START=0"
 @if errorlevel 1 goto error_exit
 exit /B 0
 

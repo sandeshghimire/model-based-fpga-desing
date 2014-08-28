@@ -1,6 +1,6 @@
 Analysis & Synthesis report for CPU_Subsystem_8_bit
-Wed Mar 05 16:01:49 2014
-Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+Tue Aug 26 14:41:31 2014
+Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
 ---------------------
@@ -17,35 +17,37 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   9. Removed Registers Triggering Further Register Optimizations
  10. General Register Statistics
  11. Multiplexer Restructuring Statistics (Restructuring Performed)
- 12. Elapsed Time Per Partition
- 13. Analysis & Synthesis Messages
+ 12. Post-Synthesis Netlist Statistics for Top Partition
+ 13. Elapsed Time Per Partition
+ 14. Analysis & Synthesis Messages
 
 
 
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 1991-2013 Altera Corporation
+Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
 Your use of Altera Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
 to the terms and conditions of the Altera Program License 
-Subscription Agreement, Altera MegaCore Function License 
-Agreement, or other applicable license agreement, including, 
-without limitation, that your use is for the sole purpose of 
-programming logic devices manufactured by Altera and sold by 
-Altera or its authorized distributors.  Please refer to the 
-applicable agreement for further details.
+Subscription Agreement, the Altera Quartus II License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
 
 
 
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Mar 05 16:01:49 2014      ;
-; Quartus II 64-Bit Version       ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Analysis & Synthesis Status     ; Successful - Tue Aug 26 14:41:31 2014      ;
+; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; CPU_Subsystem_8_bit                        ;
 ; Top-level Entity Name           ; CPU_Subsystem_8_bit_SCM                    ;
 ; Family                          ; Cyclone V                                  ;
@@ -58,7 +60,7 @@ applicable agreement for further details.
 ; Total HSSI RX PCSs              ; 0                                          ;
 ; Total HSSI PMA RX Deserializers ; 0                                          ;
 ; Total HSSI TX PCSs              ; 0                                          ;
-; Total HSSI TX Channels          ; 0                                          ;
+; Total HSSI PMA TX Serializers   ; 0                                          ;
 ; Total PLLs                      ; 0                                          ;
 ; Total DLLs                      ; 0                                          ;
 +---------------------------------+--------------------------------------------+
@@ -148,40 +150,48 @@ applicable agreement for further details.
 ; Resource Aware Inference For Block RAM                                          ; On                      ; On                  ;
 ; Synthesis Seed                                                                  ; 1                       ; 1                   ;
 ; Automatic Parallel Synthesis                                                    ; On                      ; On                  ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                     ; Off                 ;
 +---------------------------------------------------------------------------------+-------------------------+---------------------+
 
 
-Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
-+-------------------------------------+
-; Parallel Compilation                ;
-+----------------------------+--------+
-; Processors                 ; Number ;
-+----------------------------+--------+
-; Number detected on machine ; 8      ;
-; Maximum allowed            ; 1      ;
-+----------------------------+--------+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ; < 0.1%      ;
+;     Processors 5-8         ;   0.0%      ;
++----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                            ;
-+----------------------------------------------------------+-----------------+------------------------------------+---------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path                         ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                          ; Library ;
-+----------------------------------------------------------+-----------------+------------------------------------+---------------------------------------------------------------------------------------+---------+
-; ../matlab_model/hdlsrc/SinglePortRAM_Inst0.vhd           ; yes             ; User VHDL File                     ; M:/alarmd/matlab2vhdl/matlab_model/hdlsrc/SinglePortRAM_Inst0.vhd                     ;         ;
-; ../matlab_model/hdlsrc/Shifter_8_bit.vhd                 ; yes             ; User VHDL File                     ; M:/alarmd/matlab2vhdl/matlab_model/hdlsrc/Shifter_8_bit.vhd                           ;         ;
-; ../matlab_model/hdlsrc/RAM_256x8b_0.vhd                  ; yes             ; User VHDL File                     ; M:/alarmd/matlab2vhdl/matlab_model/hdlsrc/RAM_256x8b_0.vhd                            ;         ;
-; ../matlab_model/hdlsrc/Program_Counter.vhd               ; yes             ; User VHDL File                     ; M:/alarmd/matlab2vhdl/matlab_model/hdlsrc/Program_Counter.vhd                         ;         ;
-; ../matlab_model/hdlsrc/PC_Incrementer.vhd                ; yes             ; User VHDL File                     ; M:/alarmd/matlab2vhdl/matlab_model/hdlsrc/PC_Incrementer.vhd                          ;         ;
-; ../matlab_model/hdlsrc/output_enable.vhd                 ; yes             ; User VHDL File                     ; M:/alarmd/matlab2vhdl/matlab_model/hdlsrc/output_enable.vhd                           ;         ;
-; ../matlab_model/hdlsrc/Instruction_ROM.vhd               ; yes             ; User VHDL File                     ; M:/alarmd/matlab2vhdl/matlab_model/hdlsrc/Instruction_ROM.vhd                         ;         ;
-; ../matlab_model/hdlsrc/Instruction_Register.vhd          ; yes             ; User VHDL File                     ; M:/alarmd/matlab2vhdl/matlab_model/hdlsrc/Instruction_Register.vhd                    ;         ;
-; ../matlab_model/hdlsrc/CPU_Subsystem_8_bit_pkg.vhd       ; yes             ; User VHDL File                     ; M:/alarmd/matlab2vhdl/matlab_model/hdlsrc/CPU_Subsystem_8_bit_pkg.vhd                 ;         ;
-; ../matlab_model/hdlsrc/CPU_Subsystem_8_bit.vhd           ; yes             ; User VHDL File                     ; M:/alarmd/matlab2vhdl/matlab_model/hdlsrc/CPU_Subsystem_8_bit.vhd                     ;         ;
-; ../matlab_model/hdlsrc/Control_Unit.vhd                  ; yes             ; User VHDL File                     ; M:/alarmd/matlab2vhdl/matlab_model/hdlsrc/Control_Unit.vhd                            ;         ;
-; ../matlab_model/hdlsrc/Arithmetic_Logical_Unit_8_bit.vhd ; yes             ; User VHDL File                     ; M:/alarmd/matlab2vhdl/matlab_model/hdlsrc/Arithmetic_Logical_Unit_8_bit.vhd           ;         ;
-; ../matlab_model/hdlsrc/Accumulator.vhd                   ; yes             ; User VHDL File                     ; M:/alarmd/matlab2vhdl/matlab_model/hdlsrc/Accumulator.vhd                             ;         ;
-; output_files/CPU_Subsystem_8_bit_SCM.bdf                 ; yes             ; User Block Diagram/Schematic File  ; M:/alarmd/matlab2vhdl/altera_quartus_project/output_files/CPU_Subsystem_8_bit_SCM.bdf ;         ;
-+----------------------------------------------------------+-----------------+------------------------------------+---------------------------------------------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                       ;
++----------------------------------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                         ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                                                     ; Library ;
++----------------------------------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------------------------------------------+---------+
+; ../matlab_model/hdlsrc/SinglePortRAM_Inst0.vhd           ; yes             ; User VHDL File                     ; C:/Users/sandesh/Desktop/model-based-fpga-desing/matlab_model/hdlsrc/SinglePortRAM_Inst0.vhd                     ;         ;
+; ../matlab_model/hdlsrc/Shifter_8_bit.vhd                 ; yes             ; User VHDL File                     ; C:/Users/sandesh/Desktop/model-based-fpga-desing/matlab_model/hdlsrc/Shifter_8_bit.vhd                           ;         ;
+; ../matlab_model/hdlsrc/RAM_256x8b_0.vhd                  ; yes             ; User VHDL File                     ; C:/Users/sandesh/Desktop/model-based-fpga-desing/matlab_model/hdlsrc/RAM_256x8b_0.vhd                            ;         ;
+; ../matlab_model/hdlsrc/Program_Counter.vhd               ; yes             ; User VHDL File                     ; C:/Users/sandesh/Desktop/model-based-fpga-desing/matlab_model/hdlsrc/Program_Counter.vhd                         ;         ;
+; ../matlab_model/hdlsrc/PC_Incrementer.vhd                ; yes             ; User VHDL File                     ; C:/Users/sandesh/Desktop/model-based-fpga-desing/matlab_model/hdlsrc/PC_Incrementer.vhd                          ;         ;
+; ../matlab_model/hdlsrc/output_enable.vhd                 ; yes             ; User VHDL File                     ; C:/Users/sandesh/Desktop/model-based-fpga-desing/matlab_model/hdlsrc/output_enable.vhd                           ;         ;
+; ../matlab_model/hdlsrc/Instruction_ROM.vhd               ; yes             ; User VHDL File                     ; C:/Users/sandesh/Desktop/model-based-fpga-desing/matlab_model/hdlsrc/Instruction_ROM.vhd                         ;         ;
+; ../matlab_model/hdlsrc/Instruction_Register.vhd          ; yes             ; User VHDL File                     ; C:/Users/sandesh/Desktop/model-based-fpga-desing/matlab_model/hdlsrc/Instruction_Register.vhd                    ;         ;
+; ../matlab_model/hdlsrc/CPU_Subsystem_8_bit_pkg.vhd       ; yes             ; User VHDL File                     ; C:/Users/sandesh/Desktop/model-based-fpga-desing/matlab_model/hdlsrc/CPU_Subsystem_8_bit_pkg.vhd                 ;         ;
+; ../matlab_model/hdlsrc/CPU_Subsystem_8_bit.vhd           ; yes             ; User VHDL File                     ; C:/Users/sandesh/Desktop/model-based-fpga-desing/matlab_model/hdlsrc/CPU_Subsystem_8_bit.vhd                     ;         ;
+; ../matlab_model/hdlsrc/Control_Unit.vhd                  ; yes             ; User VHDL File                     ; C:/Users/sandesh/Desktop/model-based-fpga-desing/matlab_model/hdlsrc/Control_Unit.vhd                            ;         ;
+; ../matlab_model/hdlsrc/Arithmetic_Logical_Unit_8_bit.vhd ; yes             ; User VHDL File                     ; C:/Users/sandesh/Desktop/model-based-fpga-desing/matlab_model/hdlsrc/Arithmetic_Logical_Unit_8_bit.vhd           ;         ;
+; ../matlab_model/hdlsrc/Accumulator.vhd                   ; yes             ; User VHDL File                     ; C:/Users/sandesh/Desktop/model-based-fpga-desing/matlab_model/hdlsrc/Accumulator.vhd                             ;         ;
+; output_files/CPU_Subsystem_8_bit_SCM.bdf                 ; yes             ; User Block Diagram/Schematic File  ; C:/Users/sandesh/Desktop/model-based-fpga-desing/altera_quartus_project/output_files/CPU_Subsystem_8_bit_SCM.bdf ;         ;
++----------------------------------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------------+
@@ -189,14 +199,14 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimate of Logic utilization (ALMs needed) ; 1663        ;
+; Estimate of Logic utilization (ALMs needed) ; 1675        ;
 ;                                             ;             ;
-; Combinational ALUT usage for logic          ; 1275        ;
+; Combinational ALUT usage for logic          ; 1297        ;
 ;     -- 7 input functions                    ; 13          ;
-;     -- 6 input functions                    ; 828         ;
-;     -- 5 input functions                    ; 317         ;
-;     -- 4 input functions                    ; 31          ;
-;     -- <=3 input functions                  ; 86          ;
+;     -- 6 input functions                    ; 835         ;
+;     -- 5 input functions                    ; 338         ;
+;     -- 4 input functions                    ; 27          ;
+;     -- <=3 input functions                  ; 84          ;
 ;                                             ;             ;
 ; Dedicated logic registers                   ; 2161        ;
 ;                                             ;             ;
@@ -204,8 +214,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; Total DSP Blocks                            ; 0           ;
 ; Maximum fan-out node                        ; clock~input ;
 ; Maximum fan-out                             ; 2161        ;
-; Total fan-out                               ; 13649       ;
-; Average fan-out                             ; 3.92        ;
+; Total fan-out                               ; 13773       ;
+; Average fan-out                             ; 3.94        ;
 +---------------------------------------------+-------------+
 
 
@@ -214,16 +224,16 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-----------------------------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                                            ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                     ; Library Name ;
 +-----------------------------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------+--------------+
-; |CPU_Subsystem_8_bit_SCM                                              ; 1275 (0)          ; 2161 (0)     ; 0                 ; 0          ; 21   ; 0            ; |CPU_Subsystem_8_bit_SCM                                                                                                ; work         ;
-;    |CPU_Subsystem_8_bit:inst|                                         ; 1275 (0)          ; 2161 (48)    ; 0                 ; 0          ; 0    ; 0            ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst                                                                       ; work         ;
+; |CPU_Subsystem_8_bit_SCM                                              ; 1297 (11)         ; 2161 (0)     ; 0                 ; 0          ; 21   ; 0            ; |CPU_Subsystem_8_bit_SCM                                                                                                ; work         ;
+;    |CPU_Subsystem_8_bit:inst|                                         ; 1286 (0)          ; 2161 (48)    ; 0                 ; 0          ; 0    ; 0            ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst                                                                       ; work         ;
 ;       |Accumulator:u_Accumulator|                                     ; 12 (12)           ; 8 (8)        ; 0                 ; 0          ; 0    ; 0            ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Accumulator:u_Accumulator                                             ; work         ;
-;       |Arithmetic_Logical_Unit_8_bit:u_Arithmetic_Logical_Unit_8_bit| ; 37 (37)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Arithmetic_Logical_Unit_8_bit:u_Arithmetic_Logical_Unit_8_bit         ; work         ;
-;       |Control_Unit:u_Control_Unit|                                   ; 114 (114)         ; 29 (29)      ; 0                 ; 0          ; 0    ; 0            ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Control_Unit:u_Control_Unit                                           ; work         ;
+;       |Arithmetic_Logical_Unit_8_bit:u_Arithmetic_Logical_Unit_8_bit| ; 59 (59)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Arithmetic_Logical_Unit_8_bit:u_Arithmetic_Logical_Unit_8_bit         ; work         ;
+;       |Control_Unit:u_Control_Unit|                                   ; 110 (110)         ; 29 (29)      ; 0                 ; 0          ; 0    ; 0            ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Control_Unit:u_Control_Unit                                           ; work         ;
 ;       |Instruction_ROM:u_Instruction_ROM|                             ; 67 (67)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Instruction_ROM:u_Instruction_ROM                                     ; work         ;
 ;       |Instruction_Register:u_Instruction_Register|                   ; 2 (2)             ; 12 (12)      ; 0                 ; 0          ; 0    ; 0            ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Instruction_Register:u_Instruction_Register                           ; work         ;
 ;       |PC_Incrementer:u_PC_Incrementer|                               ; 8 (8)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|PC_Incrementer:u_PC_Incrementer                                       ; work         ;
 ;       |Program_Counter:u_Program_Counter|                             ; 18 (18)           ; 8 (8)        ; 0                 ; 0          ; 0    ; 0            ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Program_Counter:u_Program_Counter                                     ; work         ;
-;       |Shifter_8_bit:u_Shifter_8_bit|                                 ; 17 (17)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Shifter_8_bit:u_Shifter_8_bit                                         ; work         ;
+;       |Shifter_8_bit:u_Shifter_8_bit|                                 ; 10 (10)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Shifter_8_bit:u_Shifter_8_bit                                         ; work         ;
 ;       |SinglePortRAM_Inst0:u_SinglePortRAM_Inst0|                     ; 1000 (0)          ; 2056 (0)     ; 0                 ; 0          ; 0    ; 0            ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|SinglePortRAM_Inst0:u_SinglePortRAM_Inst0                             ; work         ;
 ;          |RAM_256x8b_0:u_RAM_256x8b_0|                                ; 1000 (1000)       ; 2056 (2056)  ; 0                 ; 0          ; 0    ; 0            ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|SinglePortRAM_Inst0:u_SinglePortRAM_Inst0|RAM_256x8b_0:u_RAM_256x8b_0 ; work         ;
 +-----------------------------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------+--------------+
@@ -2300,15 +2310,49 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------+
 ; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Program_Counter:u_Program_Counter|PC_value[1]                      ;
-; 5:1                ; 12 bits   ; 36 LEs        ; 0 LEs                ; 36 LEs                 ; Yes        ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Instruction_Register:u_Instruction_Register|IR_value[3]            ;
-; 32:1               ; 6 bits    ; 126 LEs       ; 108 LEs              ; 18 LEs                 ; Yes        ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Control_Unit:u_Control_Unit|previous_CPU_state[2]                  ;
-; 11:1               ; 7 bits    ; 49 LEs        ; 28 LEs               ; 21 LEs                 ; Yes        ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Accumulator:u_Accumulator|AC_value[0]                              ;
-; 10:1               ; 7 bits    ; 42 LEs        ; 0 LEs                ; 42 LEs                 ; Yes        ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Control_Unit:u_Control_Unit|indirect_address[6]                    ;
-; 8:1                ; 8 bits    ; 40 LEs        ; 32 LEs               ; 8 LEs                  ; No         ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Arithmetic_Logical_Unit_8_bit:u_Arithmetic_Logical_Unit_8_bit|Mux1 ;
-; 33:1               ; 3 bits    ; 66 LEs        ; 36 LEs               ; 30 LEs                 ; No         ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Control_Unit:u_Control_Unit|Mux128                                 ;
+; 5:1                ; 12 bits   ; 36 LEs        ; 0 LEs                ; 36 LEs                 ; Yes        ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Instruction_Register:u_Instruction_Register|IR_value[8]            ;
+; 32:1               ; 6 bits    ; 126 LEs       ; 108 LEs              ; 18 LEs                 ; Yes        ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Control_Unit:u_Control_Unit|previous_CPU_state[5]                  ;
+; 11:1               ; 7 bits    ; 49 LEs        ; 28 LEs               ; 21 LEs                 ; Yes        ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Accumulator:u_Accumulator|AC_value[3]                              ;
+; 10:1               ; 7 bits    ; 42 LEs        ; 0 LEs                ; 42 LEs                 ; Yes        ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Control_Unit:u_Control_Unit|indirect_address[3]                    ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; No name available in netlist                                                                                         ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 32 LEs               ; 8 LEs                  ; No         ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Arithmetic_Logical_Unit_8_bit:u_Arithmetic_Logical_Unit_8_bit|Mux3 ;
+; 33:1               ; 3 bits    ; 66 LEs        ; 36 LEs               ; 30 LEs                 ; No         ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Control_Unit:u_Control_Unit|Mux126                                 ;
 ; 17:1               ; 7 bits    ; 77 LEs        ; 42 LEs               ; 35 LEs                 ; No         ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Control_Unit:u_Control_Unit|Mux103                                 ;
-; 17:1               ; 8 bits    ; 88 LEs        ; 32 LEs               ; 56 LEs                 ; No         ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Control_Unit:u_Control_Unit|Mux116                                 ;
+; 17:1               ; 8 bits    ; 88 LEs        ; 32 LEs               ; 56 LEs                 ; No         ; |CPU_Subsystem_8_bit_SCM|CPU_Subsystem_8_bit:inst|Control_Unit:u_Control_Unit|Mux110                                 ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 2161                        ;
+;     CLR               ; 1                           ;
+;     ENA               ; 2048                        ;
+;     ENA CLR           ; 63                          ;
+;     ENA CLR SCLR      ; 41                          ;
+;     ENA SLD           ; 8                           ;
+; arriav_lcell_comb     ; 1298                        ;
+;     arith             ; 53                          ;
+;         0 data inputs ; 3                           ;
+;         1 data inputs ; 26                          ;
+;         2 data inputs ; 16                          ;
+;         5 data inputs ; 8                           ;
+;     extend            ; 13                          ;
+;         7 data inputs ; 13                          ;
+;     normal            ; 1232                        ;
+;         0 data inputs ; 1                           ;
+;         2 data inputs ; 23                          ;
+;         3 data inputs ; 16                          ;
+;         4 data inputs ; 27                          ;
+;         5 data inputs ; 330                         ;
+;         6 data inputs ; 835                         ;
+; boundary_port         ; 21                          ;
+;                       ;                             ;
+; Max LUT depth         ; 8.00                        ;
+; Average LUT depth     ; 4.97                        ;
++-----------------------+-----------------------------+
 
 
 +-------------------------------+
@@ -2325,46 +2369,46 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
-    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Wed Mar 05 16:01:36 2014
+    Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
+    Info: Processing started: Tue Aug 26 14:41:23 2014
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off matlab2vhdl -c CPU_Subsystem_8_bit
-Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 2 design units, including 1 entities, in source file /alarmd/matlab2vhdl/matlab_model/hdlsrc/singleportram_inst0.vhd
+Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
+Info (12021): Found 2 design units, including 1 entities, in source file /users/sandesh/desktop/model-based-fpga-desing/matlab_model/hdlsrc/singleportram_inst0.vhd
     Info (12022): Found design unit 1: SinglePortRAM_Inst0-rtl
     Info (12023): Found entity 1: SinglePortRAM_Inst0
-Info (12021): Found 2 design units, including 1 entities, in source file /alarmd/matlab2vhdl/matlab_model/hdlsrc/shifter_8_bit.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /users/sandesh/desktop/model-based-fpga-desing/matlab_model/hdlsrc/shifter_8_bit.vhd
     Info (12022): Found design unit 1: Shifter_8_bit-rtl
     Info (12023): Found entity 1: Shifter_8_bit
-Info (12021): Found 2 design units, including 1 entities, in source file /alarmd/matlab2vhdl/matlab_model/hdlsrc/ram_256x8b_0.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /users/sandesh/desktop/model-based-fpga-desing/matlab_model/hdlsrc/ram_256x8b_0.vhd
     Info (12022): Found design unit 1: RAM_256x8b_0-rtl
     Info (12023): Found entity 1: RAM_256x8b_0
-Info (12021): Found 2 design units, including 1 entities, in source file /alarmd/matlab2vhdl/matlab_model/hdlsrc/program_counter.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /users/sandesh/desktop/model-based-fpga-desing/matlab_model/hdlsrc/program_counter.vhd
     Info (12022): Found design unit 1: Program_Counter-rtl
     Info (12023): Found entity 1: Program_Counter
-Info (12021): Found 2 design units, including 1 entities, in source file /alarmd/matlab2vhdl/matlab_model/hdlsrc/pc_incrementer.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /users/sandesh/desktop/model-based-fpga-desing/matlab_model/hdlsrc/pc_incrementer.vhd
     Info (12022): Found design unit 1: PC_Incrementer-rtl
     Info (12023): Found entity 1: PC_Incrementer
-Info (12021): Found 2 design units, including 1 entities, in source file /alarmd/matlab2vhdl/matlab_model/hdlsrc/output_enable.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /users/sandesh/desktop/model-based-fpga-desing/matlab_model/hdlsrc/output_enable.vhd
     Info (12022): Found design unit 1: output_enable-rtl
     Info (12023): Found entity 1: output_enable
-Info (12021): Found 2 design units, including 1 entities, in source file /alarmd/matlab2vhdl/matlab_model/hdlsrc/instruction_rom.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /users/sandesh/desktop/model-based-fpga-desing/matlab_model/hdlsrc/instruction_rom.vhd
     Info (12022): Found design unit 1: Instruction_ROM-rtl
     Info (12023): Found entity 1: Instruction_ROM
-Info (12021): Found 2 design units, including 1 entities, in source file /alarmd/matlab2vhdl/matlab_model/hdlsrc/instruction_register.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /users/sandesh/desktop/model-based-fpga-desing/matlab_model/hdlsrc/instruction_register.vhd
     Info (12022): Found design unit 1: Instruction_Register-rtl
     Info (12023): Found entity 1: Instruction_Register
-Info (12021): Found 1 design units, including 0 entities, in source file /alarmd/matlab2vhdl/matlab_model/hdlsrc/cpu_subsystem_8_bit_pkg.vhd
+Info (12021): Found 1 design units, including 0 entities, in source file /users/sandesh/desktop/model-based-fpga-desing/matlab_model/hdlsrc/cpu_subsystem_8_bit_pkg.vhd
     Info (12022): Found design unit 1: CPU_Subsystem_8_bit_pkg
-Info (12021): Found 2 design units, including 1 entities, in source file /alarmd/matlab2vhdl/matlab_model/hdlsrc/cpu_subsystem_8_bit.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /users/sandesh/desktop/model-based-fpga-desing/matlab_model/hdlsrc/cpu_subsystem_8_bit.vhd
     Info (12022): Found design unit 1: CPU_Subsystem_8_bit-rtl
     Info (12023): Found entity 1: CPU_Subsystem_8_bit
-Info (12021): Found 2 design units, including 1 entities, in source file /alarmd/matlab2vhdl/matlab_model/hdlsrc/control_unit.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /users/sandesh/desktop/model-based-fpga-desing/matlab_model/hdlsrc/control_unit.vhd
     Info (12022): Found design unit 1: Control_Unit-rtl
     Info (12023): Found entity 1: Control_Unit
-Info (12021): Found 2 design units, including 1 entities, in source file /alarmd/matlab2vhdl/matlab_model/hdlsrc/arithmetic_logical_unit_8_bit.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /users/sandesh/desktop/model-based-fpga-desing/matlab_model/hdlsrc/arithmetic_logical_unit_8_bit.vhd
     Info (12022): Found design unit 1: Arithmetic_Logical_Unit_8_bit-rtl
     Info (12023): Found entity 1: Arithmetic_Logical_Unit_8_bit
-Info (12021): Found 2 design units, including 1 entities, in source file /alarmd/matlab2vhdl/matlab_model/hdlsrc/accumulator.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /users/sandesh/desktop/model-based-fpga-desing/matlab_model/hdlsrc/accumulator.vhd
     Info (12022): Found design unit 1: Accumulator-rtl
     Info (12023): Found entity 1: Accumulator
 Info (12021): Found 1 design units, including 1 entities, in source file output_files/cpu_subsystem_8_bit_scm.bdf
@@ -2396,14 +2440,14 @@ Warning (13024): Output pins are stuck at VCC or GND
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 3408 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 3427 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
     Info (21059): Implemented 17 output pins
-    Info (21061): Implemented 3387 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 573 megabytes
-    Info: Processing ended: Wed Mar 05 16:01:49 2014
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:07
+    Info (21061): Implemented 3406 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 9 warnings
+    Info: Peak virtual memory: 668 megabytes
+    Info: Processing ended: Tue Aug 26 14:41:31 2014
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:08
 
 

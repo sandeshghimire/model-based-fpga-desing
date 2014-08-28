@@ -1,6 +1,6 @@
-# Copyright 1994-2010 The MathWorks, Inc.
+# Copyright 1994-2013 The MathWorks, Inc.
 #
-# File    : raccel_vcx64.tmf   $Revision: 1.1.6.18 $
+# File    : raccel_vcx64.tmf   
 #
 # Abstract:
 #       Template makefile for building a PC-based "rapid acceleration" 
@@ -68,19 +68,20 @@ COMPILER_TOOL_CHAIN = vcx64
 #  EXTMODE_STATIC_SIZE - Size of static memory allocation buffer.
 
 MODEL                  = hdlcodercpu_eml
-MODULES                = hdlcodercpu_eml_data.c rtGetInf.c rtGetNaN.c rt_logging.c rt_nonfinite.c 
+MODULES                = hdlcodercpu_eml_capi.c hdlcodercpu_eml_data.c rtGetInf.c rtGetNaN.c rt_logging.c rt_logging_mmi.c rt_nonfinite.c rtw_modelmap_utils.c 
 MAKEFILE               = hdlcodercpu_eml.mk
-MATLAB_ROOT            = C:\Program Files\MATLAB\R2011a
-ALT_MATLAB_ROOT        = C:\PROGRA~1\MATLAB\R2011a
-MATLAB_BIN             = C:\Program Files\MATLAB\R2011a\bin
-ALT_MATLAB_BIN         = C:\PROGRA~1\MATLAB\R2011a\bin
+MATLAB_ROOT            = C:\Program Files\MATLAB\R2014a
+ALT_MATLAB_ROOT        = C:\PROGRA~1\MATLAB\R2014a
+MATLAB_BIN             = C:\Program Files\MATLAB\R2014a\bin
+ALT_MATLAB_BIN         = C:\PROGRA~1\MATLAB\R2014a\bin
 MASTER_ANCHOR_DIR      = 
-START_DIR              = M:\rtes_workspace\matlab2vhdl\matlab_model
-S_FUNCTIONS            = 
+START_DIR              = C:\Users\sandesh\Desktop\model-based-fpga-desing\matlab_model
+S_FUNCTIONS            = rtiostream_utils.c
 S_FUNCTIONS_LIB        = 
-BUILDARGS              =  GENERATE_REPORT=0 RSIM_SOLVER_SELECTION=2
+BUILDARGS              =  RSIM_SOLVER_SELECTION=2 OPTS="-DON_TARGET_WAIT_FOR_START=0"
 RSIM_PARAMETER_LOADING = 1
-VISUAL_VER             = 10.0
+ENABLE_SLEXEC_SSBRIDGE = 0
+VISUAL_VER             = 7.1SDK
 
 EXT_MODE            = 1
 TMW_EXTMODE_TESTING = 0
@@ -94,7 +95,7 @@ NUMST               = 1
 TID01EQ             = 0
 NCSTATES            = 0
 MULTITASKING        = 0
-PCMATLABROOT        = C:\\Program Files\\MATLAB\\R2011a
+PCMATLABROOT        = C:\\Program Files\\MATLAB\\R2014a
 
 MODELREFS            = 
 SHARED_SRC           = 
@@ -106,9 +107,10 @@ GEN_SAMPLE_MAIN      = 0
 OPTIMIZATION_FLAGS   = /Od /Oy- /DNDEBUG
 ADDITIONAL_LDFLAGS   = 
 
-RACCEL_PARALLEL_FOREACH_SS = 0
-RACCEL_PARFOREACH_NUM_THREADS = 4
-RACCEL_NUM_PARFOREACH_SS = 0
+RACCEL_PARALLEL_EXECUTION = 0
+RACCEL_PARALLEL_EXECUTION_NUM_THREADS = 4
+RACCEL_NUM_PARALLEL_NODES = 0
+RACCEL_PARALLEL_SIMULATOR_TYPE = 0
 
 # To enable debugging:
 # set DEBUG_BUILD = 1
@@ -148,7 +150,7 @@ PERL = $(MATLAB_ROOT)\sys\perl\win32\bin\perl
 MATLAB_INCLUDES =                    $(MATLAB_ROOT)\simulink\include
 MATLAB_INCLUDES = $(MATLAB_INCLUDES);$(MATLAB_ROOT)\extern\include
 MATLAB_INCLUDES = $(MATLAB_INCLUDES);$(MATLAB_ROOT)\rtw\c\src
-MATLAB_INCLUDES = $(MATLAB_INCLUDES);$(MATLAB_ROOT)\rtw\c\rapid
+MATLAB_INCLUDES = $(MATLAB_INCLUDES);$(MATLAB_ROOT)\rtw\c\src\rapid
 MATLAB_INCLUDES = $(MATLAB_INCLUDES);$(MATLAB_ROOT)\rtw\c\raccel
 MATLAB_INCLUDES = $(MATLAB_INCLUDES);$(MATLAB_ROOT)\rtw\c\src\ext_mode\common
 
@@ -157,6 +159,8 @@ MATLAB_INCLUDES = $(MATLAB_INCLUDES);$(MATLAB_ROOT)\rtw\c\src\ext_mode\common
 MATLAB_INCLUDES = $(MATLAB_INCLUDES);$(START_DIR)\slprj\raccel\hdlcodercpu_eml
 
 MATLAB_INCLUDES = $(MATLAB_INCLUDES);$(START_DIR)
+
+MATLAB_INCLUDES = $(MATLAB_INCLUDES);$(MATLAB_ROOT)\toolbox\coder\rtiostream\src\utils
 
 
 INCLUDE = .;$(RELATIVE_PATH_TO_ANCHOR);$(MATLAB_INCLUDES);$(INCLUDE)
@@ -177,7 +181,7 @@ EXT_LIB = wsock32.lib
 !endif
 !if $(EXTMODE_TRANSPORT) == 1 #serial_win32
 EXT_SRC = ext_svr.c updown.c ext_work.c ext_svr_serial_transport.c
-EXT_SRC = $(EXT_SRC) ext_serial_pkt.c ext_serial_win32_port.c
+EXT_SRC = $(EXT_SRC) ext_serial_pkt.c rtiostream_serial_interface.c rtiostream_serial.c
 EXT_LIB =
 !endif
 !if $(TMW_EXTMODE_TESTING) == 1
@@ -199,10 +203,10 @@ OPT_OPTS = $(DEFAULT_OPT_OPTS)
 
 # General User Options
 !if "$(DEBUG_BUILD)" == "0"
-OPTS =
+DBG_FLAG =
 !else
 #   Set OPT_OPTS=-Zi and any additional flags for debugging
-OPTS = -Zi
+DBG_FLAG = -Zi
 !endif
 
 !if "$(OPTIMIZATION_FLAGS)" != ""
@@ -217,11 +221,16 @@ CPP_REQ_DEFINES = -DMODEL=$(MODEL) -DHAVESTDIO
 CPP_REQ_DEFINES = $(CPP_REQ_DEFINES) \
                   -DNRT -DRSIM_WITH_SL_SOLVER
 
-!if "$(RACCEL_PARALLEL_FOREACH_SS)" == "1"
+!if "$(ENABLE_SLEXEC_SSBRIDGE)" != "0"
+CPP_REQ_DEFINES = $(CPP_REQ_DEFINES) -DENABLE_SLEXEC_SSBRIDGE
+!endif
+
+!if "$(RACCEL_PARALLEL_EXECUTION)" == "1"
 CPP_REQ_DEFINES = $(CPP_REQ_DEFINES) \
-		  -DRACCEL_PARALLEL_FOREACH \
-		  -DRACCEL_PARFOREACH_NUM_THREADS=$(RACCEL_PARFOREACH_NUM_THREADS) \
-		  -DRACCEL_NUM_PARFOREACH_SS=$(RACCEL_NUM_PARFOREACH_SS)
+		  -DRACCEL_ENABLE_PARALLEL_EXECUTION \
+		  -DRACCEL_PARALLEL_EXECUTION_NUM_THREADS=$(RACCEL_PARALLEL_EXECUTION_NUM_THREADS) \
+		  -DRACCEL_NUM_PARALLEL_NODES=$(RACCEL_NUM_PARALLEL_NODES) \
+		  -DRACCEL_PARALLEL_SIMULATOR_TYPE=$(RACCEL_PARALLEL_SIMULATOR_TYPE)
 !endif
 
 !if "$(MULTITASKING)" == "1"
@@ -233,10 +242,10 @@ CPP_REQ_DEFINES = $(CPP_REQ_DEFINES) \
 
 # Uncomment this line to move warning level to W4
 # cflags = $(cflags:W3=W4)
-CFLAGS   = $(MODELREF_INC_PATH) $(cflags) $(cvarsmt) $(PARAM_CC_OPTS) /wd4996 \
-	   $(CC_OPTS) $(CPP_REQ_DEFINES) $(USER_INCLUDES)
-CPPFLAGS = $(MODELREF_INC_PATH) $(cflags) $(cvarsmt) $(PARAM_CC_OPTS) \
-	   /wd4996 /EHsc- $(CPP_OPTS) $(CC_OPTS) $(CPP_REQ_DEFINES) \
+CFLAGS   = $(MODELREF_INC_PATH) $(cflags) $(cvarsdll) $(PARAM_CC_OPTS) /wd4996 \
+	   $(DBG_FLAG) $(CC_OPTS) $(CPP_REQ_DEFINES) $(USER_INCLUDES)
+CPPFLAGS = $(MODELREF_INC_PATH) $(cflags) $(cvarsdll) $(PARAM_CC_OPTS) \
+	   /wd4996 /EHsc- $(DBG_FLAG) $(CPP_OPTS) $(CC_OPTS) $(CPP_REQ_DEFINES) \
 	   $(USER_INCLUDES)
 LDFLAGS  = $(ldebug) $(conflags) $(EXT_LIB) $(conlibs) $(ADDITIONAL_LDFLAGS)
 
@@ -245,25 +254,25 @@ LDFLAGS  = $(ldebug) $(conflags) $(EXT_LIB) $(conlibs) $(ADDITIONAL_LDFLAGS)
 #Standalone executable
 !if "$(MODELREF_TARGET_TYPE)" == "NONE"
 PRODUCT   = $(MODEL).exe	
-
-REQ_SRCS  = $(MODEL).c $(MODULES) \
-            raccel_main.c raccel_sup.c raccel_mat.c simulink_solver_api.c rapid_utils.c\
-            $(EXT_SRC)
+BUILD_PRODUCT_TYPE = executable
+REQ_SRCS  = $(MODEL).c $(MODULES) $(EXT_SRC) \
+            raccel_sup.c raccel_mat.c simulink_solver_api.c rapid_utils.c
+!if "$(ENABLE_SLEXEC_SSBRIDGE)" != "0"
+REQ_SRCS = $(REQ_SRCS) raccel_main_new.c
+!else
+REQ_SRCS = $(REQ_SRCS) raccel_main.c
+!endif
 
 #Model Reference Target
 !else
 PRODUCT   = $(MODELLIB)
+BUILD_PRODUCT_TYPE = library
 REQ_SRCS  = $(MODULES)
-!endif
-
-PARFOR_SRCS =
-!if "$(RACCEL_PARALLEL_FOREACH_SS)" == "1"
-PARFOR_SRCS = rt_parfor.c
 !endif
 
 USER_SRCS =
 
-SRCS = $(REQ_SRCS) $(USER_SRCS) $(S_FUNCTIONS) $(PARFOR_SRCS)
+SRCS = $(REQ_SRCS) $(USER_SRCS) $(S_FUNCTIONS) 
 
 OBJS_CPP_UPPER = $(SRCS:.CPP=.obj)
 OBJS_CPP_LOWER = $(OBJS_CPP_UPPER:.cpp=.obj)
@@ -277,8 +286,21 @@ MAT_LIBS = $(MATLAB_ROOT)\extern\lib\win64\microsoft\libut.lib \
            $(MATLAB_ROOT)\extern\lib\win64\microsoft\libmx.lib \
            $(MATLAB_ROOT)\extern\lib\win64\microsoft\libmat.lib \
            $(MATLAB_ROOT)\extern\lib\win64\microsoft\libmwmathutil.lib \
-           $(MATLAB_ROOT)\extern\lib\win64\microsoft\libmwsl_solver_rtw.lib \
            $(MATLAB_ROOT)\extern\lib\win64\microsoft\libmwsl_fileio.lib
+
+!if "$(ENABLE_SLEXEC_SSBRIDGE)" != "0"
+MAT_LIBS = $(MAT_LIBS) $(MATLAB_ROOT)\extern\lib\win64\microsoft\libmwslexec_simbridge.lib
+!else
+MAT_LIBS = $(MAT_LIBS) $(MATLAB_ROOT)\extern\lib\win64\microsoft\libmwsl_solver_rtw.lib
+!endif
+!if "$(RACCEL_PARALLEL_EXECUTION)" == "1"
+MAT_LIBS = $(MAT_LIBS) $(MATLAB_ROOT)\extern\lib\win64\microsoft\libmwslexec_parallel.lib
+!endif
+
+MAT_LIBS = $(MAT_LIBS) $(MATLAB_ROOT)\extern\lib\win64\microsoft\libmwsl_log_load_blocks.lib
+MAT_LIBS = $(MAT_LIBS) $(MATLAB_ROOT)\extern\lib\win64\microsoft\libfixedpoint.lib
+
+
 
 # ------------------------- Additional Libraries ------------------------------
 
@@ -319,7 +341,7 @@ $(PRODUCT) : $(OBJS) $(SHARED_LIB)
 {$(MATLAB_ROOT)\rtw\c\src}.c.obj :
 	$(CC) $(CFLAGS) $<
 
-{$(MATLAB_ROOT)\rtw\c\rapid}.c.obj :
+{$(MATLAB_ROOT)\rtw\c\src\rapid}.c.obj :
 	$(CC) $(CFLAGS) $<
 
 {$(MATLAB_ROOT)\rtw\c\src\ext_mode\common}.c.obj :
@@ -342,10 +364,13 @@ simulink_solver_api.obj  : $(MATLAB_ROOT)\simulink\include\simulink_solver_api.c
 {$(MATLAB_ROOT)\rtw\c\src}.c.obj :
 	$(CC) $(CFLAGS) $<
 
+{$(MATLAB_ROOT)\simulink\src}.c.obj :
+	$(CC) $(CFLAGS) $<
+
 {$(MATLAB_ROOT)\rtw\c\src\ext_mode\common}.c.obj :
 	$(CC) $(CFLAGS) $<
 
-{$(MATLAB_ROOT)\rtw\c\src\rtiostream\rtiostreamtcpip}.c.obj :
+{$(MATLAB_ROOT)\toolbox\coder\rtiostream\src\utils}.c.obj :
 	$(CC) $(CFLAGS) $<
 
 
@@ -353,10 +378,13 @@ simulink_solver_api.obj  : $(MATLAB_ROOT)\simulink\include\simulink_solver_api.c
 {$(MATLAB_ROOT)\rtw\c\src}.cpp.obj :
 	$(CC) $(CPPFLAGS) $<
 
+{$(MATLAB_ROOT)\simulink\src}.cpp.obj :
+	$(CC) $(CPPFLAGS) $<
+
 {$(MATLAB_ROOT)\rtw\c\src\ext_mode\common}.cpp.obj :
 	$(CC) $(CPPFLAGS) $<
 
-{$(MATLAB_ROOT)\rtw\c\src\rtiostream\rtiostreamtcpip}.cpp.obj :
+{$(MATLAB_ROOT)\toolbox\coder\rtiostream\src\utils}.cpp.obj :
 	$(CC) $(CPPFLAGS) $<
 
 
